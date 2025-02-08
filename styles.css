@@ -38,7 +38,7 @@ p {
 /* Make the iframe responsive */
 iframe {
     width: 100%;
-    height: 60vh; /* Use viewport height for a responsive height */
+    height: 50vh; /* Use viewport height for a responsive height */
     max-width: 100%;
     border: none;
     outline: none;
