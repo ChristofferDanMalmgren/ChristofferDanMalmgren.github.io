@@ -31,16 +31,12 @@ h2 {
     height: 100vh; /* Anpassa höjd till skärmen */
 }
 
-/* Stil för Plotly-iframe */
 .responsive-iframe {
-    width: 80vw;  /* 80% av skärmens bredd */
-    height: 80vh; /* 80% av skärmens höjd */
-    max-width: 100%;  /* Förhindra att den blir för bred */
-    max-height: 100%; /* Förhindra att den blir för hög */
-    border: none;  /* Tar bort iframe-kanten */
-    display: block;  /* Tar bort extra mellanrum */
-    margin: auto;  /* Centrerar iframen */
-    background-color: transparent; /* Om Plotly-filen har transparent bakgrund */
+    width: 100vw;
+    height: 80vh; /* Justera om det behövs */
+    border: none;
+    display: block;
+    margin: auto;
 }
 
 /* Anpassning för mindre skärmar */
