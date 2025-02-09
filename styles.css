@@ -1,64 +1,47 @@
-/* Reset default browser styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Body styling */
+/* Gör så att hela sidan har en snygg bakgrund och centrerar innehållet */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
-    line-height: 1.6;
-    padding: 20px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
-/* Center the content and add a max-width */
-h1, p, iframe {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-/* Styling the header */
+/* Stil för sidans titel */
 h1 {
-    font-size: 2.5rem;
-    color: #2c3e50;
+    font-size: 2em;
     margin-bottom: 10px;
 }
 
-/* Styling the subtitle (p) */
-p {
-    font-size: 1.2rem;
-    color: #7f8c8d;
-    margin-bottom: 30px;
+/* Stil för underrubrik */
+h2 {
+    font-size: 1.5em;
+    font-weight: normal;
+    color: #666;
+    margin-bottom: 20px;
 }
 
-/* Make the iframe responsive */
-iframe {
-    width: 100%;
-    height: 50vh; /* Use viewport height for a responsive height */
-    max-width: 100%;
-    border: none;
-    outline: none;
-    border-radius: 8px;
-    box-shadow: none;
-    overflow: hidden; /* Ensure no scrollbars */
-    display: block; /* Ensure it takes full width */
+/* Stil för Plotly-iframe */
+.responsive-iframe {
+    width: 80vw;  /* 80% av skärmens bredd */
+    height: 80vh; /* 80% av skärmens höjd */
+    max-width: 100%;  /* Förhindra att den blir för bred */
+    max-height: 100%; /* Förhindra att den blir för hög */
+    border: none;  /* Tar bort iframe-kanten */
+    display: block;  /* Tar bort extra mellanrum */
+    margin: auto;  /* Centrerar iframen */
+    background-color: transparent; /* Om Plotly-filen har transparent bakgrund */
 }
 
-/* Add responsiveness */
+/* Anpassning för mindre skärmar */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 2rem;
-    }
-
-    p {
-        font-size: 1rem;
-    }
-
-    iframe {
-        height: 300px; /* Adjust iframe height on smaller screens */
+    .responsive-iframe {
+        width: 90vw;  /* Gör den lite bredare på mindre skärmar */
+        height: 60vh; /* Liten justering av höjden */
     }
 }
