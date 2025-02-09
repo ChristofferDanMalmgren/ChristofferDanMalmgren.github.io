@@ -24,10 +24,10 @@ var layout = {
         rangemode: 'tozero',  // Tvingar x-axeln att börja vid 0
     },
     yaxis: { title: 'Y Axis' },
-    dragmode: '', 
-    showlegend: true,
+    dragmode: false,  // Tar bort zoom och pan
     autosize: true,
-    margin: { l: 40, r: 40, t: 40, b: 40 }
+    margin: { l: 40, r: 40, t: 40, b: 40 },
+    displayModeBar: false // Tar bort mode bar (zoom, export etc)
 };
 
 var data = [trace1, trace2];
