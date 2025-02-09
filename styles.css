@@ -1,1 +1,21 @@
 
+/* Gör att grafen anpassar sig till föräldraelementets bredd */
+#plotly-graph {
+    width: 100%;          /* Grafen ska ta upp 100% av föräldraelementets bredd */
+    height: 400px;        /* Sätt en standardhöjd, kan justeras eller göras responsiv */
+    max-width: 100%;      /* Se till att bredden inte går över föräldraelementet */
+    margin: 0 auto;       /* Centrerar grafen om den har en fast bredd */
+}
+
+/* Responsiv höjd: gör höjden proportionell i förhållande till bredden */
+@media screen and (max-width: 768px) {
+    #plotly-graph {
+        height: 300px;    /* Justera höjden vid mindre skärmar */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #plotly-graph {
+        height: 250px;    /* Justera höjden ytterligare för små skärmar */
+    }
+}
