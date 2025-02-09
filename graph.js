@@ -31,7 +31,12 @@ var layout = {
     staticPlot: true, // Gör grafen statisk så att ingen interaktivitet finns
     displayModeBar: false, // Tar bort hela mode bar
     clickmode: 'none', // Förhindrar klickinteraktioner
-    hovermode: false // Förhindrar hover-interaktioner
+    hovermode: false, // Förhindrar hover-interaktioner
+    editable: false, // Inaktiverar redigering
+    modebar: { 
+        orientation: 'h', 
+        buttons: [] // Tar bort alla knappar i mode baren
+    }
 };
 
 var data = [trace1, trace2];
