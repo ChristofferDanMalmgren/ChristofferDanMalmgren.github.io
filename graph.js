@@ -20,7 +20,8 @@ var layout = {
     title: 'Scatter Plot with Line',
     xaxis: { 
         title: 'X Axis',
-        scaleanchor: "y" // Bevarar proportioner mellan x- och y-axeln
+        scaleanchor: "y", // Bevarar proportioner mellan x- och y-axeln
+        rangemode: 'tozero',  // Tvingar x-axeln att börja vid 0
     },
     yaxis: { title: 'Y Axis' },
     dragmode: '', 
