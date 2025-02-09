@@ -41,7 +41,7 @@ var layout = {
 
 var data = [trace1, trace2];
 // här under!!!!!
-const config = {
+var config = {
   displayModeBar: false, // this is the line that hides the bar.
 };
 // Skapa grafen i div-en med id "plotly-graph"
