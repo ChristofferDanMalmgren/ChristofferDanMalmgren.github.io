@@ -45,4 +45,4 @@ const config = {
   displayModeBar: false, // this is the line that hides the bar.
 };
 // Skapa grafen i div-en med id "plotly-graph"
-Plotly.newPlot('plotly-graph', data, layout);
+Plotly.newPlot('plotly-graph', data, layout, config);
