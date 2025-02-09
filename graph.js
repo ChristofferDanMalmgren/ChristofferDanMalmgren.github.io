@@ -36,7 +36,9 @@ var layout = {
     modebar: { 
         orientation: 'h', 
         buttons: [] // Tar bort alla knappar i mode baren
-    }
+    },
+    yaxis: {fixedrange: true},
+        xaxis: {fixedrange: true}
 };
 
 var data = [trace1, trace2];
