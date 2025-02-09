@@ -24,14 +24,14 @@ var layout = {
         rangemode: 'tozero',  // Tvingar x-axeln att börja vid 0
     },
     yaxis: { title: 'Y Axis' },
-    dragmode: '',  // Tar bort zoom och pan
     showlegend: true, // Behåller legend
     autosize: true,
     margin: { l: 40, r: 40, t: 40, b: 40 },
-    modeBar: { 
-        remove: true // Tar bort alla knappar i modebar
-    },
-    displayModeBar: false, // Tar bort modebar
+    dragmode: '',  // Tar bort zoom och pan
+    staticPlot: true, // Gör grafen statisk så att ingen interaktivitet finns
+    displayModeBar: false, // Tar bort hela mode bar
+    clickmode: 'none', // Förhindrar klickinteraktioner
+    hovermode: false // Förhindrar hover-interaktioner
 };
 
 var data = [trace1, trace2];
