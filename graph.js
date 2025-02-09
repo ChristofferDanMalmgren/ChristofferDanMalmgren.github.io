@@ -23,7 +23,7 @@ var layout = {
     dragmode: '', 
     showlegend: true,
     autosize: true,
-    margin: { l: 40, r: 40, t: 40, b: 40 }
+    margin: { l: 40, r: 40, t: 40, b: 40 },
     xaxis: {
         scaleanchor: "y" // Bevarar proportioner mellan x- och y-axeln
 }
