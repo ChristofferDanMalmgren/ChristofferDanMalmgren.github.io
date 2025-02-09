@@ -1,4 +1,4 @@
-<script>
+
     var trace1 = {
         x: [1, 2, 3, 4, 5],
         y: [10, 11, 12, 13, 14],
@@ -37,4 +37,3 @@
             height: window.innerHeight
         });
     });
-</script>
