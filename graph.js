@@ -18,15 +18,15 @@ var trace2 = {
 
 var layout = {
     title: 'Scatter Plot with Line',
-    xaxis: { title: 'X Axis' },
+    xaxis: { 
+        title: 'X Axis',
+        scaleanchor: "y" // Bevarar proportioner mellan x- och y-axeln
+    },
     yaxis: { title: 'Y Axis' },
     dragmode: '', 
     showlegend: true,
     autosize: true,
-    margin: { l: 40, r: 40, t: 40, b: 40 },
-    xaxis: {
-        scaleanchor: "y" // Bevarar proportioner mellan x- och y-axeln
-    }
+    margin: { l: 40, r: 40, t: 40, b: 40 }
 };
 
 var data = [trace1, trace2];
