@@ -24,10 +24,14 @@ var layout = {
         rangemode: 'tozero',  // Tvingar x-axeln att börja vid 0
     },
     yaxis: { title: 'Y Axis' },
-    dragmode: false,  // Tar bort zoom och pan
+    dragmode: '',  // Tar bort zoom och pan
+    showlegend: true, // Behåller legend
     autosize: true,
     margin: { l: 40, r: 40, t: 40, b: 40 },
-    displayModeBar: false // Tar bort mode bar (zoom, export etc)
+    modeBar: { 
+        remove: true // Tar bort alla knappar i modebar
+    },
+    displayModeBar: false, // Tar bort modebar
 };
 
 var data = [trace1, trace2];
