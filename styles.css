@@ -1,4 +1,4 @@
-/* Grundläggande styling */
+/* Grundinställningar */
 * {
     margin: 0;
     padding: 0;
@@ -6,137 +6,122 @@
     font-family: 'Arial', sans-serif;
 }
 
-/* Gör att hela sidan scrollar smidigt */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Grundläggande sektion-styling */
-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+body {
+    background: linear-gradient(to bottom, #ff7e5f, #feb47b);
+    color: #333;
     text-align: center;
-    width: 100%;
-    height: 100vh;
-    padding: 50px;
 }
 
-/* Hero-sektion */
-#hero {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('hero-image.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+/* Header */
+header {
+    background: #222;
     color: white;
+    padding: 50px 20px;
 }
 
-.hero-text {
-    text-align: center;
-}
-
-.hero-text h1 {
+header h1 {
     font-size: 3rem;
-    font-weight: bold;
 }
 
-.hero-text p {
+header p {
     font-size: 1.5rem;
     margin-top: 10px;
 }
 
-/* Om mig-sektion */
-#about {
-    background: white;
+/* Navigering */
+nav {
+    background: #444;
+    padding: 15px 0;
 }
 
-#about h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
-#about p {
+nav a {
+    color: white;
+    text-decoration: none;
     font-size: 1.2rem;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Sektioner */
+section {
+    padding: 60px 20px;
     max-width: 800px;
     margin: 0 auto;
 }
 
-/* Parallax sektion */
-.parallax {
-    position: relative;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-/* Skapa en mörk overlay-effekt på parallax-sektioner */
-.overlay {
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 50px;
-    text-align: center;
-}
-
-#skills {
-    background: url('skills-image.jpg');
-}
-
-#skills h2 {
-    font-size: 2.5rem;
+h2 {
+    font-size: 2rem;
     margin-bottom: 20px;
 }
 
-#skills ul {
+p, li {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+/* Lista i "Färdigheter" */
+ul {
     list-style: none;
-    font-size: 1.5rem;
+    padding: 0;
 }
 
-#skills li {
-    margin: 10px 0;
+ul li {
+    background: white;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Projekt-sektion */
-#projects {
-    background: #f4f4f4;
-}
-
-#projects h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
+/* Projektsektion */
 iframe {
     border: none;
-    width: 90%;
-    max-width: 800px;
+    width: 100%;
     height: 500px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Kontakt-sektion */
-#contact {
-    background: url('contact-image.jpg');
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    padding: 20px;
+    margin-top: 50px;
 }
 
-#contact h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
+/* Responsiv design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
 
-#contact a {
-    color: #ff7e5f;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-}
+    header p {
+        font-size: 1.2rem;
+    }
 
-#contact a:hover {
-    text-decoration: underline;
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav a {
+        font-size: 1rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    p, li {
+        font-size: 1.1rem;
+    }
 }
