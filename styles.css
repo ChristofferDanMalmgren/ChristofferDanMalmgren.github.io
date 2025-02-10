@@ -2,4 +2,7 @@
 iframe {
   border: none;
   outline: none;
+  frameborder: 0;
 }
+
+
