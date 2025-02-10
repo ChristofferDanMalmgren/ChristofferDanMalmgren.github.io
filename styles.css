@@ -1,33 +1,121 @@
+/* Reset styles */
 * {
-    border: 0;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
 }
 
 html {
     scroll-behavior: smooth;
 }
 
+body {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Parallax sections */
+.parallax {
+    position: relative;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+/* Different backgrounds for each section */
+#hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('hero-image.jpg');
+}
+
+#skills {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('skills-image.jpg');
+}
+
+#contact {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('contact-image.jpg');
+}
+
+/* Overlay text on parallax sections */
+.hero-text,
+.overlay {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 80%;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+}
+
+/* Content sections */
+.content {
+    padding: 100px 10%;
+    text-align: center;
+    background: white;
+    min-height: 100vh;
+}
+
+/* Skills section */
+.overlay h2,
+.overlay ul {
+    color: white;
+}
+
+.overlay ul {
+    list-style: none;
+    padding: 0;
+}
+
+.overlay li {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+/* Portfolio iframe */
 iframe {
     border: none;
-    outline: none;
-    box-shadow: none;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    border-radius: 5px;
 }
 
-.parallax {
-    background: linear-gradient(to bottom, #ff7e5f, #feb47b);
-    height: 100vh;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+/* Contact section */
+.overlay a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-.content {
-    height: 100vh;
-    background-color: white;
-    text-align: center;
-    padding: 50px;
-    margin-bottom: 100px; /* Lägg till marginal mellan sektionerna */
+.overlay a:hover {
+    text-decoration: underline;
+}
+
+/* Button styles */
+.btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #ffcc00;
+    color: black;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background: #ffaa00;
 }
