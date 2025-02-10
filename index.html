@@ -17,5 +17,17 @@
     <div class="content">
         <iframe src="scatterplot.html" width="100%" height="500px"></iframe>
     </div>
+
+<script>
+        document.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.parallax, .content');
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+</script>
 </body>
 </html>
