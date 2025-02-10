@@ -13,16 +13,17 @@ iframe {
 
 
 .parallax {
-            background-image: url('your-image-url.jpg');
-            height: 100%;
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-  .content {
-            height: 100vh;
-            background-color: white;
-            text-align: center;
-            padding: 50px;
-        }
+    background: linear-gradient(to bottom, #ff7e5f, #feb47b);
+    height: 100vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.content {
+    height: 100vh;
+    background-color: white;
+    text-align: center;
+    padding: 50px;
+}
