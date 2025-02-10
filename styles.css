@@ -25,4 +25,5 @@ iframe {
     background-color: white;
     text-align: center;
     padding: 50px;
+    margin-bottom: 100px; /* Lägg till marginal mellan sektionerna */
 }
