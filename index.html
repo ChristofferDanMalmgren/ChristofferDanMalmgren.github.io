@@ -5,75 +5,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Christoffer Malmgren - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        html {
+            scroll-snap-type: y mandatory;
+        }
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            scroll-snap-align: start;
+            text-align: center;
+            color: white;
+            padding: 50px;
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
+        }
+        header, footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        nav {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 0;
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        #welcome { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); }
+        #about { background: white; color: black; }
+        #projects { background: linear-gradient(135deg, #ff6a00, #ee0979); }
+        #contact { background: white; color: black; }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 2.5rem;
+        }
+        p {
+            font-size: 1.2rem;
+        }
+        iframe {
+            background: transparent;
+        }
+    </style>
 </head>
 <body>
-
-    <!-- Header -->
-    <header>
+    <nav>
+        <ul>
+            <li><a href="about.html">Om mig</a></li>
+            <li><a href="projects.html">Analyser</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+        </ul>
+    </nav>
+    
+    <section id="welcome">
         <div class="container">
             <h1>Christoffer Malmgren</h1>
-            <p>Statistiker | Analytiker | Dataentusiast</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
-    </header>
+    </section>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <ul>
-                <li><a href="#about">Om mig</a></li>
-                <li><a href="#skills">Färdigheter</a></li>
-                <li><a href="#projects">Projekt</a></li>
-                <li><a href="#contact">Kontakt</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- About Section -->
     <section id="about">
         <div class="container">
-            <h2>Om mig</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.</p>
+            <h2><a href="about.html" style="color: inherit; text-decoration: none;">Om mig</a></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="container">
-            <h2>Färdigheter</h2>
-            <ul>
-                <li>Dataanalys</li>
-                <li>Statistiska modeller</li>
-                <li>Datavisualisering</li>
-                <li>Python, R, SQL</li>
-                <li>Plotly & Dash</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
     <section id="projects">
         <div class="container">
-            <h2>Projekt</h2>
-            <p>Ett interaktivt exempel på min datavisualisering:</p>
-            <iframe src="scatterplot.html" width="100%" height="500px"></iframe>
+            <h2><a href="projects.html" style="color: inherit; text-decoration: none;">Analyser</a></h2>
+            <iframe src="scatterplot.html" width="100%" height="500px" style="border:none; background: transparent;" allowtransparency="true"></iframe>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Här tänker jag mig kanske att en statiskt bild utan interaktion ska finnas bara för att visa på en snygg graf. eventuellt en demografisk tidsserie. med riket som fetmarkerad och kanske västerås rödmarkerad</p>
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact">
         <div class="container">
-            <h2>Kontakt</h2>
-            <p>E-post: <a href="mailto:christoffer@example.com">christoffer@example.com</a></p>
-            <p>LinkedIn: <a href="#">linkedin.com/in/christoffer</a></p>
+            <h2><a href="contact.html" style="color: inherit; text-decoration: none;">Kontakt</a></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
     </section>
-
-    <!-- Footer -->
+    
     <footer>
-        <div class="container">
-            <p>&copy; 2024 Christoffer Malmgren</p>
-        </div>
+        <p>&copy; 2024 Christoffer Malmgren</p>
     </footer>
-
 </body>
 </html>
+
