@@ -2,16 +2,16 @@
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Christoffer Malmgren - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         html {
-            font-size: 16px; /* Bevarar textstorlek likt desktop */
+            font-size: clamp(14px, 1vw, 16px); /* Anpassar textstorlek */
         }
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
-            min-width: 1024px; /* Förhindrar mobilanpassning */
         }
         section {
             min-height: 100vh; /* Fyller skärmen men kan bli större */
@@ -25,8 +25,8 @@
             overflow: auto;
         }
         .container {
-            width: 80%;
-            max-width: 800px;
+            width: 90%;
+            max-width: 1024px; /* Begränsar bredd så det liknar desktop */
         }
         header, footer {
             background-color: #333;
@@ -35,11 +35,12 @@
             text-align: center;
         }
         nav {
-            position: absolute;
+            position: fixed;
             top: 0;
             width: 100%;
             background: rgba(0, 0, 0, 0.8);
             padding: 10px 0;
+            z-index: 1000;
         }
         nav ul {
             display: flex;
@@ -59,19 +60,20 @@
         #projects { background: linear-gradient(135deg, #ff6a00, #ee0979); }
         #contact { background: white; color: black; }
         h1 {
-            font-size: 3rem;
+            font-size: clamp(2rem, 4vw, 3rem); /* Anpassar sig mellan 2rem och 3rem */
             margin-bottom: 10px;
         }
         h2 {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
         }
         p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
         }
         iframe {
             width: 100%;
-            min-height: 500px; /* Förhindrar att grafen blir för liten */
-            height: auto;
+            min-height: 400px;
+            max-height: 600px;
+            height: 56.25vw; /* Behåller 16:9-förhållande */
             border: none;
             background: transparent;
         }
