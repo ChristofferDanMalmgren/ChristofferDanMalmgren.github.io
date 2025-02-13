@@ -10,6 +10,7 @@
         html {
             scroll-snap-type: y mandatory;
             height: 100%;
+            overflow-x: hidden; /* Tar bort vit kant */
         }
         body {
             margin: 0;
@@ -29,11 +30,12 @@
             color: white;
             padding: 50px;
             overflow: auto;
+            width: 100vw; /* Täcker hela bredden */
         }
 
         .container {
             width: 90%;
-            max-width: 1024px; /* Liknar desktop-bredd */
+            max-width: 1024px;
         }
 
         /* Navigering */
@@ -44,6 +46,11 @@
             background: rgba(0, 0, 0, 0.8);
             padding: 10px 0;
             z-index: 1000;
+            transition: top 0.3s;
+        }
+
+        nav.hidden {
+            top: -60px; /* Dölj menyn vid scroll */
         }
 
         nav ul {
@@ -86,7 +93,7 @@
             width: 100%;
             min-height: 400px;
             max-height: 600px;
-            height: 56.25vw; /* Behåller 16:9-förhållande */
+            height: 56.25vw; /* 16:9-förhållande */
             border: none;
             background: transparent;
         }
@@ -101,7 +108,8 @@
     </style>
 </head>
 <body>
-    <nav>
+
+    <nav id="navbar">
         <ul>
             <li><a href="about.html">Om mig</a></li>
             <li><a href="projects.html">Analyser</a></li>
@@ -141,5 +149,21 @@
     <footer>
         <p>&copy; 2024 Christoffer Malmgren</p>
     </footer>
+
+    <script>
+        let lastScrollTop = 0;
+        const navbar = document.getElementById("navbar");
+
+        window.addEventListener("scroll", function() {
+            let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            if (currentScroll > lastScrollTop) {
+                navbar.classList.add("hidden"); // Göm menyn vid scroll nedåt
+            } else {
+                navbar.classList.remove("hidden"); // Visa menyn vid scroll uppåt
+            }
+            lastScrollTop = currentScroll;
+        });
+    </script>
+
 </body>
 </html>
