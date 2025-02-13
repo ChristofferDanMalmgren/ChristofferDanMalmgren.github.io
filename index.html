@@ -6,33 +6,37 @@
     <title>Christoffer Malmgren - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        html, body {
-    scroll-snap-type: y mandatory;
-    overflow-y: scroll;
-    height: 100%;
-}
+        /* Scroll-effekt */
+        html {
+            scroll-snap-type: y mandatory;
+            height: 100%;
+        }
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            height: 100%;
+            overflow-y: scroll;
+        }
 
-section {
-    min-height: 100vh; /* Fyller skärmen men kan vara större */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    scroll-snap-align: start;
-    text-align: center;
-    color: white;
-    padding: 50px;
-    overflow: auto;
-}
+        /* Sektioner */
+        section {
+            min-height: 100vh; /* Minst en skärmstorlek men kan växa */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            scroll-snap-align: start;
+            text-align: center;
+            color: white;
+            padding: 50px;
+            overflow: auto;
+        }
+
         .container {
             width: 90%;
-            max-width: 1024px; /* Begränsar bredd så det liknar desktop */
+            max-width: 1024px; /* Liknar desktop-bredd */
         }
-        header, footer {
-            background-color: #333;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
+
+        /* Navigering */
         nav {
             position: fixed;
             top: 0;
@@ -41,25 +45,33 @@ section {
             padding: 10px 0;
             z-index: 1000;
         }
+
         nav ul {
             display: flex;
             justify-content: center;
             list-style: none;
             padding: 0;
+            margin: 0;
         }
+
         nav ul li {
             margin: 0 15px;
         }
+
         nav ul li a {
             color: white;
             text-decoration: none;
         }
+
+        /* Färgteman för sektioner */
         #welcome { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); }
         #about { background: white; color: black; }
         #projects { background: linear-gradient(135deg, #ff6a00, #ee0979); }
         #contact { background: white; color: black; }
+
+        /* Rubriker och text */
         h1 {
-            font-size: clamp(2rem, 4vw, 3rem); /* Anpassar sig mellan 2rem och 3rem */
+            font-size: clamp(2rem, 4vw, 3rem);
             margin-bottom: 10px;
         }
         h2 {
@@ -68,6 +80,8 @@ section {
         p {
             font-size: clamp(1rem, 2vw, 1.2rem);
         }
+
+        /* Iframe (grafen) */
         iframe {
             width: 100%;
             min-height: 400px;
@@ -75,6 +89,14 @@ section {
             height: 56.25vw; /* Behåller 16:9-förhållande */
             border: none;
             background: transparent;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
         }
     </style>
 </head>
