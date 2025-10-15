@@ -1447,14 +1447,14 @@ input, select, textarea {
 			  display: flex;
 			  align-items: center;
 			  justify-content: center;
-			  width: 5.5rem;
-			  height: 5.5rem;
+			  width: 4.75rem;
+			  height: 4.75rem;
 			  border: solid 1px #ffffff;
 			  border-radius: 50%;
 			}
 			
 			#header .logo .icon:before {
-			  font-size: 2rem;
+			  font-size: 1.75rem;
 			  line-height: 1; /* ser till att ikonen inte får extra luft */
 			}
 
@@ -1667,6 +1667,7 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
+
 
 
 
