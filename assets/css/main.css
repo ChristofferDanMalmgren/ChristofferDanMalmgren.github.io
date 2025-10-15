@@ -170,7 +170,6 @@ input, select, textarea {
 		border-bottom: dotted 1px rgba(255, 255, 255, 0.5);
 		text-decoration: none;
 		color: inherit;
-		white-space: normal;
 	}
 
 		a:hover {
@@ -1683,6 +1682,7 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
+
 
 
 
