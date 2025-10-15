@@ -170,6 +170,7 @@ input, select, textarea {
 		border-bottom: dotted 1px rgba(255, 255, 255, 0.5);
 		text-decoration: none;
 		color: inherit;
+		white-space: normal;
 	}
 
 		a:hover {
@@ -223,7 +224,6 @@ input, select, textarea {
 		font-size: 1.5rem;
 		line-height: 1.4;
 		letter-spacing: 0.5rem;
-		white-space: normal;
 	}
 
 	h3 {
@@ -1683,6 +1683,7 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
+
 
 
 
