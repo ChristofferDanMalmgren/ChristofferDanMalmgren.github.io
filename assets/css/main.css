@@ -1692,6 +1692,21 @@ input, select, textarea {
 
 
 
+.button-link {
+    display: inline-block;       /* Gör det som en box */
+    padding: 0.75rem 1.5rem;    /* Inre marginaler */
+    background-color: #007BFF;  /* Blå bakgrund */
+    color: #fff;                /* Vit text */
+    text-decoration: none;       /* Tar bort understrykning */
+    border-radius: 0.5rem;      /* Runda hörn */
+    font-weight: bold;           /* Fet text */
+    text-align: center;          /* Centrerar texten */
+    transition: background-color 0.3s; /* Mjuk övergång vid hover */
+}
+
+.button-link:hover {
+    background-color: #0056b3; /* Mörkare blå vid hover */
+}
 
 
 
