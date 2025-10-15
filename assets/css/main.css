@@ -1304,7 +1304,7 @@ input, select, textarea {
 
 		#header .logo .icon {
 			position: relative;
-  			top: -3.1rem; /* justera uppåt eller nedåt vid behov */
+  			top: 3.1rem; /* justera uppåt eller nedåt vid behov */
 		}
 
 		#header .content {
@@ -1457,7 +1457,8 @@ input, select, textarea {
 
 		#header .logo .icon {
 			position: relative;
-  			top: -3.1rem; /* justera uppåt eller nedåt vid behov */
+  			top: 3
+				.1rem; /* justera uppåt eller nedåt vid behov */
 		}
 
 			#header .content .inner {
@@ -1669,5 +1670,6 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
+
 
 
