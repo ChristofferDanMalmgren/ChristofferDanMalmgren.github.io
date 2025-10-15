@@ -1353,6 +1353,12 @@ input, select, textarea {
 				line-height: 2;
 			}
 
+#header nav {
+    width: 100%; /* tar hela headerns bredd */
+    max-width: none; /* tar bort eventuell begränsning */
+    padding: 0 2rem; /* lite luft på sidorna */
+}
+
 		#header nav ul {
 			display: -moz-flex;
 			display: -webkit-flex;
@@ -1682,6 +1688,7 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
+
 
 
 
