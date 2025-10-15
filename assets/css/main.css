@@ -1291,20 +1291,18 @@ input, select, textarea {
 			}
 
 		#header .logo {
-			width: 5.5rem;
-			height: 5.5rem;
-			line-height: 5.5rem;
-			border: solid 1px #ffffff;
-			border-radius: 100%;
+		  display: flex;
+		  align-items: center;
+		  justify-content: center;
+		  width: 5.5rem;
+		  height: 5.5rem;
+		  border: solid 1px #ffffff;
+		  border-radius: 50%;
 		}
-
-			#header .logo .icon:before {
-				font-size: 2rem;
-			}
-
-		#header .logo .icon {
-			position: relative;
-  			top: 3.1rem; /* justera uppåt eller nedåt vid behov */
+		
+		#header .logo .icon:before {
+		  font-size: 2rem;
+		  line-height: 1; /* ser till att ikonen inte får extra luft */
 		}
 
 		#header .content {
@@ -1446,19 +1444,19 @@ input, select, textarea {
 				}
 
 			#header .logo {
-				width: 4.75rem;
-				height: 4.75rem;
-				line-height: 4.75rem;
+			  display: flex;
+			  align-items: center;
+			  justify-content: center;
+			  width: 5.5rem;
+			  height: 5.5rem;
+			  border: solid 1px #ffffff;
+			  border-radius: 50%;
 			}
-
-				#header .logo .icon:before {
-					font-size: 1.75rem;
-				}
-
-		#header .logo .icon {
-			position: relative;
-  			top: 3.1rem; /* justera uppåt eller nedåt vid behov */
-		}
+			
+			#header .logo .icon:before {
+			  font-size: 2rem;
+			  line-height: 1; /* ser till att ikonen inte får extra luft */
+			}
 
 			#header .content .inner {
 				padding: 2.5rem 1rem;
@@ -1669,6 +1667,7 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
+
 
 
 
