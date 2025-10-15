@@ -73,6 +73,21 @@ input, select, textarea {
 }
 
 /* Basic */
+.readmore {
+  text-align: center;     /* centrerar texten */
+  margin-top: 1rem;       /* lite luft ovanför */
+}
+
+.readmore a {
+  font-weight: bold;      /* gör texten fet */
+  color: #ffffff;         /* ändra färg vid behov */
+  text-decoration: none;  /* tar bort understrykning */
+  transition: color 0.2s ease;
+}
+
+.readmore a:hover {
+  color: #4CAF50;         /* ändra färg när man hovrar, valfritt */
+}
 
 	@-ms-viewport {
 		width: device-width;
@@ -1667,6 +1682,7 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
+
 
 
 
