@@ -1730,6 +1730,15 @@ input, select, textarea {
 }
 
 
+#header nav ul li a{
+	flex: 1;
+	justify-content: center;
+	align-items: stretch;
+	display: flex;
+}
+
+
+
 
 
 
