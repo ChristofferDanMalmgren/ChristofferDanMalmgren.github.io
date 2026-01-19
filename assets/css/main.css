@@ -1178,7 +1178,7 @@ input, select, textarea {
 			transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out;
 			background-image: url("../../images/bg.jpg");
 			background-position: left center;
-			background-size: cover;
+			background-size: contain;
 			background-repeat: no-repeat;
 			z-index: 1;
 		}
@@ -1736,6 +1736,7 @@ input, select, textarea {
 	align-items: center;
 	display: flex;
 }
+
 
 
 
