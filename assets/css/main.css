@@ -713,7 +713,7 @@ input, select, textarea {
 
 		.image.main {
 			display: block;
-			margin: 2.5rem 0;
+			margin: 2.0rem 0;
 			width: 100%;
 		}
 
@@ -1736,6 +1736,7 @@ input, select, textarea {
 	align-items: center;
 	display: flex;
 }
+
 
 
 
