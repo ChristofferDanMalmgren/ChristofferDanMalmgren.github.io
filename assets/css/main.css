@@ -1340,7 +1340,7 @@ input, select, textarea {
 				-webkit-transition-delay: 0.25s;
 				-ms-transition-delay: 0.25s;
 				transition-delay: 0.25s;
-				padding: 2.5rem 2rem;
+				padding: 2rem 2rem;
 				max-height: 40rem;
 				overflow: hidden;
 			}
@@ -1736,6 +1736,7 @@ input, select, textarea {
 	align-items: center;
 	display: flex;
 }
+
 
 
 
