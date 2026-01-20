@@ -860,7 +860,7 @@ input, select, textarea {
 				width: 100%;
 			}
 
-		@media screen and (max-width: 480px) {
+		@media screen and (max-width: 900px) {
 
 			ul.actions:not(.fixed) {
 				-moz-flex-direction: column;
@@ -1736,6 +1736,7 @@ input, select, textarea {
 	align-items: center;
 	display: flex;
 }
+
 
 
 
