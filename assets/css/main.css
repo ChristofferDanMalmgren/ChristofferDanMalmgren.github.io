@@ -1151,8 +1151,8 @@ input, select, textarea {
 		position: fixed;
 		top: 0;
 		left: 0;
-		width: 100%;
-		height: 100vh;
+		width: 100vw;/*innan 100%*/
+		height: 100%; /*innan vh*/
 		z-index: 1;
 	}
 
@@ -1754,6 +1754,7 @@ input, select, textarea {
 	align-items: center;
 	display: flex;
 }
+
 
 
 
