@@ -1743,6 +1743,19 @@ input, select, textarea {
 
 
 
+@media screen and (max-aspect-ratio: 4/3) {
+
+		#bg {
+			background-size: cover;
+		}
+}
+
+@media screen and (min-aspect-ratio: 4/3) {
+
+		#bg {
+			background-size: contain;
+		}
+}
 
 
 
