@@ -4,19 +4,12 @@
 
 
 /*tillägg*/
-@media screen and (max-aspect-ratio: 4/3) {
-
-		#bg:after {
-			background-size: cover;
+		#bg {
+			background-size: auto 100%;
+background-position: center;
+background-repeat: no-repeat;
 		}
-}
 
-@media screen and (min-aspect-ratio: 4/3) {
-
-		#bg:after {
-			background-size: contain;
-		}
-}
 /******************/
 
 /*
@@ -1754,6 +1747,7 @@ input, select, textarea {
 	align-items: center;
 	display: flex;
 }
+
 
 
 
