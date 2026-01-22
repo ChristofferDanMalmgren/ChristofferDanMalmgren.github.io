@@ -6,14 +6,14 @@
 /*tillägg*/
 @media screen and (max-aspect-ratio: 4/3) {
 
-		#bg {
+		#bg:before {
 			background-size: cover;
 		}
 }
 
 @media screen and (min-aspect-ratio: 4/3) {
 
-		#bg {
+		#bg:before {
 			background-size: contain;
 		}
 }
@@ -1754,6 +1754,7 @@ input, select, textarea {
 	align-items: center;
 	display: flex;
 }
+
 
 
 
