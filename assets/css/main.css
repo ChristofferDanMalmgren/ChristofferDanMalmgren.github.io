@@ -1,6 +1,24 @@
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300italic,600italic,300,600");
 
+
+
+/*tillägg*/
+@media screen and (max-aspect-ratio: 4/3) {
+
+		#bg {
+			background-size: cover;
+		}
+}
+
+@media screen and (min-aspect-ratio: 4/3) {
+
+		#bg {
+			background-size: contain;
+		}
+}
+/******************/
+
 /*
 	Dimension by HTML5 UP
 	html5up.net | @ajlkn
@@ -1741,21 +1759,6 @@ input, select, textarea {
 
 
 
-
-
-@media screen and (max-aspect-ratio: 4/3) {
-
-		#bg {
-			background-size: cover;
-		}
-}
-
-@media screen and (min-aspect-ratio: 4/3) {
-
-		#bg {
-			background-size: contain;
-		}
-}
 
 
 
