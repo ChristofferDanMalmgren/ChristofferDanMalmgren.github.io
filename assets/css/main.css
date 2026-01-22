@@ -112,7 +112,7 @@ input, select, textarea {
 	}
 
 	body {
-		background: #1b1f22;
+		background: #000000 /*1b1f22*/;
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -1736,6 +1736,7 @@ input, select, textarea {
 	align-items: center;
 	display: flex;
 }
+
 
 
 
