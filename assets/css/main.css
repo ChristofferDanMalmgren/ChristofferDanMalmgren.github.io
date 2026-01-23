@@ -95,10 +95,10 @@ input, select, textarea {
 		width: device-width;
 	}
 
-	@media screen and (max-width: 480px) {
+	@media screen and (max-width: 480rem) {
 
 		html, body {
-			min-width: 320px;
+			min-width: 320rem;
 		}
 
 	}
@@ -1709,6 +1709,7 @@ input, select, textarea {
 	align-items: center;
 	display: flex;
 }
+
 
 
 
