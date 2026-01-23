@@ -98,7 +98,7 @@ input, select, textarea {
 	@media screen and (max-width: 480rem) {
 
 		html, body {
-			min-width: 320rem;
+			min-width: 10rem;
 		}
 
 	}
@@ -1709,6 +1709,7 @@ input, select, textarea {
 	align-items: center;
 	display: flex;
 }
+
 
 
 
