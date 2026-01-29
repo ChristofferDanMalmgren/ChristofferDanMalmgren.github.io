@@ -302,7 +302,7 @@ input, select, textarea {
 	hr {
 		border: 0;
 		border-bottom: solid 1px #ffffff;
-		margin: 2.75rem 0;
+		margin: 1rem 0; /* tidigare 2.75*/
 	}
 
 	.align-left {
@@ -1737,6 +1737,7 @@ input, select, textarea {
 	align-items: center;
 	display: flex;
 }
+
 
 
 
