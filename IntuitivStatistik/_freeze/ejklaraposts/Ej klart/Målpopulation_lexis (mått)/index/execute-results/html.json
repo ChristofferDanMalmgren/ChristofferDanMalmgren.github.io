@@ -1,0 +1,15 @@
+{
+  "hash": "f9602846074c1be3500ee219ef9d27b8",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"DAGs: En introduktion (del 2)\"\nauthor: \"Christoffer Malmgren\"\ndate: \"2025-10-25\"\ncategories: [DAG, Verktygför analytisk klarhet]\n---\n\n<!--# läs in paket -->\n\n\n::: {.cell}\n\n:::\n\n\n-   **Inledning:**\n\n    -   \n\n    -   Problemet: målpopulationer, tidsdimensioner, vad man missar.\n\n    -   \n\n    -   Lexisdiagram som verktyg för intuition.\n\n    -   \n\n<!-- -->\n\n-   **Tvärsnitt och andel/sannolikhet:**\n\n    -   \n\n    -   Vertikala snitt → medelvärde, andel, prevalens.\n\n    -   \n\n    -   Diskutera: “vem ingår i populationen just nu?”\n\n    -   \n\n    -   Illustration: personer på vertikal linje vid tid t.\n\n    -   \n\n<!-- -->\n\n-   **Flöde och incidens:**\n\n    -   \n\n    -   Lutningar/övergångar → flöde av nya fall.\n\n    -   \n\n    -   Skillnad mellan risk, flöde, rate.\n\n    -   \n\n    -   Illustration: linjer som korsar händelsegräns.\n\n    -   \n\n<!-- -->\n\n-   **ATE och jämförelser mellan grupper:**\n\n    -   \n\n    -   Två parallella flöden → skillnad = genomsnittlig behandlingseffekt.\n\n    -   \n\n    -   Illustration: två färgade ytor (t.ex. röd = obehandlad, blå = behandlad).\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

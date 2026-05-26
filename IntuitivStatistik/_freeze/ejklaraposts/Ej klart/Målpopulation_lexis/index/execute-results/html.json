@@ -1,0 +1,15 @@
+{
+  "hash": "7b1122abb4564a11b6e8162df16784bc",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"DAGs: En introduktion (del 2)\"\nauthor: \"Christoffer Malmgren\"\ndate: \"2025-10-25\"\ncategories: [DAG, Verktygför analytisk klarhet]\n---\n\n<!--# läs in paket -->\n\n\n::: {.cell}\n\n:::\n\n\nofta brukar man prata om population utifrån ramtäckning. men jag tänker prata om målpopulation utifrån en mer praktisk aspekt: från urvalsdragning till och med insamlingen. för detta tänkte jag använda mig av lexis-diagram samt anta att ramtäckningsproblemen är negligerbara.",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

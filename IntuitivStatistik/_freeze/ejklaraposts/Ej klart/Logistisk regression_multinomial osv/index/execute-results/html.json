@@ -1,0 +1,15 @@
+{
+  "hash": "d32afdd6a82bb901d8628c151fe3e4e1",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"DAGs: En introduktion (del 2)\"\nauthor: \"Christoffer Malmgren\"\ndate: \"2025-10-25\"\ncategories: [DAG, Verktygför analytisk klarhet]\n---\n\n<!--# läs in paket -->\n\n\n::: {.cell}\n\n:::\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

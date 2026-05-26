@@ -1,0 +1,22 @@
+---
+title: "Om bloggen"
+image: profile.jpg
+about:
+  template: jolla
+  links:
+    - icon: laptop
+      text: Website
+      href: https://christofferdanmalmgren.github.io/
+    - icon: envelope
+      text: Mail
+      href: mailto:christoffer.dan.malmgren@gmail.com
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/c-malmgren
+---
+
+På en demografikonferens fastnade jag för uttrycket "KISS – Keep it simple, stupid", när en ovanligt excentrisk men kunnig man med cowboyhatt i publiken sa just det samtidigt som han gestikulerade och gjorde en kyss i luften. Det var ett ögonblick som verkligen satte sig: en enkel och korrekt analys kan vara både intuitiv, tydlig och mest lämplig, även när mer avancerade metoder finns. Sedan dess har jag drivits av samma ambition – att förstå och presentera statistik på ett sätt som är både korrekt och intuitivt.
+
+Den här bloggen är främst för min egen skull: ett sätt att samla sådant jag snöat in mig på, från state space-tidsseriemodeller, kausal inferens och grafbaserade metoder till Git och kodlösningar. Ofta blir mina anteckningar annars liggande i ostrukturerade dokument. Här kan jag formulera problem och metoder på ett sätt som blir intuitivt för mig – och samtidigt dela det med andra som vill förstå statistiken på ett mer intuitivt sätt.
+
+Hoppas du som läser bloggen hittar något givande här, och du är alltid varmt välkommen att höra av dig!
