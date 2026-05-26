@@ -1,0 +1,78 @@
+---
+title: "Git (del 1)"
+author: "Christoffer Malmgren"
+date: "2026-02-09"
+categories: [Git, Statistikproduktion, Arbetsrutiner]
+image: "image.jpg"
+abstract: "Den första delen om Git där jag förklarar nyttan av Git i statistikproduktion"
+---
+
+<!--# läs in paket -->
+
+```{r}
+#| echo: false
+#| output: false
+library(ggdag)
+library(ggplot2)
+library(tidyverse)
+```
+
+> *Idén till denna bloggserie väcktes efter samtal med en tidigare kollega, som uppmärksammade att Git kan användas helt lokalt och som versionshantering av många typer av textbaserade filer, mer än bara kod. Serien är ett sätt för mig att strukturera och konkretisera ett enkelt arbetssätt för versionshantering i statistikproduktion, baserat på ett praktiskt utforskande av Git. Exemplen är förenklade och generiska.*
+
+------------------------------------------------------------------------
+
+## Varför Git i statistisk produktion?
+
+Återkommande statistikproduktion omfattar ofta databearbetning, framställning av tabeller, figurer och rapporter samt dokumentation. Det är mer regel än undantag att dataunderlag, definitioner, beräkningssteg och presentation förändras över tid, t.ex. mellan produktionsomgångar. Det kan bero på nya eller förändrade användarbehov eller vara en del av det kontinuerliga kvalitetsarbetet.
+
+Detta innebär att både kod och dokumentation utvecklas successivt. I praktiken ställer detta krav på ordning, spårbarhet och möjligheten att i efterhand återskapa hur ett visst resultat tagits fram.
+
+### Mindre manuell hantering av versioner
+
+I återkommande produktion uppstår naturligt behov av att hantera förändringar över tid. Ett arbetssätt är att spara tidigare versioner av kod och dokumentation i separata filer eller mappar, ofta med hjälp av namngivningskonventioner eller versionsmappar.
+
+Sådana lösningar kan fungera, men innebär samtidigt ett behov av kontinuerlig disciplin och underhåll. Med tiden tenderar de också att skapa parallella strukturer för versionshistorik, dokumentation och arbetskopior.
+
+Med Git lagras förändringshistoriken istället som en integrerad del av arbetet. Det innebär bland annat att:
+
+-   tidigare versioner kan identifieras och återskapas utan att särskilda kopior sparas
+
+-   förändringar kan följas över tid
+
+-   kod och dokumentation kan versioneras tillsammans
+
+Syftet är inte att ersätta dokumentation utan att minska mängden dokumentation kopplat till förändringar och minska det tidskrävande manuella arbetet med att ha en arbetsrutin kring versionshistorik genom att kopiera kod, kopiera dokumentation, dokumentera förändringar utanför koden i sig osv.
+
+### Reproducerbarhet över flera produktionsomgångar
+
+Reproducerbarhet i statistikproduktion innebär att det i efterhand ska vara möjligt att exakt återskapa hur ett visst resultat tagits fram, givet de förutsättningar som gällde vid tidpunkten för produktionen.
+
+Detta är särskilt relevant vid återkommande statistikproduktion där kod och dokumentation utvecklas och förändras allt eftersom. Utan systematisk versionshantering riskerar tidigare produktionsomgångar att bli svåra eller krångliga att återskapa, trots att kod och dokumentation i någon form finns kvar.
+
+Genom att versionera både kod och dokumentation kan ett tidigare tillstånd återställas exakt. Detta möjliggör reproduktion även när den aktuella kodbasen har utvecklats vidare långt efter den aktuella produktionstidpunkten av intresse.
+
+### Kod och dokumentation – separata men samordnade
+
+I statistikproduktion görs ofta en åtskillnad mellan koden och dokumentationen som beskriver metod, definitioner och antaganden.
+
+Genom att versionera dessa delar tillsammans kan förändringar i metodbeskrivning och implementation följas parallellt. Detta kan minska behovet av att överbelasta koden med omfattande kommentarer och i stället samla förklaringar i ett separat, versionerat dokument.
+
+Ett sådant upplägg kan bidra till att hålla koden mer fokuserad på implementation, samtidigt som dokumentationen förblir aktuell i relation till den version av koden som användes vid en viss produktion.
+
+Med Git blir det också möjligt att kunna se **vem** som gjort förändringar, **när** och **varför** (*det sista* *förutsätter att personerna commitar med meddelanden*). Att få all den informationen sparad i samband med att man gör förändringar, utan större ansträngning, kan vara guld värt om dokumentation brister, diciplinen inte alltid är på topp eller där många arbetar tillsammans med koden: antingen samtidigt i tid eller över tid.
+
+### Oberoende av verktyg och filformat
+
+De principer som diskuteras här är oberoende av specifika verktyg eller programmeringsspråk. Versionshantering kan tillämpas på exempelvis:
+
+-   textdokument
+
+-   kod (t.ex. R, SAS, SQL eller Python)
+
+-   rapportmallar
+
+Det centrala är inte filformatet, utan att produktionen organiseras på ett sätt som möjliggör spårbarhet och reproducerbarhet över tid.
+
+### Nästa inlägg
+
+I nästa inlägg visas grundläggande men tillräckliga Git-syntax för att använda Git som versionshantering.

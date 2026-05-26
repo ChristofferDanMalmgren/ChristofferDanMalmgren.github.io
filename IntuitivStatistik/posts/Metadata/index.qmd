@@ -1,0 +1,234 @@
+---
+title: "Metadata: före eller efter?"
+author: "Christoffer Malmgren"
+date: "2026-02-23"
+categories: [Metadata, Statistikproduktion, Arbetsrutiner]
+image: "image.jpg"
+abstract: "Mina tankar kring metadatadokumentering och metadatastyrning"
+---
+
+<!--# läs in paket -->
+
+```{r}
+#| echo: false
+#| output: false
+library(ggdag)
+library(ggplot2)
+library(tidyverse)
+```
+
+## Inledning: varför metadata ofta blir “något vid sidan av”
+
+Om du tänker att metadata är tidskrävande dokumentation eller ett grått tekniskt ämne så vill jag bara säga: det kan vara så – men det behöver inte vara så. Om man lägger upp arbetet rätt kan metadata till och med minska den totala dokumentationen, genom att reducera dubbelarbete och i slutändan också göra att produktionen följer dokumentationen snarare än tvärtom.
+
+Tidigare tänkte jag inte särskilt mycket på metadata, utan var mer intresserad av analysarbete och de statistiska frågorna. Metadata kändes mest som en teknisk arkitekturfråga där värdet inte var helt uppenbart utöver att det hör till professionen.
+
+Efter att ha arbetat med statistikproduktion har jag insett att metadata har ett stort värde – och hur centralt arbetssättet kring metadata faktiskt är. Det stora värdet ligger i att metadata beskriver vad variabler *egentligen* betyder, exempelvis:
+
+-   var de kommer ifrån
+
+-   vilken värdemängd de har
+
+-   i vilken skala de är mätta
+
+-   om de är härledda, och i så fall hur och från vilka variabler
+
+-   vilka variabler som är beroende av den specifika variabeln
+
+Det här är viktigt för användare av data, men också för produktionen i stort. Väl dokumenterad metadata minskar personberoende, gör förändringsarbete betydligt enklare och hör till professionell datahantering.
+
+Slutformatet kan till exempel vara en metadatakatalog i något system för enklare samkörning och säker lagring. Det betyder dock fortfarande att man antingen matar in saker manuellt eller gör någon form av mer eller mindre smart inläsning.
+
+Här tänkte jag resonera kring **hur man kan arbeta med metadata: efter produktion eller före produktion**.
+
+------------------------------------------------------------------------
+
+## Metadatadokumentation i efterhand
+
+**Kort sagt:** Dokumentation i efterhand är enkelt att börja med – men riskerar att släpa efter över tid och kräver dubbelarbete.
+
+Att dokumentera metadata i efterhand kräver minst planering: vi har data som input, datan bearbetas, outputen sparas – och sist dokumenterar vi den sparade outputdatan. Detta kan illustreras enligt flödesschemat nedan.
+
+```{mermaid}
+flowchart LR
+  A[Input] --> C[Databearbetning] -->
+  id1[(Output)] -.-> B[Metadatadokumnetation]
+```
+
+I den enklaste formen skulle all metadata skrivas efteråt för alla variabler, kanske i stil med något liknande nedan:
+
+```{mermaid}
+flowchart LR
+A[
+**Variabel 1**
+&Tab;Beskrivning: Utbildningsnivå
+&Tab;Typ: chr
+&Tab;Värdemängd:
+&Tab;&Tab;Värden:
+&Tab;&Tab;&Tab;1: Låg
+&Tab;&Tab;&Tab;2: Medel
+&Tab;&Tab;&Tab;3: Hög
+&Tab;&Tab;&Tab;99: Okänt
+&Tab;Ursprung:
+&Tab;&Tab;Källa: Register
+&Tab;&Tab;&Tab;Register: Register XYZ
+&Tab;&Tab;&Tab;Registerversion: ÅÅÅ-MM-DD
+&Tab;#91;...#93;
+
+**Variabel 56**
+&Tab;Beskrivning: Mått på ...
+&Tab;Typ: int
+&Tab;Värdemängd:
+&Tab;&Tab;Min:
+&Tab;&Tab;&Tab;Minvärde: 0
+&Tab;&Tab;&Tab;Inklusivt: TRUE
+&Tab;&Tab;Max:
+&Tab;&Tab;&Tab;Maxvärde: FALSE
+&Tab;&Tab;&Tab;Inklusivt: NA
+&Tab;&Tab;Specialvärden:
+&Tab;&Tab;&Tab;-999: Partiellt bortfall
+&Tab;Ursprung:
+&Tab;&Tab;Källa: Härledd
+&Tab;&Tab;&Tab;Beroenda av: #91;Variabel 13, Variabel 16, ...#93; 
+&Tab;&Tab;&Tab;Hur: func#40; #91;Variabel 13, Variabel 16, ...#93; #41;
+&Tab;#91;...#93;
+]
+style A text-align:left
+style A white-space: pre; 
+```
+
+I vissa fall kan detta fungera helt okej – om produktion är av engångs- eller ad hoc-karaktär eller om saker inte förändras så mycket över tid. I praktiken brukar dock definitioner, kodning och härledningar förändras. Då kan man försöka dokumentera parallellt med omkodning i databearbetningen vilket är definitionen av dubbelarbete.
+
+Det är något effektivare, men innebär fortfarande ett extra lager av struktur och disciplin – och i praktiken gör man ofta samma sak två gånger. När detta arbetssätt inte upprätthålls finns risken att dokumentationen gradvis glider isär från den faktiska produktionen, vilket leder till lägre tillit till metadatat.
+
+------------------------------------------------------------------------
+
+### Effektivisering med nycklar
+
+Oavsett om man dokumenterar metadata före eller efter produktion är ett effektivt arbetssätt att använda **nycklar**.
+
+Med nycklar menar jag standardiserade koder som – när man kopplar ihop dokument – expanderar till mer detaljerade beskrivningar. I surveystatistik har man ofta samma svarsalternativ för många frågor. Istället för att upprepa samma värdemängd om och om igen kan man använda en gemensam kod som pekar på en central definition. Det minskar duplicering och gör ändringar i värdemängder potentiellt mer spårbara och kontrollerbara.
+
+```{mermaid}
+flowchart LR
+A[
+*Variabel 1*
+&Tab;Beskrivning: Fråga 13
+&Tab;Värdemängd:
+&Tab;&Tab;**Kod: JaNej**
+&Tab;#91;...#93;
+*Variabel 43*
+&Tab;Beskrivning: Fråga 13
+&Tab;Värdemängd:
+&Tab;&Tab;**Kod: JaNej**
+&Tab;#91;...#93;
+]
+style A text-align:left
+style A white-space: pre; 
+B[
+*Värdemängdstabell*
+**Kod: JaNej**
+&Tab;Typ: chr
+&Tab;Värdemängd:
+&Tab;&Tab;Värden:
+&Tab;&Tab;&Tab;1: Ja
+&Tab;&Tab;&Tab;2: Nej
+&Tab;&Tab;&Tab;3: Vet Ej
+&Tab;&Tab;&Tab;4: Vill inte svara
+&Tab;&Tab;&Tab;99: Partiellt bortfall
+&Tab;#91;...#93;
+]
+style A text-align:left
+style A white-space: pre; 
+C[
+*Variabel 1*
+&Tab;Beskrivning: Fråga 13
+&Tab;Värdemängd:
+&Tab;&Tab;**Kod: JaNej**
+&Tab;&Tab;Typ: chr
+&Tab;&Tab;Värden:
+&Tab;&Tab;&Tab;1: Ja
+&Tab;&Tab;&Tab;2: Nej
+&Tab;&Tab;&Tab;3: Vet Ej
+&Tab;&Tab;&Tab;4: Vill inte svara
+&Tab;&Tab;&Tab;99: Partiellt bortfall
+&Tab;#91;...#93;
+*Variabel 43*
+&Tab;Beskrivning: Fråga 13
+&Tab;Värdemängd:
+&Tab;&Tab;**Kod: JaNej**
+&Tab;&Tab;Typ: chr
+&Tab;&Tab;Värden:
+&Tab;&Tab;&Tab;1: Ja
+&Tab;&Tab;&Tab;2: Nej
+&Tab;&Tab;&Tab;3: Vet Ej
+&Tab;&Tab;&Tab;4: Vill inte svara
+&Tab;&Tab;&Tab;99: Partiellt bortfall
+&Tab;#91;...#93;
+]
+style A text-align:left
+style A white-space: pre; 
+A --> C
+style B text-align:left
+style B white-space: pre; 
+B --> C
+style C text-align:left
+style C white-space: pre; 
+```
+
+Har man mycket återkommande struktur lönar det sig nästan alltid att normalisera metadatat i separata tabeller. Har man metadata i en nestlad struktur kan man också enkelt plocka ut delmängder vid behov – till exempel för att generera en kodbok där variabelnamn, beskrivning och värdemängd ofta räcker långt.
+
+------------------------------------------------------------------------
+
+## Metadatadokumentation innan data
+
+**Kort sagt:** Metadatastyrd produktion kräver mer initialt arbete – men betalar tillbaka sig i förvaltning och kvalitet.
+
+Att dokumentera metadata *innan* data kan låta märkligt, men vid återkommande produktion är det ofta både smart, effektivt, förvaltningsbart och kvalitetssäkert: om man planerar för det!
+
+Tanken är att göra produktionen **metadatastyrd**: koden byggs upp så att den läser in både data och metadata och bearbetar datan utifrån metadata.
+
+Schematiskt:
+
+```{mermaid}
+flowchart LR
+  A[Input] --> C[Databearbetning] -->
+  id1[(Output)]
+  B[Metadatadokumnetation] --> C
+```
+
+Fördelarna är tydliga:
+
+-   Dokumentationen blir primär, inte sekundär.
+
+-   Metadatat kan inte släpa efter – produktionen kräver korrekt metadata.
+
+-   Dubbelarbete försvinner.
+
+-   Koden blir generisk: istället för speciallogik per variabel räcker en funktion per moment.
+
+-   Förvaltningen blir enklare.
+
+Med ett sådant upplägg kan man till exempel:
+
+1.  Kontrollera indata genom villkor i metadatat.
+
+2.  Härleda nya variabler genom att specificera beroenden och transformationsregler i metadata.
+
+3.  Styra vilka variabler som ska användas för redovisning och skattning baserat på metadata.
+
+4.  Göra systematiska slutkontroller av färdig data.
+
+5.  Detta är bara några exempel – det finns mycket mer man kan göra med ett metadatadrivet angreppssätt.
+
+Nackdelen är primärt att det kräver planering men också att funktioner som är generella tenderar att bli mindre läsvänliga och kan bli komplexa när bearbetning har beroende i många steg.
+
+------------------------------------------------------------------------
+
+## Avslutning: metadata som arbetssätt, inte bihang
+
+Jag tycker det är intressant att se att metadata kan vara en del av själva produktionslogiken. Att dynamiken i en produktion kan förändras beroende på metadatans roll: från ett dokumentationssteg till styrande och själva hjärtat i flödet.
+
+Det betyder inte att metadatastyrda arbetssätt alltid är rätt väg. I mindre, engångsbetonade projekt är tröskeln ofta för hög i relation till nyttan. Men i återkommande produktion, där förändringar sker över tid och där flera personer är inblandade kan det vara värt att åtminstonde fundera på metadatans roll.
+
+Poängen är inte att bygga det perfekta metadatasystemet, utan att vara medveten om vilken roll metadata har och kan ha. Om metadata ses som ett nödvändigt ont kommer den sannolikt alltid att ligga efter. Om den ses som ett verktyg för att hantera kvalitet, spårbarhet och personberoende blir den istället en möjliggörare för en enklare och mer tillförlitlig produktion.

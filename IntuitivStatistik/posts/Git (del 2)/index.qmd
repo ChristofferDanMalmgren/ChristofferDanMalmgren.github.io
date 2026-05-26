@@ -1,0 +1,205 @@
+---
+title: "Git (del 2)"
+author: "Christoffer Malmgren"
+date: "2026-02-09"
+categories: [Git, Statistikproduktion, Arbetsrutiner]
+image: "image.jpg"
+abstract: "Den andra delen om Git där jag förklarar grundläggande men tillräcklig syntax för att börja med Git."
+---
+
+<!--# läs in paket -->
+
+```{r}
+#| echo: false
+#| output: false
+library(ggdag)
+library(ggplot2)
+library(tidyverse)
+```
+
+# Del 2: Grundläggande syntax och arbetsflöde
+
+I del 1 tog jag upp *varför* Git är användbart i statistikproduktion.
+
+I den här delen fokuserar vi på **tillräcklig Git-syntax** för att kunna arbeta tryggt och reproducerbart i en produktion där kod och dokumentation uppdateras över tid. Ambitionen är inte att täcka allt Git kan göra.
+
+## Grundidén: ett repo och en arbetskopia
+
+Tänk dig en situation där produktionen sker återkommande, t.ex. kvartalsvis, och att kod och dokumentation uppdateras mellan omgångar.
+
+I stället för att skapa separata filer eller versionsmappar för varje produktionsomgång används ett versionshanteringssystem för att:
+
+-   samla all kod och dokumentation på ett ställe
+
+-   hålla reda på förändringar över tid
+
+-   möjliggöra exakt reproduktion av tidigare produktionsomgångar
+
+Kärnan i Git är:
+
+-   **ett repository (repo)** - där all historik lagras
+
+-   **en arbetskopia** - där man faktiskt arbetar
+
+### Steg 0: Någon skapar ett repo
+
+*Repo* är en förkortning för *repository* och är platsen där versionshistoriken sparas.
+
+Om produktionen man börjar arbeta med använder Git sedan innan så finns ofta ett repo redan, vilket förmodligen är det vanligaste.
+
+Oftast använder man ett remote repository vilket är ett repo på en server. Exempel på det är Github och Gitlab. Men det kan även vara lokalt i en mapp.
+
+> [**Viktigt!**]{.underline}\
+> Ska man [använda Git privat]{.underline} rekommenderar jag Github (eller lokalt[^1]) för vilket man relativt enkelt kan Googla sig fram hur man ska gå till väga för att komma igång.
+>
+> Ska man [använda Git på arbetet]{.underline} så rekommenderar jag att man följer etablerat arbetssätt på arbetet gällande hur man skapar ett repo för Git! Be en kunnig kollega eller IT hjälpa dig sätta upp ett repo enligt arbetetsplatsens rutiner.
+
+[^1]: Det enklaste sättet att skapa ett lokalt repo är att köra `git init --bare` i den mapp du vill ha som ett "lokalt remote repo". För att skapa en kopplad arbetsmapp kör man sen `git clone [väg till repot] [vad du vill att arbetsmappen ska heta]`.
+
+Vi antar att man kommer in i en produktion som redan använder Git och har ett remote repo på plats.
+
+### Steg 1: Gör det tydligt att det är du som gör ändringar
+
+Börja med att tala om för Git vem du är:
+
+```         
+git config --global user.name "[Ditt namn]
+git config --global user.email "[Din email]"
+```
+
+Denna information:
+
+-   följer automatiskt med varje commit
+
+-   är viktig dokumentation i produktion
+
+-   gör det lätt att se vem som gjort vad och när
+
+Detta behöver normailt bara göras en gång per dator.
+
+### Steg 2: Arbeta i en uppkopplad mapp
+
+För att se kopplingen i en arbetsmapp mot ett remote repo kan man köra `git remote -v`. Där kommer du se sökvägen eller repots URL.
+
+#### Om du behöver eller vill skapa en ny arbetskopia
+
+Klona repot:
+
+```         
+git clone [väg till remote repo eller URL] [vad du vill att arbetsmappen ska heta]
+```
+
+Detta:
+
+-   skapar en ny mapp
+
+-   innehåller senaste versionen av allt
+
+-   är redo att användas direkt
+
+### Steg 3: Se till att det finns ett `.gitignore` 
+
+`.gitignore` talar om för Git vad som [inte]{.underline} ska versionshanteras. Det kan handla om känslig data eller tillfälliga filer.
+
+Om `.gitignore` saknas:
+
+1.   Skapa en textfil som heter `.gitignore`
+
+2.   Lägg till den i repot:
+
+```         
+git add .gitignore
+git commit -m "Lägger till .gitignore"
+git push
+```
+
+Säg att man vill att följande saker ska ignoreras:
+
+-   mappen SkaIgnoreras/
+
+-   alla .Rdata-filer
+
+Då skulle `.gitignore` se ut så här:
+
+```         
+SkaIgnoreras/
+.Rdata
+```
+
+> [**Viktigt!**]{.underline}
+>
+> Om det berör känsligt innehåll och du precis initierat ett nytt .gitignore eller lagt till något nytt i .gitignore [så tycker jag]{.underline}: testa att det funkar som det är tänkt med icke-känsligt innehåll.
+
+### Steg 4: Spara tillägg eller justeringar
+
+När man gör ändringar i arbetsmappen behöver man tala om för Git vad som ska sparas.
+
+1.  Se vad som ändrats med `git status`
+
+2.  lägg till ändringar med `git add \[filnamn\]` eller allt på en gång med `gid add .`
+
+3.  skapa en commit med `git commit -m "\[kommentar\]"` eller bara `git commit`
+
+4.  skicka till remote repo med `git push`
+
+**Tänk på:\
+**En commit är en dokumentationspunkt. Commita inte halvfärdiga ändringar, commita hellre en meningsfull ändring i taget med tillhörande kommentar som rör just den ändringen än att commita många ändringar med en generell kommentar.
+
+### Steg 5: Läs in någons uppdateringar
+
+Om någon annan har arbetat i repot behöver du hämta deras ändringar vilket görs med `git pull`.
+
+Detta:
+
+-   hämtar ändringar från remote repo
+
+-   uppdaterar din arbetskopia
+
+**Rekommendation:\
+**kör `git pull` innan du börjar arbeta, särskilt i gemensamma projekt.
+
+### Steg 6: Någon tog bort allt från arbetsmappen - ingen större fara
+
+Om något skulle saknas går det att ses med `git status`. För att få tillbaka det som saknas kan man köra `git restore \[filnamn\]` eller om allt saknas `git restore .`.
+
+En sak som inte kan återskapas, med hjälp av Git, är det som nämns i `.gitignore`. Det kommer inte heller synas vid `git status`.
+
+### Steg 7: Gå tillbaka i tiden och sen tillbaka till nuet
+
+Git gör det möjligt att se exakt hur projektet såg ut vid tidigare tillfällen.
+
+### Se historiken
+
+Med `git log` så kan man se historiken. Där ser man commit-id, vem som commitat, när och personens kommentar.
+
+För att gå tillbaka till ett tidigare läge kan man köra:
+
+```         
+git checkout <commit-id> 
+```
+
+Då återskapas alla filer vid det tillfället. Gör inga ändringar här utan använd det bara som ett read-only läge. Annars kan det uppkomma felmeddelanden när man ska ta sig tillbaka till nutiden.
+
+### Tillbaka till nutid
+
+För att ta sig tillbaka till nutiden kör man bara:
+
+```         
+git checkout main 
+```
+
+**Allt detta är särskilt användbart för:**
+
+-    felsökning
+
+-    reproducerbarhet
+
+-    förståelse av förändringar över tid
+
+### Avslutande ord
+
+Det här var min avslutande del om grunderna i Git. Vi får se om jag gör något mer om Git i framtiden.
+
+Det finns mycket mer man kan lära sig om Git, så som branch och stash, men med de sakerna jag har listat ovan kommer man långt med och räcker för en komplett versionshantering. Vissa av sakerna jag har tagit upp kanske till och med är lite överkurs.
+
+Oavsett så *tycker jag* att Git är vägen att gå om man arbetar i en relativt komplex produktion där förändringar och tillägg tillkommer med en viss frekvens. En hel del av nödvändigt dokumentationsarbetet följer med per automatik, det går enkelt att återskapa produktionen vid tidigare skeenden och man minskar antalet rutiner när Git blir en naturlig del i produktionen!
