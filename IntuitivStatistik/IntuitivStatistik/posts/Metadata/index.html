@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Christoffer Malmgren">
+<meta name="dcterms.date" content="2026-02-23">
+
+<title>Metadata: före eller efter? – Intuitiv Statistik</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Intuitiv Statistik</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Om bloggen</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://christofferdanmalmgren.github.io/"> <i class="bi bi-laptop" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:christoffer.dan.malmgren@gmail.com"> <i class="bi bi-envelope" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/c-malmgren"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Metadata: före eller efter?</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Metadata</div>
+    <div class="quarto-category">Statistikproduktion</div>
+    <div class="quarto-category">Arbetsrutiner</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Christoffer Malmgren </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 23, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    Mina tankar kring metadatadokumentering och metadatastyrning
+  </div>
+</div>
+
+
+</header>
+
+
+<!--# läs in paket -->
+<section id="inledning-varför-metadata-ofta-blir-något-vid-sidan-av" class="level2">
+<h2 class="anchored" data-anchor-id="inledning-varför-metadata-ofta-blir-något-vid-sidan-av">Inledning: varför metadata ofta blir “något vid sidan av”</h2>
+<p>Om du tänker att metadata är tidskrävande dokumentation eller ett grått tekniskt ämne så vill jag bara säga: det kan vara så – men det behöver inte vara så. Om man lägger upp arbetet rätt kan metadata till och med minska den totala dokumentationen, genom att reducera dubbelarbete och i slutändan också göra att produktionen följer dokumentationen snarare än tvärtom.</p>
+<p>Tidigare tänkte jag inte särskilt mycket på metadata, utan var mer intresserad av analysarbete och de statistiska frågorna. Metadata kändes mest som en teknisk arkitekturfråga där värdet inte var helt uppenbart utöver att det hör till professionen.</p>
+<p>Efter att ha arbetat med statistikproduktion har jag insett att metadata har ett stort värde – och hur centralt arbetssättet kring metadata faktiskt är. Det stora värdet ligger i att metadata beskriver vad variabler <em>egentligen</em> betyder, exempelvis:</p>
+<ul>
+<li><p>var de kommer ifrån</p></li>
+<li><p>vilken värdemängd de har</p></li>
+<li><p>i vilken skala de är mätta</p></li>
+<li><p>om de är härledda, och i så fall hur och från vilka variabler</p></li>
+<li><p>vilka variabler som är beroende av den specifika variabeln</p></li>
+</ul>
+<p>Det här är viktigt för användare av data, men också för produktionen i stort. Väl dokumenterad metadata minskar personberoende, gör förändringsarbete betydligt enklare och hör till professionell datahantering.</p>
+<p>Slutformatet kan till exempel vara en metadatakatalog i något system för enklare samkörning och säker lagring. Det betyder dock fortfarande att man antingen matar in saker manuellt eller gör någon form av mer eller mindre smart inläsning.</p>
+<p>Här tänkte jag resonera kring <strong>hur man kan arbeta med metadata: efter produktion eller före produktion</strong>.</p>
+<hr>
+</section>
+<section id="metadatadokumentation-i-efterhand" class="level2">
+<h2 class="anchored" data-anchor-id="metadatadokumentation-i-efterhand">Metadatadokumentation i efterhand</h2>
+<p><strong>Kort sagt:</strong> Dokumentation i efterhand är enkelt att börja med – men riskerar att släpa efter över tid och kräver dubbelarbete.</p>
+<p>Att dokumentera metadata i efterhand kräver minst planering: vi har data som input, datan bearbetas, outputen sparas – och sist dokumenterar vi den sparade outputdatan. Detta kan illustreras enligt flödesschemat nedan.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  A[Input] --&gt; C[Databearbetning] --&gt;
+  id1[(Output)] -.-&gt; B[Metadatadokumnetation]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>I den enklaste formen skulle all metadata skrivas efteråt för alla variabler, kanske i stil med något liknande nedan:</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+A[
+**Variabel 1**
+&amp;Tab;Beskrivning: Utbildningsnivå
+&amp;Tab;Typ: chr
+&amp;Tab;Värdemängd:
+&amp;Tab;&amp;Tab;Värden:
+&amp;Tab;&amp;Tab;&amp;Tab;1: Låg
+&amp;Tab;&amp;Tab;&amp;Tab;2: Medel
+&amp;Tab;&amp;Tab;&amp;Tab;3: Hög
+&amp;Tab;&amp;Tab;&amp;Tab;99: Okänt
+&amp;Tab;Ursprung:
+&amp;Tab;&amp;Tab;Källa: Register
+&amp;Tab;&amp;Tab;&amp;Tab;Register: Register XYZ
+&amp;Tab;&amp;Tab;&amp;Tab;Registerversion: ÅÅÅ-MM-DD
+&amp;Tab;#91;...#93;
+
+**Variabel 56**
+&amp;Tab;Beskrivning: Mått på ...
+&amp;Tab;Typ: int
+&amp;Tab;Värdemängd:
+&amp;Tab;&amp;Tab;Min:
+&amp;Tab;&amp;Tab;&amp;Tab;Minvärde: 0
+&amp;Tab;&amp;Tab;&amp;Tab;Inklusivt: TRUE
+&amp;Tab;&amp;Tab;Max:
+&amp;Tab;&amp;Tab;&amp;Tab;Maxvärde: FALSE
+&amp;Tab;&amp;Tab;&amp;Tab;Inklusivt: NA
+&amp;Tab;&amp;Tab;Specialvärden:
+&amp;Tab;&amp;Tab;&amp;Tab;-999: Partiellt bortfall
+&amp;Tab;Ursprung:
+&amp;Tab;&amp;Tab;Källa: Härledd
+&amp;Tab;&amp;Tab;&amp;Tab;Beroenda av: #91;Variabel 13, Variabel 16, ...#93; 
+&amp;Tab;&amp;Tab;&amp;Tab;Hur: func#40; #91;Variabel 13, Variabel 16, ...#93; #41;
+&amp;Tab;#91;...#93;
+]
+style A text-align:left
+style A white-space: pre; 
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>I vissa fall kan detta fungera helt okej – om produktion är av engångs- eller ad hoc-karaktär eller om saker inte förändras så mycket över tid. I praktiken brukar dock definitioner, kodning och härledningar förändras. Då kan man försöka dokumentera parallellt med omkodning i databearbetningen vilket är definitionen av dubbelarbete.</p>
+<p>Det är något effektivare, men innebär fortfarande ett extra lager av struktur och disciplin – och i praktiken gör man ofta samma sak två gånger. När detta arbetssätt inte upprätthålls finns risken att dokumentationen gradvis glider isär från den faktiska produktionen, vilket leder till lägre tillit till metadatat.</p>
+<hr>
+<section id="effektivisering-med-nycklar" class="level3">
+<h3 class="anchored" data-anchor-id="effektivisering-med-nycklar">Effektivisering med nycklar</h3>
+<p>Oavsett om man dokumenterar metadata före eller efter produktion är ett effektivt arbetssätt att använda <strong>nycklar</strong>.</p>
+<p>Med nycklar menar jag standardiserade koder som – när man kopplar ihop dokument – expanderar till mer detaljerade beskrivningar. I surveystatistik har man ofta samma svarsalternativ för många frågor. Istället för att upprepa samma värdemängd om och om igen kan man använda en gemensam kod som pekar på en central definition. Det minskar duplicering och gör ändringar i värdemängder potentiellt mer spårbara och kontrollerbara.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+A[
+*Variabel 1*
+&amp;Tab;Beskrivning: Fråga 13
+&amp;Tab;Värdemängd:
+&amp;Tab;&amp;Tab;**Kod: JaNej**
+&amp;Tab;#91;...#93;
+*Variabel 43*
+&amp;Tab;Beskrivning: Fråga 13
+&amp;Tab;Värdemängd:
+&amp;Tab;&amp;Tab;**Kod: JaNej**
+&amp;Tab;#91;...#93;
+]
+style A text-align:left
+style A white-space: pre; 
+B[
+*Värdemängdstabell*
+**Kod: JaNej**
+&amp;Tab;Typ: chr
+&amp;Tab;Värdemängd:
+&amp;Tab;&amp;Tab;Värden:
+&amp;Tab;&amp;Tab;&amp;Tab;1: Ja
+&amp;Tab;&amp;Tab;&amp;Tab;2: Nej
+&amp;Tab;&amp;Tab;&amp;Tab;3: Vet Ej
+&amp;Tab;&amp;Tab;&amp;Tab;4: Vill inte svara
+&amp;Tab;&amp;Tab;&amp;Tab;99: Partiellt bortfall
+&amp;Tab;#91;...#93;
+]
+style A text-align:left
+style A white-space: pre; 
+C[
+*Variabel 1*
+&amp;Tab;Beskrivning: Fråga 13
+&amp;Tab;Värdemängd:
+&amp;Tab;&amp;Tab;**Kod: JaNej**
+&amp;Tab;&amp;Tab;Typ: chr
+&amp;Tab;&amp;Tab;Värden:
+&amp;Tab;&amp;Tab;&amp;Tab;1: Ja
+&amp;Tab;&amp;Tab;&amp;Tab;2: Nej
+&amp;Tab;&amp;Tab;&amp;Tab;3: Vet Ej
+&amp;Tab;&amp;Tab;&amp;Tab;4: Vill inte svara
+&amp;Tab;&amp;Tab;&amp;Tab;99: Partiellt bortfall
+&amp;Tab;#91;...#93;
+*Variabel 43*
+&amp;Tab;Beskrivning: Fråga 13
+&amp;Tab;Värdemängd:
+&amp;Tab;&amp;Tab;**Kod: JaNej**
+&amp;Tab;&amp;Tab;Typ: chr
+&amp;Tab;&amp;Tab;Värden:
+&amp;Tab;&amp;Tab;&amp;Tab;1: Ja
+&amp;Tab;&amp;Tab;&amp;Tab;2: Nej
+&amp;Tab;&amp;Tab;&amp;Tab;3: Vet Ej
+&amp;Tab;&amp;Tab;&amp;Tab;4: Vill inte svara
+&amp;Tab;&amp;Tab;&amp;Tab;99: Partiellt bortfall
+&amp;Tab;#91;...#93;
+]
+style A text-align:left
+style A white-space: pre; 
+A --&gt; C
+style B text-align:left
+style B white-space: pre; 
+B --&gt; C
+style C text-align:left
+style C white-space: pre; 
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Har man mycket återkommande struktur lönar det sig nästan alltid att normalisera metadatat i separata tabeller. Har man metadata i en nestlad struktur kan man också enkelt plocka ut delmängder vid behov – till exempel för att generera en kodbok där variabelnamn, beskrivning och värdemängd ofta räcker långt.</p>
+<hr>
+</section>
+</section>
+<section id="metadatadokumentation-innan-data" class="level2">
+<h2 class="anchored" data-anchor-id="metadatadokumentation-innan-data">Metadatadokumentation innan data</h2>
+<p><strong>Kort sagt:</strong> Metadatastyrd produktion kräver mer initialt arbete – men betalar tillbaka sig i förvaltning och kvalitet.</p>
+<p>Att dokumentera metadata <em>innan</em> data kan låta märkligt, men vid återkommande produktion är det ofta både smart, effektivt, förvaltningsbart och kvalitetssäkert: om man planerar för det!</p>
+<p>Tanken är att göra produktionen <strong>metadatastyrd</strong>: koden byggs upp så att den läser in både data och metadata och bearbetar datan utifrån metadata.</p>
+<p>Schematiskt:</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  A[Input] --&gt; C[Databearbetning] --&gt;
+  id1[(Output)]
+  B[Metadatadokumnetation] --&gt; C
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Fördelarna är tydliga:</p>
+<ul>
+<li><p>Dokumentationen blir primär, inte sekundär.</p></li>
+<li><p>Metadatat kan inte släpa efter – produktionen kräver korrekt metadata.</p></li>
+<li><p>Dubbelarbete försvinner.</p></li>
+<li><p>Koden blir generisk: istället för speciallogik per variabel räcker en funktion per moment.</p></li>
+<li><p>Förvaltningen blir enklare.</p></li>
+</ul>
+<p>Med ett sådant upplägg kan man till exempel:</p>
+<ol type="1">
+<li><p>Kontrollera indata genom villkor i metadatat.</p></li>
+<li><p>Härleda nya variabler genom att specificera beroenden och transformationsregler i metadata.</p></li>
+<li><p>Styra vilka variabler som ska användas för redovisning och skattning baserat på metadata.</p></li>
+<li><p>Göra systematiska slutkontroller av färdig data.</p></li>
+<li><p>Detta är bara några exempel – det finns mycket mer man kan göra med ett metadatadrivet angreppssätt.</p></li>
+</ol>
+<p>Nackdelen är primärt att det kräver planering men också att funktioner som är generella tenderar att bli mindre läsvänliga och kan bli komplexa när bearbetning har beroende i många steg.</p>
+<hr>
+</section>
+<section id="avslutning-metadata-som-arbetssätt-inte-bihang" class="level2">
+<h2 class="anchored" data-anchor-id="avslutning-metadata-som-arbetssätt-inte-bihang">Avslutning: metadata som arbetssätt, inte bihang</h2>
+<p>Jag tycker det är intressant att se att metadata kan vara en del av själva produktionslogiken. Att dynamiken i en produktion kan förändras beroende på metadatans roll: från ett dokumentationssteg till styrande och själva hjärtat i flödet.</p>
+<p>Det betyder inte att metadatastyrda arbetssätt alltid är rätt väg. I mindre, engångsbetonade projekt är tröskeln ofta för hög i relation till nyttan. Men i återkommande produktion, där förändringar sker över tid och där flera personer är inblandade kan det vara värt att åtminstonde fundera på metadatans roll.</p>
+<p>Poängen är inte att bygga det perfekta metadatasystemet, utan att vara medveten om vilken roll metadata har och kan ha. Om metadata ses som ett nödvändigt ont kommer den sannolikt alltid att ligga efter. Om den ses som ett verktyg för att hantera kvalitet, spårbarhet och personberoende blir den istället en möjliggörare för en enklare och mer tillförlitlig produktion.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

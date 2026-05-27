@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Christoffer Malmgren">
+<meta name="dcterms.date" content="2026-02-09">
+
+<title>Git (del 2) – Intuitiv Statistik</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Intuitiv Statistik</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Om bloggen</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://christofferdanmalmgren.github.io/"> <i class="bi bi-laptop" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:christoffer.dan.malmgren@gmail.com"> <i class="bi bi-envelope" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/c-malmgren"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Git (del 2)</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Git</div>
+    <div class="quarto-category">Statistikproduktion</div>
+    <div class="quarto-category">Arbetsrutiner</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Christoffer Malmgren </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 9, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    Den andra delen om Git där jag förklarar grundläggande men tillräcklig syntax för att börja med Git.
+  </div>
+</div>
+
+
+</header>
+
+
+<!--# läs in paket -->
+<section id="del-2-grundläggande-syntax-och-arbetsflöde" class="level1">
+<h1>Del 2: Grundläggande syntax och arbetsflöde</h1>
+<p>I del 1 tog jag upp <em>varför</em> Git är användbart i statistikproduktion.</p>
+<p>I den här delen fokuserar vi på <strong>tillräcklig Git-syntax</strong> för att kunna arbeta tryggt och reproducerbart i en produktion där kod och dokumentation uppdateras över tid. Ambitionen är inte att täcka allt Git kan göra.</p>
+<section id="grundidén-ett-repo-och-en-arbetskopia" class="level2">
+<h2 class="anchored" data-anchor-id="grundidén-ett-repo-och-en-arbetskopia">Grundidén: ett repo och en arbetskopia</h2>
+<p>Tänk dig en situation där produktionen sker återkommande, t.ex. kvartalsvis, och att kod och dokumentation uppdateras mellan omgångar.</p>
+<p>I stället för att skapa separata filer eller versionsmappar för varje produktionsomgång används ett versionshanteringssystem för att:</p>
+<ul>
+<li><p>samla all kod och dokumentation på ett ställe</p></li>
+<li><p>hålla reda på förändringar över tid</p></li>
+<li><p>möjliggöra exakt reproduktion av tidigare produktionsomgångar</p></li>
+</ul>
+<p>Kärnan i Git är:</p>
+<ul>
+<li><p><strong>ett repository (repo)</strong> - där all historik lagras</p></li>
+<li><p><strong>en arbetskopia</strong> - där man faktiskt arbetar</p></li>
+</ul>
+<section id="steg-0-någon-skapar-ett-repo" class="level3">
+<h3 class="anchored" data-anchor-id="steg-0-någon-skapar-ett-repo">Steg 0: Någon skapar ett repo</h3>
+<p><em>Repo</em> är en förkortning för <em>repository</em> och är platsen där versionshistoriken sparas.</p>
+<p>Om produktionen man börjar arbeta med använder Git sedan innan så finns ofta ett repo redan, vilket förmodligen är det vanligaste.</p>
+<p>Oftast använder man ett remote repository vilket är ett repo på en server. Exempel på det är Github och Gitlab. Men det kan även vara lokalt i en mapp.</p>
+<blockquote class="blockquote">
+<p><u><strong>Viktigt!</strong></u><br>
+Ska man <u>använda Git privat</u> rekommenderar jag Github (eller lokalt<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>) för vilket man relativt enkelt kan Googla sig fram hur man ska gå till väga för att komma igång.</p>
+<p>Ska man <u>använda Git på arbetet</u> så rekommenderar jag att man följer etablerat arbetssätt på arbetet gällande hur man skapar ett repo för Git! Be en kunnig kollega eller IT hjälpa dig sätta upp ett repo enligt arbetetsplatsens rutiner.</p>
+</blockquote>
+<p>Vi antar att man kommer in i en produktion som redan använder Git och har ett remote repo på plats.</p>
+</section>
+<section id="steg-1-gör-det-tydligt-att-det-är-du-som-gör-ändringar" class="level3">
+<h3 class="anchored" data-anchor-id="steg-1-gör-det-tydligt-att-det-är-du-som-gör-ändringar">Steg 1: Gör det tydligt att det är du som gör ändringar</h3>
+<p>Börja med att tala om för Git vem du är:</p>
+<pre><code>git config --global user.name "[Ditt namn]
+git config --global user.email "[Din email]"</code></pre>
+<p>Denna information:</p>
+<ul>
+<li><p>följer automatiskt med varje commit</p></li>
+<li><p>är viktig dokumentation i produktion</p></li>
+<li><p>gör det lätt att se vem som gjort vad och när</p></li>
+</ul>
+<p>Detta behöver normailt bara göras en gång per dator.</p>
+</section>
+<section id="steg-2-arbeta-i-en-uppkopplad-mapp" class="level3">
+<h3 class="anchored" data-anchor-id="steg-2-arbeta-i-en-uppkopplad-mapp">Steg 2: Arbeta i en uppkopplad mapp</h3>
+<p>För att se kopplingen i en arbetsmapp mot ett remote repo kan man köra <code>git remote -v</code>. Där kommer du se sökvägen eller repots URL.</p>
+<section id="om-du-behöver-eller-vill-skapa-en-ny-arbetskopia" class="level4">
+<h4 class="anchored" data-anchor-id="om-du-behöver-eller-vill-skapa-en-ny-arbetskopia">Om du behöver eller vill skapa en ny arbetskopia</h4>
+<p>Klona repot:</p>
+<pre><code>git clone [väg till remote repo eller URL] [vad du vill att arbetsmappen ska heta]</code></pre>
+<p>Detta:</p>
+<ul>
+<li><p>skapar en ny mapp</p></li>
+<li><p>innehåller senaste versionen av allt</p></li>
+<li><p>är redo att användas direkt</p></li>
+</ul>
+</section>
+</section>
+<section id="steg-3-se-till-att-det-finns-ett-.gitignore" class="level3">
+<h3 class="anchored" data-anchor-id="steg-3-se-till-att-det-finns-ett-.gitignore">Steg 3: Se till att det finns ett <code>.gitignore</code></h3>
+<p><code>.gitignore</code> talar om för Git vad som <u>inte</u> ska versionshanteras. Det kan handla om känslig data eller tillfälliga filer.</p>
+<p>Om <code>.gitignore</code> saknas:</p>
+<ol type="1">
+<li><p>Skapa en textfil som heter <code>.gitignore</code></p></li>
+<li><p>Lägg till den i repot:</p></li>
+</ol>
+<pre><code>git add .gitignore
+git commit -m "Lägger till .gitignore"
+git push</code></pre>
+<p>Säg att man vill att följande saker ska ignoreras:</p>
+<ul>
+<li><p>mappen SkaIgnoreras/</p></li>
+<li><p>alla .Rdata-filer</p></li>
+</ul>
+<p>Då skulle <code>.gitignore</code> se ut så här:</p>
+<pre><code>SkaIgnoreras/
+.Rdata</code></pre>
+<blockquote class="blockquote">
+<p><u><strong>Viktigt!</strong></u></p>
+<p>Om det berör känsligt innehåll och du precis initierat ett nytt .gitignore eller lagt till något nytt i .gitignore <u>så tycker jag</u>: testa att det funkar som det är tänkt med icke-känsligt innehåll.</p>
+</blockquote>
+</section>
+<section id="steg-4-spara-tillägg-eller-justeringar" class="level3">
+<h3 class="anchored" data-anchor-id="steg-4-spara-tillägg-eller-justeringar">Steg 4: Spara tillägg eller justeringar</h3>
+<p>När man gör ändringar i arbetsmappen behöver man tala om för Git vad som ska sparas.</p>
+<ol type="1">
+<li><p>Se vad som ändrats med <code>git status</code></p></li>
+<li><p>lägg till ändringar med <code>git add \[filnamn\]</code> eller allt på en gång med <code>gid add .</code></p></li>
+<li><p>skapa en commit med <code>git commit -m "\[kommentar\]"</code> eller bara <code>git commit</code></p></li>
+<li><p>skicka till remote repo med <code>git push</code></p></li>
+</ol>
+<p><strong>Tänk på:<br>
+</strong>En commit är en dokumentationspunkt. Commita inte halvfärdiga ändringar, commita hellre en meningsfull ändring i taget med tillhörande kommentar som rör just den ändringen än att commita många ändringar med en generell kommentar.</p>
+</section>
+<section id="steg-5-läs-in-någons-uppdateringar" class="level3">
+<h3 class="anchored" data-anchor-id="steg-5-läs-in-någons-uppdateringar">Steg 5: Läs in någons uppdateringar</h3>
+<p>Om någon annan har arbetat i repot behöver du hämta deras ändringar vilket görs med <code>git pull</code>.</p>
+<p>Detta:</p>
+<ul>
+<li><p>hämtar ändringar från remote repo</p></li>
+<li><p>uppdaterar din arbetskopia</p></li>
+</ul>
+<p><strong>Rekommendation:<br>
+</strong>kör <code>git pull</code> innan du börjar arbeta, särskilt i gemensamma projekt.</p>
+</section>
+<section id="steg-6-någon-tog-bort-allt-från-arbetsmappen---ingen-större-fara" class="level3">
+<h3 class="anchored" data-anchor-id="steg-6-någon-tog-bort-allt-från-arbetsmappen---ingen-större-fara">Steg 6: Någon tog bort allt från arbetsmappen - ingen större fara</h3>
+<p>Om något skulle saknas går det att ses med <code>git status</code>. För att få tillbaka det som saknas kan man köra <code>git restore \[filnamn\]</code> eller om allt saknas <code>git restore .</code>.</p>
+<p>En sak som inte kan återskapas, med hjälp av Git, är det som nämns i <code>.gitignore</code>. Det kommer inte heller synas vid <code>git status</code>.</p>
+</section>
+<section id="steg-7-gå-tillbaka-i-tiden-och-sen-tillbaka-till-nuet" class="level3">
+<h3 class="anchored" data-anchor-id="steg-7-gå-tillbaka-i-tiden-och-sen-tillbaka-till-nuet">Steg 7: Gå tillbaka i tiden och sen tillbaka till nuet</h3>
+<p>Git gör det möjligt att se exakt hur projektet såg ut vid tidigare tillfällen.</p>
+</section>
+<section id="se-historiken" class="level3">
+<h3 class="anchored" data-anchor-id="se-historiken">Se historiken</h3>
+<p>Med <code>git log</code> så kan man se historiken. Där ser man commit-id, vem som commitat, när och personens kommentar.</p>
+<p>För att gå tillbaka till ett tidigare läge kan man köra:</p>
+<pre><code>git checkout &lt;commit-id&gt; </code></pre>
+<p>Då återskapas alla filer vid det tillfället. Gör inga ändringar här utan använd det bara som ett read-only läge. Annars kan det uppkomma felmeddelanden när man ska ta sig tillbaka till nutiden.</p>
+</section>
+<section id="tillbaka-till-nutid" class="level3">
+<h3 class="anchored" data-anchor-id="tillbaka-till-nutid">Tillbaka till nutid</h3>
+<p>För att ta sig tillbaka till nutiden kör man bara:</p>
+<pre><code>git checkout main </code></pre>
+<p><strong>Allt detta är särskilt användbart för:</strong></p>
+<ul>
+<li><p>felsökning</p></li>
+<li><p>reproducerbarhet</p></li>
+<li><p>förståelse av förändringar över tid</p></li>
+</ul>
+</section>
+<section id="avslutande-ord" class="level3">
+<h3 class="anchored" data-anchor-id="avslutande-ord">Avslutande ord</h3>
+<p>Det här var min avslutande del om grunderna i Git. Vi får se om jag gör något mer om Git i framtiden.</p>
+<p>Det finns mycket mer man kan lära sig om Git, så som branch och stash, men med de sakerna jag har listat ovan kommer man långt med och räcker för en komplett versionshantering. Vissa av sakerna jag har tagit upp kanske till och med är lite överkurs.</p>
+<p>Oavsett så <em>tycker jag</em> att Git är vägen att gå om man arbetar i en relativt komplex produktion där förändringar och tillägg tillkommer med en viss frekvens. En hel del av nödvändigt dokumentationsarbetet följer med per automatik, det går enkelt att återskapa produktionen vid tidigare skeenden och man minskar antalet rutiner när Git blir en naturlig del i produktionen!</p>
+
+
+</section>
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Det enklaste sättet att skapa ett lokalt repo är att köra <code>git init --bare</code> i den mapp du vill ha som ett “lokalt remote repo”. För att skapa en kopplad arbetsmapp kör man sen <code>git clone [väg till repot] [vad du vill att arbetsmappen ska heta]</code>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
