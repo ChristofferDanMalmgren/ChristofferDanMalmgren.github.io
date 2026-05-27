@@ -1,6 +1,6 @@
 project:
   type: website
-  output-dir: IntuitivStatistik
+  output-dir: /.../
 
 website:
   title: "Intuitiv Statistik"
