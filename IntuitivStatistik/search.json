@@ -522,20 +522,20 @@
     "href": "posts/DAG (del 1)/index.html#chain-1",
     "title": "DAGs – del 1",
     "section": "Chain",
-    "text": "Chain\nAnta: Någon gör ett experiment för att se hur ett bekämpningsmedel påverkar en växts längd. Vi antar vidare att den kausala strukturen ser ut så här: \\[Bekämpningsmedel \\rightarrow Svampmängden \\rightarrow Växtlängd\\] Fråga: Vad händer om man betingar på svampmängden? Hur påverkar betingning på svampmängden våra slutsatser kring bekämpningdsmedlets effekt på växtlängden?"
+    "text": "Chain\nAnta: Någon gör ett experiment för att se hur ett bekämpningsmedel påverkar en växts längd. Vi antar vidare att den kausala strukturen ser ut så här: \\[Bekämpningsmedel \\rightarrow Svampmängden \\rightarrow Växtlängd\\]\nFråga: Vad händer om man betingar på svampmängden? Hur påverkar betingning på svampmängden våra slutsatser kring bekämpningdsmedlets effekt på växtlängden?"
   },
   {
     "objectID": "posts/DAG (del 1)/index.html#fork-1",
     "href": "posts/DAG (del 1)/index.html#fork-1",
     "title": "DAGs – del 1",
     "section": "Fork",
-    "text": "Fork\nAnta: Ett företag har tillgång till data rörande försäljning, temperatur och elförbrukning. Vi antar att den kausala mekanismen dem emellan ser ut så här: \\[Försäljning \\leftarrow  Temperatur \\rightarrow Elförbrukning\\] Fråga: Finns det goda skäl och syften som kan besvaras med att kolla på sambanden mellan försälning och elförbrukning över tid?"
+    "text": "Fork\nAnta: Ett företag har tillgång till data rörande försäljning, temperatur och elförbrukning. Vi antar att den kausala mekanismen dem emellan ser ut så här: \\[Försäljning \\leftarrow  Temperatur \\rightarrow Elförbrukning\\]\nFråga: Finns det goda skäl och syften som kan besvaras med att kolla på sambanden mellan försälning och elförbrukning över tid?"
   },
   {
     "objectID": "posts/DAG (del 1)/index.html#collider-1",
     "href": "posts/DAG (del 1)/index.html#collider-1",
     "title": "DAGs – del 1",
     "section": "Collider",
-    "text": "Collider\nAnta: Någon är intresserad utav sambandet mellan föräldrars utbildning och elevers studiemotivation. De ska undersöka saken och väljer att handplocka några intressanta skolor och känner att de är för onödigt att göra ett sannolikhetsbaserat urval. Du misstänker att det verkliga sambandet kan se ut såhär: \\[ Föräldrars \\; utbildning \\rightarrow Val\\;av\\;skola \\leftarrow Elevens\\;studiemotivation \\] Fråga: Vad skulle du ge för råd när det gäller design eller analys?"
+    "text": "Collider\nAnta: Någon är intresserad utav sambandet mellan föräldrars utbildning och elevers studiemotivation. De ska undersöka saken och väljer att handplocka några intressanta skolor och känner att de är för onödigt att göra ett sannolikhetsbaserat urval. Du misstänker att det verkliga sambandet kan se ut såhär: \\[ Föräldrars \\; utbildning \\rightarrow Val\\;av\\;skola \\leftarrow Elevens\\;studiemotivation \\]\nFråga: Vad skulle du ge för råd när det gäller design eller analys?"
   }
 ]

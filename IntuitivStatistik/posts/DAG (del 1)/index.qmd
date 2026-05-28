@@ -190,15 +190,21 @@ En stor del av DAG-analys handlar om hur samband förändras när man villkorar 
 
 ## Chain
 
-Anta: Någon gör ett experiment för att se hur ett bekämpningsmedel påverkar en växts längd. Vi antar vidare att den kausala strukturen ser ut så här: $$Bekämpningsmedel \rightarrow Svampmängden \rightarrow Växtlängd$$ Fråga: Vad händer om man betingar på svampmängden? Hur påverkar betingning på svampmängden våra slutsatser kring bekämpningdsmedlets effekt på växtlängden?
+**Anta:** Någon gör ett experiment för att se hur ett bekämpningsmedel påverkar en växts längd. Vi antar vidare att den kausala strukturen ser ut så här: $$Bekämpningsmedel \rightarrow Svampmängden \rightarrow Växtlängd$$
+
+**Fråga:** Vad händer om man betingar på svampmängden? Hur påverkar betingning på svampmängden våra slutsatser kring bekämpningdsmedlets effekt på växtlängden?
 
 ## Fork
 
-Anta: Ett företag har tillgång till data rörande försäljning, temperatur och elförbrukning. Vi antar att den kausala mekanismen dem emellan ser ut så här: $$Försäljning \leftarrow  Temperatur \rightarrow Elförbrukning$$ Fråga: Finns det goda skäl och syften som kan besvaras med att kolla på sambanden mellan försälning och elförbrukning över tid?
+**Anta:** Ett företag har tillgång till data rörande försäljning, temperatur och elförbrukning. Vi antar att den kausala mekanismen dem emellan ser ut så här: $$Försäljning \leftarrow  Temperatur \rightarrow Elförbrukning$$
+
+**Fråga:** Finns det goda skäl och syften som kan besvaras med att kolla på sambanden mellan försälning och elförbrukning över tid?
 
 ## Collider
 
-Anta: Någon är intresserad utav sambandet mellan föräldrars utbildning och elevers studiemotivation. De ska undersöka saken och väljer att handplocka några intressanta skolor och känner att de är för onödigt att göra ett sannolikhetsbaserat urval. Du misstänker att det verkliga sambandet kan se ut såhär: $$ Föräldrars \; utbildning \rightarrow Val\;av\;skola \leftarrow Elevens\;studiemotivation $$ Fråga: Vad skulle du ge för råd när det gäller design eller analys?
+**Anta:** Någon är intresserad utav sambandet mellan föräldrars utbildning och elevers studiemotivation. De ska undersöka saken och väljer att handplocka några intressanta skolor och känner att de är för onödigt att göra ett sannolikhetsbaserat urval. Du misstänker att det verkliga sambandet kan se ut såhär: $$ Föräldrars \; utbildning \rightarrow Val\;av\;skola \leftarrow Elevens\;studiemotivation $$
+
+**Fråga:** Vad skulle du ge för råd när det gäller design eller analys?
 
 # DAGs visar struktur, inte sanning
 
