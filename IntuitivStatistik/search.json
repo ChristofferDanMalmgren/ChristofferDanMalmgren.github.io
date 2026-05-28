@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Intuitiv Statistik",
     "section": "",
-    "text": "Metadata: före eller efter?\n\n\n\nMetadata\n\nStatistikproduktion\n\nArbetsrutiner\n\n\n\nMina tankar kring metadatadokumentering och metadatastyrning\n\n\n\n\n\nFeb 23, 2026\n\n\nChristoffer Malmgren\n\n\n\n\n\n\n\n\n\n\n\n\nGit (del 1)\n\n\n\nGit\n\nStatistikproduktion\n\nArbetsrutiner\n\n\n\nDen första delen om Git där jag förklarar nyttan av Git i statistikproduktion\n\n\n\n\n\nFeb 9, 2026\n\n\nChristoffer Malmgren\n\n\n\n\n\n\n\n\n\n\n\n\nGit (del 2)\n\n\n\nGit\n\nStatistikproduktion\n\nArbetsrutiner\n\n\n\nDen andra delen om Git där jag förklarar grundläggande men tillräcklig syntax för att börja med Git.\n\n\n\n\n\nFeb 9, 2026\n\n\nChristoffer Malmgren\n\n\n\n\n\nNo matching items"
+    "text": "DAGs – del 1\n\n\n\nDAG\n\nAnalytisk klarhet\n\n\n\nEn introduktion till DAGs som verktyg för att strukturera antaganden om beroenden mellan variabler och analysera vilka villkor som krävs för giltig statistisk inferens.\n\n\n\n\n\nMay 28, 2026\n\n\nChristoffer Malmgren\n\n\n\n\n\n\n\n\n\n\n\n\nMetadata: före eller efter?\n\n\n\nMetadata\n\nStatistikproduktion\n\nArbetsrutiner\n\n\n\nMina tankar kring metadatadokumentering och metadatastyrning\n\n\n\n\n\nFeb 23, 2026\n\n\nChristoffer Malmgren\n\n\n\n\n\n\n\n\n\n\n\n\nGit (del 1)\n\n\n\nGit\n\nStatistikproduktion\n\nArbetsrutiner\n\n\n\nDen första delen om Git där jag förklarar nyttan av Git i statistikproduktion\n\n\n\n\n\nFeb 9, 2026\n\n\nChristoffer Malmgren\n\n\n\n\n\n\n\n\n\n\n\n\nGit (del 2)\n\n\n\nGit\n\nStatistikproduktion\n\nArbetsrutiner\n\n\n\nDen andra delen om Git där jag förklarar grundläggande men tillräcklig syntax för att börja med Git.\n\n\n\n\n\nFeb 9, 2026\n\n\nChristoffer Malmgren\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/post-with-code/index.html",
@@ -481,5 +481,61 @@
     "title": "Metadata: före eller efter?",
     "section": "Avslutning: metadata som arbetssätt, inte bihang",
     "text": "Avslutning: metadata som arbetssätt, inte bihang\nJag tycker det är intressant att se att metadata kan vara en del av själva produktionslogiken. Att dynamiken i en produktion kan förändras beroende på metadatans roll: från ett dokumentationssteg till styrande och själva hjärtat i flödet.\nDet betyder inte att metadatastyrda arbetssätt alltid är rätt väg. I mindre, engångsbetonade projekt är tröskeln ofta för hög i relation till nyttan. Men i återkommande produktion, där förändringar sker över tid och där flera personer är inblandade kan det vara värt att åtminstonde fundera på metadatans roll.\nPoängen är inte att bygga det perfekta metadatasystemet, utan att vara medveten om vilken roll metadata har och kan ha. Om metadata ses som ett nödvändigt ont kommer den sannolikt alltid att ligga efter. Om den ses som ett verktyg för att hantera kvalitet, spårbarhet och personberoende blir den istället en möjliggörare för en enklare och mer tillförlitlig produktion."
+  },
+  {
+    "objectID": "posts/DAG (del 1)/index.html",
+    "href": "posts/DAG (del 1)/index.html",
+    "title": "DAGs – del 1",
+    "section": "",
+    "text": "DAGs, eller Directed Acyclic Graphs, är ett sätt att strukturera antaganden om hur variabler hänger ihop. De används ofta inom kausal inferens men enligt mig så är användningsområdet mycket bredare. Värdet i DAGs ligger inte i själva grafen, utan i hur de tvingar oss att vara explicita med vilka antaganden vi gör.\nEn DAG kan hjälpa oss att förstå:\n\nvilka analyser som är möjliga\nvilka variabler som kan vara viktiga att samla in\nvilka slutsatser data faktiskt kan stödja\noch vad olika statistiska mått egentligen representerar.\n\nDet som gör DAGs intressanta är att de fungerar som ett gemensamt analytiskt språk för att beskriva och resonera kring till synes ganska olika statistiska problem.\nMin introduktion till DAGs kom via den andra upplagan av boken Statistical Rethinking, vilken i sig är en fantastisk bok. Det var inte där jag först förstod allt, men det var där jag såg hur många av de problem jag redan stött på kunde beskrivas inom samma ramverk.\nSaker som:\n\nomitted variable bias\nselektions- och bortfallsjustering\nrepresentativitet i olika aspekter\nvariabelselektion\nprediktion\nexperimentell design vs. observationsstudier\n\nsåg först ut som separata idéer med olika notation och olika tekniker.\nMen med DAGs går många av dem att beskriva och rama in med samma språk. Det var också där jag började se styrkan i DAGs som analytiskt och pedagogiskt verktyg för att skapa klarhet i statistiska problem och vilka möjligheter eller begränsningar data eller analyser kan ha.\nVissa variabler kan vara nödvändiga att ta hänsyn till, andra kan förbättra precisionen utan att vara nödvändiga, vissa kan vara irrelevanta och andra direkt skadliga att kontrollera för. DAGs hjälper oss att synliggöra dessa skillnader."
+  },
+  {
+    "objectID": "posts/DAG (del 1)/index.html#chain",
+    "href": "posts/DAG (del 1)/index.html#chain",
+    "title": "DAGs – del 1",
+    "section": "Chain",
+    "text": "Chain\n\\[ X \\rightarrow Z \\rightarrow Y\\] Här går associationen mellan \\(X\\) och \\(Y\\) genom \\(Z\\).\nOm vi betingar på \\(Z\\) blockeras vägen.\nIntuitionen är ungefär:\n\nnär vi håller \\(Z\\) konstant finns ingen variation kvar längs just den vägen."
+  },
+  {
+    "objectID": "posts/DAG (del 1)/index.html#fork",
+    "href": "posts/DAG (del 1)/index.html#fork",
+    "title": "DAGs – del 1",
+    "section": "Fork",
+    "text": "Fork\n\\[ X \\leftarrow Z \\rightarrow Y \\]\nHär är \\(Z\\) en gemensam orsak till både \\(X\\) och \\(Y\\).\nDetta är den klassiska confounding-strukturen.\nOm vi inte tar hänsyn till \\(Z\\) kommer \\(X\\) och \\(Y\\) vara associerade även om det inte finns någon direkt effekt mellan dem.\nMen om vi betingar på \\(Z\\) blockeras vägen."
+  },
+  {
+    "objectID": "posts/DAG (del 1)/index.html#collider",
+    "href": "posts/DAG (del 1)/index.html#collider",
+    "title": "DAGs – del 1",
+    "section": "Collider",
+    "text": "Collider\n\\[X \\rightarrow Z \\leftarrow Y\\]\nCollider-strukturen fungerar tvärtom.\nHär är vägen blockerad från början.\nDet betyder att:\n\n\\(X\\) och \\(Y\\) kan vara oberoende\ntrots att båda påverkar \\(Z\\)\n\nMen om vi betingar på \\(Z\\) öppnas vägen istället. Då kan ett samband uppstå trots att ingen direkt kausalitet finns."
+  },
+  {
+    "objectID": "posts/DAG (del 1)/index.html#skenbart-samband",
+    "href": "posts/DAG (del 1)/index.html#skenbart-samband",
+    "title": "DAG (del 1)",
+    "section": "Skenbart samband",
+    "text": "Skenbart samband\nAnta:\n\\[Glassförsälning \\leftarrow  Temperatur \\rightarrow Elförbrukning\\] Om vi bara tittar på:\nSambandet mellan \\(Glassförsälning\\) och \\(Elförbrukning\\) kommer det se ut som att den ena påverkar den andra.\nMen mycket av sambandet uppstår egentligen därför att båda påverkas av temperatur.\nOm vi istället skulle jämföra dagar med samma temperatur försvinner mycket eller hela sambandet.\nDetta är exakt vad det betyder att blockera en väg i en DAG."
+  },
+  {
+    "objectID": "posts/DAG (del 1)/index.html#chain-1",
+    "href": "posts/DAG (del 1)/index.html#chain-1",
+    "title": "DAGs – del 1",
+    "section": "Chain",
+    "text": "Chain\nAnta: Någon gör ett experiment för att se hur ett bekämpningsmedel påverkar en växts längd. Vi antar vidare att den kausala strukturen ser ut så här: \\[Bekämpningsmedel \\rightarrow Svampmängden \\rightarrow Växtlängd\\] Fråga: Vad händer om man betingar på svampmängden? Hur påverkar betingning på svampmängden våra slutsatser kring bekämpningdsmedlets effekt på växtlängden?"
+  },
+  {
+    "objectID": "posts/DAG (del 1)/index.html#fork-1",
+    "href": "posts/DAG (del 1)/index.html#fork-1",
+    "title": "DAGs – del 1",
+    "section": "Fork",
+    "text": "Fork\nAnta: Ett företag har tillgång till data rörande försäljning, temperatur och elförbrukning. Vi antar att den kausala mekanismen dem emellan ser ut så här: \\[Försäljning \\leftarrow  Temperatur \\rightarrow Elförbrukning\\] Fråga: Finns det goda skäl och syften som kan besvaras med att kolla på sambanden mellan försälning och elförbrukning över tid?"
+  },
+  {
+    "objectID": "posts/DAG (del 1)/index.html#collider-1",
+    "href": "posts/DAG (del 1)/index.html#collider-1",
+    "title": "DAGs – del 1",
+    "section": "Collider",
+    "text": "Collider\nAnta: Någon är intresserad utav sambandet mellan föräldrars utbildning och elevers studiemotivation. De ska undersöka saken och väljer att handplocka några intressanta skolor och känner att de är för onödigt att göra ett sannolikhetsbaserat urval. Du misstänker att det verkliga sambandet kan se ut såhär: \\[ Föräldrars \\; utbildning \\rightarrow Val\\;av\\;skola \\leftarrow Elevens\\;studiemotivation \\] Fråga: Vad skulle du ge för råd när det gäller design eller analys?"
   }
 ]

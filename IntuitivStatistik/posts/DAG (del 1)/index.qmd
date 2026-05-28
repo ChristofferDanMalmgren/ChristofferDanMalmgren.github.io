@@ -1,0 +1,249 @@
+---
+title: "DAGs – del 1"
+author: "Christoffer Malmgren"
+date: "2026-05-28"
+categories: [DAG, Analytisk klarhet]
+image: "image.jpg"
+abstract: "En introduktion till DAGs som verktyg för att strukturera antaganden om beroenden mellan variabler och analysera vilka villkor som krävs för giltig statistisk inferens."
+---
+
+<!--# läs in paket -->
+
+```{r}
+#| echo: false
+#| output: false
+library(ggdag)
+library(ggplot2)
+library(tidyverse)
+```
+
+# DAGs som analytiskt ramverk
+
+DAGs, eller Directed Acyclic Graphs, är ett sätt att strukturera antaganden om hur variabler hänger ihop. De används ofta inom kausal inferens men enligt mig så är användningsområdet mycket bredare. Värdet i DAGs ligger inte i själva grafen, utan i hur de tvingar oss att vara explicita med vilka antaganden vi gör.
+
+En DAG kan hjälpa oss att förstå:
+
+-   vilka analyser som är möjliga
+-   vilka variabler som kan vara viktiga att samla in
+-   vilka slutsatser data faktiskt kan stödja
+-   och vad olika statistiska mått egentligen representerar.
+
+Det som gör DAGs intressanta är att de fungerar som ett gemensamt analytiskt språk för att beskriva och resonera kring till synes ganska olika statistiska problem.
+
+Min introduktion till DAGs kom via den andra upplagan av boken *Statistical Rethinking*, vilken i sig är en fantastisk bok. Det var inte där jag först förstod allt, men det var där jag såg hur många av de problem jag redan stött på kunde beskrivas inom samma ramverk.
+
+Saker som:
+
+-   omitted variable bias
+
+-   selektions- och bortfallsjustering
+
+-   representativitet i olika aspekter
+
+-   variabelselektion
+
+-   prediktion
+
+-   experimentell design vs. observationsstudier
+
+såg först ut som separata idéer med olika notation och olika tekniker.
+
+Men med DAGs går många av dem att beskriva och rama in med samma språk. Det var också där jag började se styrkan i DAGs som analytiskt och pedagogiskt verktyg för att skapa klarhet i statistiska problem och vilka möjligheter eller begränsningar data eller analyser kan ha.
+
+Vissa variabler kan vara nödvändiga att ta hänsyn till, andra kan förbättra precisionen utan att vara nödvändiga, vissa kan vara irrelevanta och andra direkt skadliga att kontrollera för. DAGs hjälper oss att synliggöra dessa skillnader.
+
+# Vad är en DAG?
+
+DAG står för *Directed Acyclic Graph*.
+
+En DAG består av:
+
+-   variabler (noder)
+
+-   och riktade pilar mellan dem.
+
+Exempelvis:
+
+$$X \leftarrow Z \rightarrow Y $$
+
+betyder att $Z$ antas påverka $X$ och $Y$.
+
+Grafen är:
+
+-   **directed** eftersom pilarna har riktning
+
+-   **acyclic** eftersom det inte finns feedbackloopar från en variabel tillbaka till samma variabel.
+
+Men det viktiga är egentligen inte själva definitionen.
+
+Det viktiga är att en DAG är ett sätt att uttrycka antaganden om hur information och associationer rör sig mellan variabler.
+
+# DAGs handlar om vägar
+
+När man först ser DAGs är det lätt att fokusera på enskilda pilar.
+
+Men det centrala är egentligen vägarna mellan variabler.
+
+Exempelvis:
+
+$$ X \rightarrow Z \rightarrow Y$$
+
+Här finns en väg mellan $X$ och $Y$ via $Z$.
+
+DAG-resonemang handlar till stor del om:
+
+-   vilka vägar som är öppna
+
+-   vilka som är blockerade
+
+-   och hur det förändras när man tar hänsyn till olika variabler.
+
+# Tre grundstrukturer
+
+Nästan alla mer komplexa DAGs är kombinationer av tre enkla strukturer:
+
+-   chain
+
+-   fork
+
+-   collider
+
+Det är dessa som avgör hur associationer kan uppstå och försvinna.
+
+## Chain
+
+$$ X \rightarrow Z \rightarrow Y$$ Här går associationen mellan $X$ och $Y$ genom $Z$.
+
+Om vi betingar på $Z$ blockeras vägen.
+
+Intuitionen är ungefär:
+
+> när vi håller $Z$ konstant finns ingen variation kvar längs just den vägen.
+
+## Fork
+
+$$ X \leftarrow Z \rightarrow Y $$
+
+Här är $Z$ en gemensam orsak till både $X$ och $Y$.
+
+Detta är den klassiska confounding-strukturen.
+
+Om vi inte tar hänsyn till $Z$ kommer $X$ och $Y$ vara associerade även om det inte finns någon direkt effekt mellan dem.
+
+Men om vi betingar på $Z$ blockeras vägen.
+
+## Collider
+
+$$X \rightarrow Z \leftarrow Y$$
+
+Collider-strukturen fungerar tvärtom.
+
+Här är vägen blockerad från början.
+
+Det betyder att:
+
+-   $X$ och $Y$ kan vara oberoende
+
+-   trots att båda påverkar $Z$
+
+Men om vi betingar på $Z$ öppnas vägen istället. Då kan ett samband uppstå trots att ingen direkt kausalitet finns.
+
+# Betingat oberoende och notation
+
+Ett centralt koncept inom DAGs är betingat oberoende (*conditional independence*). Det är också ett grundläggande begrepp inom statistik generellt.
+
+När en väg mellan två variabler blockeras säger vi att variablerna är oberoende givet vissa andra variabler. Det skrivs:
+
+$$
+X \perp\!\!\!\perp Y \mid Z
+$$
+
+och betyder att $X$ är oberoende av $Y$ givet $Z$.
+
+Detta kan uttryckas på flera sätt:
+
+$$
+P(Y \mid X,Z)=P(Y\mid Z)
+$$
+
+$$
+P(X \mid Y,Z)=P(X\mid Z)
+$$
+
+$$
+P(X,Y\mid Z)=P(X\mid Z)P(Y\mid Z)
+$$ Kunskap om den ena variabeln ger alltså ingen ytterligare information om den andra när $Z$ redan är känt.
+
+Om variablerna däremot inte är oberoende kan man skriva:
+
+$$
+X \not\!\perp\!\!\!\perp Y \mid Z
+$$
+
+En stor del av DAG-analys handlar om hur samband förändras när man villkorar på olika variabler:
+
+-   vissa samband blockeras
+-   andra öppnas
+-   och vissa påverkas inte alls.
+
+# Tre skolboksexempel på DAGs att tänka på
+
+## Chain
+
+Anta: Någon gör ett experiment för att se hur ett bekämpningsmedel påverkar en växts längd. Vi antar vidare att den kausala strukturen ser ut så här: $$Bekämpningsmedel \rightarrow Svampmängden \rightarrow Växtlängd$$ Fråga: Vad händer om man betingar på svampmängden? Hur påverkar betingning på svampmängden våra slutsatser kring bekämpningdsmedlets effekt på växtlängden?
+
+## Fork
+
+Anta: Ett företag har tillgång till data rörande försäljning, temperatur och elförbrukning. Vi antar att den kausala mekanismen dem emellan ser ut så här: $$Försäljning \leftarrow  Temperatur \rightarrow Elförbrukning$$ Fråga: Finns det goda skäl och syften som kan besvaras med att kolla på sambanden mellan försälning och elförbrukning över tid?
+
+## Collider
+
+Anta: Någon är intresserad utav sambandet mellan föräldrars utbildning och elevers studiemotivation. De ska undersöka saken och väljer att handplocka några intressanta skolor och känner att de är för onödigt att göra ett sannolikhetsbaserat urval. Du misstänker att det verkliga sambandet kan se ut såhär: $$ Föräldrars \; utbildning \rightarrow Val\;av\;skola \leftarrow Elevens\;studiemotivation $$ Fråga: Vad skulle du ge för råd när det gäller design eller analys?
+
+# DAGs visar struktur, inte sanning
+
+En DAG specificerar inte exakt *hur* variabler påverkar varandra, utan bara att vi antar att ett samband finns.
+
+Om vi exempelvis skriver:
+
+$$
+Y = f(X,Z)
+$$
+
+så säger DAGen något om vilka variabler som påverkar $Y$, men inte vilken funktion $f(X,Z)$ faktiskt är.
+
+Samma DAG skulle därför kunna motsvara helt olika typer av samband:
+
+-   linjära eller icke-linjära effekter
+-   starka eller svaga samband
+-   interaktioner mellan variabler
+-   tröskeleffekter
+-   eller situationer där variationen i $Y$ förändras över olika nivåer av $X$
+
+Det här är viktigt eftersom en korrekt DAG inte automatiskt säger *hur* vi ska göra inferens.
+
+I många introduktioner till statistik översätts den kausala strukturen direkt till en regressionsmodell där relevanta variabler inkluderas som kontrollvariabler, och resultaten tolkas som om detta i sig garanterar en giltig justering.
+
+Det kan i vissa sammanhang vara fullt rimligt, men det är bara en av flera möjliga sätt att operationalisera den struktur som DAGen beskriver.
+
+Beroende på frågan kan andra strategier vara mer naturliga, till exempel viktning, poststratifierade analyser, designbaserade estimatorer eller mer flexibla modelleringsansatser.
+
+Gemensamt är att DAGen inte specificerar metoden, utan de beroenden som måste hanteras för att en viss typ av slutsats ska vara giltig.
+
+# Varför DAGs är användbara
+
+Det som gör DAGs kraftfulla är att de tvingar oss att:
+
+-   synliggöra våra antaganden
+
+-   tänka på hur data kan analyseras för att besvara specifika frågor
+
+-   tänka på hur informationsinhämtning bör designas
+
+-   och skilja mellan:
+
+    -   observerade samband
+
+    -   potentiellt kausala effekter
+
+För mig var det framför allt där DAGs blev användbara: inte som en färdig metod, utan som ett sätt att resonera som skapar analytisk klarhet kring statistiska problem.

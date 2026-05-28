@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Christoffer Malmgren">
+<meta name="dcterms.date" content="2026-05-28">
 
-<title>Intuitiv Statistik</title>
+<title>DAGs – del 1 – Intuitiv Statistik</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +25,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,35 +69,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -129,17 +100,17 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Intuitiv Statistik</span>
     </a>
   </div>
@@ -150,7 +121,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">Om bloggen</span></a>
   </li>  
   <li class="nav-item compact">
@@ -176,178 +147,237 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Intuitiv Statistik</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta column-page-left">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="QW5hbHl0aXNrJTIwa2xhcmhldA==">Analytisk klarhet <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QXJiZXRzcnV0aW5lcg==">Arbetsrutiner <span class="quarto-category-count">(3)</span></div><div class="category" data-category="REFH">DAG <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R2l0">Git <span class="quarto-category-count">(2)</span></div><div class="category" data-category="TWV0YWRhdGE=">Metadata <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U3RhdGlzdGlrcHJvZHVrdGlvbg==">Statistikproduktion <span class="quarto-category-count">(3)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">DAGs – del 1</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">DAG</div>
+    <div class="quarto-category">Analytisk klarhet</div>
+  </div>
+  </div>
 
 
 
+<div class="quarto-title-meta">
 
-
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="REFHJTJDQW5hbHl0aXNrJTIwa2xhcmhldA==" data-listing-date-sort="1779919200000" data-listing-file-modified-sort="1780001739264" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1200">
-<div class="thumbnail"><a href="./posts/DAG (del 1)/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/DAG (del 1)/image.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/DAG (del 1)/index.html" class="no-external">DAGs – del 1</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('REFH'); return false;">DAG</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QW5hbHl0aXNrJTIwa2xhcmhldA=='); return false;">Analytisk klarhet</div>
-
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Christoffer Malmgren </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 28, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    En introduktion till DAGs som verktyg för att strukturera antaganden om beroenden mellan variabler och analysera vilka villkor som krävs för giltig statistisk inferens.
+  </div>
 </div>
-<div class="delink listing-description"><a href="./posts/DAG (del 1)/index.html" class="no-external">
-<p>En introduktion till DAGs som verktyg för att strukturera antaganden om beroenden mellan variabler och analysera vilka villkor som krävs för giltig statistisk inferens.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/DAG (del 1)/index.html" class="no-external">
-<div class="listing-date">
-May 28, 2026
-</div>
-<div class="listing-author">
-Christoffer Malmgren
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="TWV0YWRhdGElMkNTdGF0aXN0aWtwcm9kdWt0aW9uJTJDQXJiZXRzcnV0aW5lcg==" data-listing-date-sort="1771801200000" data-listing-file-modified-sort="1771917786885" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1059">
-<div class="thumbnail"><a href="./posts/Metadata/index.html" class="no-external">
 
-<img loading="lazy" src="./posts/Metadata/image.jpg" class="thumbnail-image">
 
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Metadata/index.html" class="no-external">Metadata: före eller efter?</a>
-</h3>
-<div class="listing-categories">
+</header>
 
-<div class="listing-category" onclick="window.quartoListingCategory('TWV0YWRhdGE='); return false;">Metadata</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('U3RhdGlzdGlrcHJvZHVrdGlvbg=='); return false;">Statistikproduktion</div>
+<!--# läs in paket -->
+<section id="dags-som-analytiskt-ramverk" class="level1">
+<h1>DAGs som analytiskt ramverk</h1>
+<p>DAGs, eller Directed Acyclic Graphs, är ett sätt att strukturera antaganden om hur variabler hänger ihop. De används ofta inom kausal inferens men enligt mig så är användningsområdet mycket bredare. Värdet i DAGs ligger inte i själva grafen, utan i hur de tvingar oss att vara explicita med vilka antaganden vi gör.</p>
+<p>En DAG kan hjälpa oss att förstå:</p>
+<ul>
+<li>vilka analyser som är möjliga</li>
+<li>vilka variabler som kan vara viktiga att samla in</li>
+<li>vilka slutsatser data faktiskt kan stödja</li>
+<li>och vad olika statistiska mått egentligen representerar.</li>
+</ul>
+<p>Det som gör DAGs intressanta är att de fungerar som ett gemensamt analytiskt språk för att beskriva och resonera kring till synes ganska olika statistiska problem.</p>
+<p>Min introduktion till DAGs kom via den andra upplagan av boken <em>Statistical Rethinking</em>, vilken i sig är en fantastisk bok. Det var inte där jag först förstod allt, men det var där jag såg hur många av de problem jag redan stött på kunde beskrivas inom samma ramverk.</p>
+<p>Saker som:</p>
+<ul>
+<li><p>omitted variable bias</p></li>
+<li><p>selektions- och bortfallsjustering</p></li>
+<li><p>representativitet i olika aspekter</p></li>
+<li><p>variabelselektion</p></li>
+<li><p>prediktion</p></li>
+<li><p>experimentell design vs.&nbsp;observationsstudier</p></li>
+</ul>
+<p>såg först ut som separata idéer med olika notation och olika tekniker.</p>
+<p>Men med DAGs går många av dem att beskriva och rama in med samma språk. Det var också där jag började se styrkan i DAGs som analytiskt och pedagogiskt verktyg för att skapa klarhet i statistiska problem och vilka möjligheter eller begränsningar data eller analyser kan ha.</p>
+<p>Vissa variabler kan vara nödvändiga att ta hänsyn till, andra kan förbättra precisionen utan att vara nödvändiga, vissa kan vara irrelevanta och andra direkt skadliga att kontrollera för. DAGs hjälper oss att synliggöra dessa skillnader.</p>
+</section>
+<section id="vad-är-en-dag" class="level1">
+<h1>Vad är en DAG?</h1>
+<p>DAG står för <em>Directed Acyclic Graph</em>.</p>
+<p>En DAG består av:</p>
+<ul>
+<li><p>variabler (noder)</p></li>
+<li><p>och riktade pilar mellan dem.</p></li>
+</ul>
+<p>Exempelvis:</p>
+<p><span class="math display">\[X \leftarrow Z \rightarrow Y \]</span></p>
+<p>betyder att <span class="math inline">\(Z\)</span> antas påverka <span class="math inline">\(X\)</span> och <span class="math inline">\(Y\)</span>.</p>
+<p>Grafen är:</p>
+<ul>
+<li><p><strong>directed</strong> eftersom pilarna har riktning</p></li>
+<li><p><strong>acyclic</strong> eftersom det inte finns feedbackloopar från en variabel tillbaka till samma variabel.</p></li>
+</ul>
+<p>Men det viktiga är egentligen inte själva definitionen.</p>
+<p>Det viktiga är att en DAG är ett sätt att uttrycka antaganden om hur information och associationer rör sig mellan variabler.</p>
+</section>
+<section id="dags-handlar-om-vägar" class="level1">
+<h1>DAGs handlar om vägar</h1>
+<p>När man först ser DAGs är det lätt att fokusera på enskilda pilar.</p>
+<p>Men det centrala är egentligen vägarna mellan variabler.</p>
+<p>Exempelvis:</p>
+<p><span class="math display">\[ X \rightarrow Z \rightarrow Y\]</span></p>
+<p>Här finns en väg mellan <span class="math inline">\(X\)</span> och <span class="math inline">\(Y\)</span> via <span class="math inline">\(Z\)</span>.</p>
+<p>DAG-resonemang handlar till stor del om:</p>
+<ul>
+<li><p>vilka vägar som är öppna</p></li>
+<li><p>vilka som är blockerade</p></li>
+<li><p>och hur det förändras när man tar hänsyn till olika variabler.</p></li>
+</ul>
+</section>
+<section id="tre-grundstrukturer" class="level1">
+<h1>Tre grundstrukturer</h1>
+<p>Nästan alla mer komplexa DAGs är kombinationer av tre enkla strukturer:</p>
+<ul>
+<li><p>chain</p></li>
+<li><p>fork</p></li>
+<li><p>collider</p></li>
+</ul>
+<p>Det är dessa som avgör hur associationer kan uppstå och försvinna.</p>
+<section id="chain" class="level2">
+<h2 class="anchored" data-anchor-id="chain">Chain</h2>
+<p><span class="math display">\[ X \rightarrow Z \rightarrow Y\]</span> Här går associationen mellan <span class="math inline">\(X\)</span> och <span class="math inline">\(Y\)</span> genom <span class="math inline">\(Z\)</span>.</p>
+<p>Om vi betingar på <span class="math inline">\(Z\)</span> blockeras vägen.</p>
+<p>Intuitionen är ungefär:</p>
+<blockquote class="blockquote">
+<p>när vi håller <span class="math inline">\(Z\)</span> konstant finns ingen variation kvar längs just den vägen.</p>
+</blockquote>
+</section>
+<section id="fork" class="level2">
+<h2 class="anchored" data-anchor-id="fork">Fork</h2>
+<p><span class="math display">\[ X \leftarrow Z \rightarrow Y \]</span></p>
+<p>Här är <span class="math inline">\(Z\)</span> en gemensam orsak till både <span class="math inline">\(X\)</span> och <span class="math inline">\(Y\)</span>.</p>
+<p>Detta är den klassiska confounding-strukturen.</p>
+<p>Om vi inte tar hänsyn till <span class="math inline">\(Z\)</span> kommer <span class="math inline">\(X\)</span> och <span class="math inline">\(Y\)</span> vara associerade även om det inte finns någon direkt effekt mellan dem.</p>
+<p>Men om vi betingar på <span class="math inline">\(Z\)</span> blockeras vägen.</p>
+</section>
+<section id="collider" class="level2">
+<h2 class="anchored" data-anchor-id="collider">Collider</h2>
+<p><span class="math display">\[X \rightarrow Z \leftarrow Y\]</span></p>
+<p>Collider-strukturen fungerar tvärtom.</p>
+<p>Här är vägen blockerad från början.</p>
+<p>Det betyder att:</p>
+<ul>
+<li><p><span class="math inline">\(X\)</span> och <span class="math inline">\(Y\)</span> kan vara oberoende</p></li>
+<li><p>trots att båda påverkar <span class="math inline">\(Z\)</span></p></li>
+</ul>
+<p>Men om vi betingar på <span class="math inline">\(Z\)</span> öppnas vägen istället. Då kan ett samband uppstå trots att ingen direkt kausalitet finns.</p>
+</section>
+</section>
+<section id="betingat-oberoende-och-notation" class="level1">
+<h1>Betingat oberoende och notation</h1>
+<p>Ett centralt koncept inom DAGs är betingat oberoende (<em>conditional independence</em>). Det är också ett grundläggande begrepp inom statistik generellt.</p>
+<p>När en väg mellan två variabler blockeras säger vi att variablerna är oberoende givet vissa andra variabler. Det skrivs:</p>
+<p><span class="math display">\[
+X \perp\!\!\!\perp Y \mid Z
+\]</span></p>
+<p>och betyder att <span class="math inline">\(X\)</span> är oberoende av <span class="math inline">\(Y\)</span> givet <span class="math inline">\(Z\)</span>.</p>
+<p>Detta kan uttryckas på flera sätt:</p>
+<p><span class="math display">\[
+P(Y \mid X,Z)=P(Y\mid Z)
+\]</span></p>
+<p><span class="math display">\[
+P(X \mid Y,Z)=P(X\mid Z)
+\]</span></p>
+<p><span class="math display">\[
+P(X,Y\mid Z)=P(X\mid Z)P(Y\mid Z)
+\]</span> Kunskap om den ena variabeln ger alltså ingen ytterligare information om den andra när <span class="math inline">\(Z\)</span> redan är känt.</p>
+<p>Om variablerna däremot inte är oberoende kan man skriva:</p>
+<p><span class="math display">\[
+X \not\!\perp\!\!\!\perp Y \mid Z
+\]</span></p>
+<p>En stor del av DAG-analys handlar om hur samband förändras när man villkorar på olika variabler:</p>
+<ul>
+<li>vissa samband blockeras</li>
+<li>andra öppnas</li>
+<li>och vissa påverkas inte alls.</li>
+</ul>
+</section>
+<section id="tre-skolboksexempel-på-dags-att-tänka-på" class="level1">
+<h1>Tre skolboksexempel på DAGs att tänka på</h1>
+<section id="chain-1" class="level2">
+<h2 class="anchored" data-anchor-id="chain-1">Chain</h2>
+<p>Anta: Någon gör ett experiment för att se hur ett bekämpningsmedel påverkar en växts längd. Vi antar vidare att den kausala strukturen ser ut så här: <span class="math display">\[Bekämpningsmedel \rightarrow Svampmängden \rightarrow Växtlängd\]</span> Fråga: Vad händer om man betingar på svampmängden? Hur påverkar betingning på svampmängden våra slutsatser kring bekämpningdsmedlets effekt på växtlängden?</p>
+</section>
+<section id="fork-1" class="level2">
+<h2 class="anchored" data-anchor-id="fork-1">Fork</h2>
+<p>Anta: Ett företag har tillgång till data rörande försäljning, temperatur och elförbrukning. Vi antar att den kausala mekanismen dem emellan ser ut så här: <span class="math display">\[Försäljning \leftarrow  Temperatur \rightarrow Elförbrukning\]</span> Fråga: Finns det goda skäl och syften som kan besvaras med att kolla på sambanden mellan försälning och elförbrukning över tid?</p>
+</section>
+<section id="collider-1" class="level2">
+<h2 class="anchored" data-anchor-id="collider-1">Collider</h2>
+<p>Anta: Någon är intresserad utav sambandet mellan föräldrars utbildning och elevers studiemotivation. De ska undersöka saken och väljer att handplocka några intressanta skolor och känner att de är för onödigt att göra ett sannolikhetsbaserat urval. Du misstänker att det verkliga sambandet kan se ut såhär: <span class="math display">\[ Föräldrars \; utbildning \rightarrow Val\;av\;skola \leftarrow Elevens\;studiemotivation \]</span> Fråga: Vad skulle du ge för råd när det gäller design eller analys?</p>
+</section>
+</section>
+<section id="dags-visar-struktur-inte-sanning" class="level1">
+<h1>DAGs visar struktur, inte sanning</h1>
+<p>En DAG specificerar inte exakt <em>hur</em> variabler påverkar varandra, utan bara att vi antar att ett samband finns.</p>
+<p>Om vi exempelvis skriver:</p>
+<p><span class="math display">\[
+Y = f(X,Z)
+\]</span></p>
+<p>så säger DAGen något om vilka variabler som påverkar <span class="math inline">\(Y\)</span>, men inte vilken funktion <span class="math inline">\(f(X,Z)\)</span> faktiskt är.</p>
+<p>Samma DAG skulle därför kunna motsvara helt olika typer av samband:</p>
+<ul>
+<li>linjära eller icke-linjära effekter</li>
+<li>starka eller svaga samband</li>
+<li>interaktioner mellan variabler</li>
+<li>tröskeleffekter</li>
+<li>eller situationer där variationen i <span class="math inline">\(Y\)</span> förändras över olika nivåer av <span class="math inline">\(X\)</span></li>
+</ul>
+<p>Det här är viktigt eftersom en korrekt DAG inte automatiskt säger <em>hur</em> vi ska göra inferens.</p>
+<p>I många introduktioner till statistik översätts den kausala strukturen direkt till en regressionsmodell där relevanta variabler inkluderas som kontrollvariabler, och resultaten tolkas som om detta i sig garanterar en giltig justering.</p>
+<p>Det kan i vissa sammanhang vara fullt rimligt, men det är bara en av flera möjliga sätt att operationalisera den struktur som DAGen beskriver.</p>
+<p>Beroende på frågan kan andra strategier vara mer naturliga, till exempel viktning, poststratifierade analyser, designbaserade estimatorer eller mer flexibla modelleringsansatser.</p>
+<p>Gemensamt är att DAGen inte specificerar metoden, utan de beroenden som måste hanteras för att en viss typ av slutsats ska vara giltig.</p>
+</section>
+<section id="varför-dags-är-användbara" class="level1">
+<h1>Varför DAGs är användbara</h1>
+<p>Det som gör DAGs kraftfulla är att de tvingar oss att:</p>
+<ul>
+<li><p>synliggöra våra antaganden</p></li>
+<li><p>tänka på hur data kan analyseras för att besvara specifika frågor</p></li>
+<li><p>tänka på hur informationsinhämtning bör designas</p></li>
+<li><p>och skilja mellan:</p>
+<ul>
+<li><p>observerade samband</p></li>
+<li><p>potentiellt kausala effekter</p></li>
+</ul></li>
+</ul>
+<p>För mig var det framför allt där DAGs blev användbara: inte som en färdig metod, utan som ett sätt att resonera som skapar analytisk klarhet kring statistiska problem.</p>
 
-<div class="listing-category" onclick="window.quartoListingCategory('QXJiZXRzcnV0aW5lcg=='); return false;">Arbetsrutiner</div>
 
-</div>
-<div class="delink listing-description"><a href="./posts/Metadata/index.html" class="no-external">
-<p>Mina tankar kring metadatadokumentering och metadatastyrning</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/Metadata/index.html" class="no-external">
-<div class="listing-date">
-Feb 23, 2026
-</div>
-<div class="listing-author">
-Christoffer Malmgren
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="R2l0JTJDU3RhdGlzdGlrcHJvZHVrdGlvbiUyQ0FyYmV0c3J1dGluZXI=" data-listing-date-sort="1770591600000" data-listing-file-modified-sort="1770618834107" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="613">
-<div class="thumbnail"><a href="./posts/Git (del 1)/index.html" class="no-external">
+</section>
 
-<img loading="lazy" src="./posts/Git (del 1)/image.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Git (del 1)/index.html" class="no-external">Git (del 1)</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('R2l0'); return false;">Git</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('U3RhdGlzdGlrcHJvZHVrdGlvbg=='); return false;">Statistikproduktion</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QXJiZXRzcnV0aW5lcg=='); return false;">Arbetsrutiner</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/Git (del 1)/index.html" class="no-external">
-<p>Den första delen om Git där jag förklarar nyttan av Git i statistikproduktion</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/Git (del 1)/index.html" class="no-external">
-<div class="listing-date">
-Feb 9, 2026
-</div>
-<div class="listing-author">
-Christoffer Malmgren
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="R2l0JTJDU3RhdGlzdGlrcHJvZHVrdGlvbiUyQ0FyYmV0c3J1dGluZXI=" data-listing-date-sort="1770591600000" data-listing-file-modified-sort="1770618857145" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1105">
-<div class="thumbnail"><a href="./posts/Git (del 2)/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/Git (del 2)/image.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Git (del 2)/index.html" class="no-external">Git (del 2)</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('R2l0'); return false;">Git</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('U3RhdGlzdGlrcHJvZHVrdGlvbg=='); return false;">Statistikproduktion</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QXJiZXRzcnV0aW5lcg=='); return false;">Arbetsrutiner</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/Git (del 2)/index.html" class="no-external">
-<p>Den andra delen om Git där jag förklarar grundläggande men tillräcklig syntax för att börja med Git.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/Git (del 2)/index.html" class="no-external">
-<div class="listing-date">
-Feb 9, 2026
-</div>
-<div class="listing-author">
-Christoffer Malmgren
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
