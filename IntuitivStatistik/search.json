@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Intuitiv Statistik",
     "section": "",
-    "text": "DAGs – del 1\n\n\n\nDAG\n\nAnalytisk klarhet\n\n\n\nEn introduktion till DAGs som verktyg för att strukturera antaganden om beroenden mellan variabler och analysera vilka villkor som krävs för giltig statistisk inferens.\n\n\n\n\n\nMay 28, 2026\n\n\nChristoffer Malmgren\n\n\n\n\n\n\n\n\n\n\n\n\nMetadata: före eller efter?\n\n\n\nMetadata\n\nStatistikproduktion\n\nArbetsrutiner\n\n\n\nMina tankar kring metadatadokumentering och metadatastyrning\n\n\n\n\n\nFeb 23, 2026\n\n\nChristoffer Malmgren\n\n\n\n\n\n\n\n\n\n\n\n\nGit (del 1)\n\n\n\nGit\n\nStatistikproduktion\n\nArbetsrutiner\n\n\n\nDen första delen om Git där jag förklarar nyttan av Git i statistikproduktion\n\n\n\n\n\nFeb 9, 2026\n\n\nChristoffer Malmgren\n\n\n\n\n\n\n\n\n\n\n\n\nGit (del 2)\n\n\n\nGit\n\nStatistikproduktion\n\nArbetsrutiner\n\n\n\nDen andra delen om Git där jag förklarar grundläggande men tillräcklig syntax för att börja med Git.\n\n\n\n\n\nFeb 9, 2026\n\n\nChristoffer Malmgren\n\n\n\n\n\nNo matching items"
+    "text": "Representativitet som ett selektionsproblem\n\n\n\nDAG\n\nAnalytisk klarhet\n\nRepresentativitet\n\n\n\nRepresentativitet beskrivs ofta som en egenskap hos ett urval. Med hjälp av DAGs kan frågan istället formuleras som ett selektionsproblem. I denna del introduceras selektionsnoden S och hur beroenden mellan utfall och selektionsmekanismer kan användas för att förstå när inferens är möjlig, när justering kan hjälpa och när information gått förlorad.\n\n\n\n\n\nJun 3, 2026\n\n\nChristoffer Malmgren\n\n\n\n\n\n\n\n\n\n\n\n\nDAGs som analytiskt ramverk\n\n\n\nDAG\n\nAnalytisk klarhet\n\n\n\nDAGs (Directed Acyclic Graphs) används ofta inom kausal inferens, men deras värde sträcker sig långt bortom kausalitet. Här lyfter jag DAGs som ett analytiskt ramverk för att strukturera antaganden, förstå statistiska samband och resonera kring vilka slutsatser data faktiskt kan stödja.\n\n\n\n\n\nMay 28, 2026\n\n\nChristoffer Malmgren\n\n\n\n\n\n\n\n\n\n\n\n\nMetadata: före eller efter?\n\n\n\nMetadata\n\nStatistikproduktion\n\nArbetsrutiner\n\n\n\nMina tankar kring metadatadokumentering och metadatastyrning\n\n\n\n\n\nFeb 23, 2026\n\n\nChristoffer Malmgren\n\n\n\n\n\n\n\n\n\n\n\n\nGit (del 1)\n\n\n\nGit\n\nStatistikproduktion\n\nArbetsrutiner\n\n\n\nDen första delen om Git där jag förklarar nyttan av Git i statistikproduktion\n\n\n\n\n\nFeb 9, 2026\n\n\nChristoffer Malmgren\n\n\n\n\n\n\n\n\n\n\n\n\nGit (del 2)\n\n\n\nGit\n\nStatistikproduktion\n\nArbetsrutiner\n\n\n\nDen andra delen om Git där jag förklarar grundläggande men tillräcklig syntax för att börja med Git.\n\n\n\n\n\nFeb 9, 2026\n\n\nChristoffer Malmgren\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/post-with-code/index.html",
@@ -485,28 +485,28 @@
   {
     "objectID": "posts/DAG (del 1)/index.html",
     "href": "posts/DAG (del 1)/index.html",
-    "title": "DAGs – del 1",
+    "title": "DAGs som analytiskt ramverk",
     "section": "",
     "text": "DAGs, eller Directed Acyclic Graphs, är ett sätt att strukturera antaganden om hur variabler hänger ihop. De används ofta inom kausal inferens men enligt mig så är användningsområdet mycket bredare. Värdet i DAGs ligger inte i själva grafen, utan i hur de tvingar oss att vara explicita med vilka antaganden vi gör.\nEn DAG kan hjälpa oss att förstå:\n\nvilka analyser som är möjliga\nvilka variabler som kan vara viktiga att samla in\nvilka slutsatser data faktiskt kan stödja\noch vad olika statistiska mått egentligen representerar.\n\nDet som gör DAGs intressanta är att de fungerar som ett gemensamt analytiskt språk för att beskriva och resonera kring till synes ganska olika statistiska problem.\nMin introduktion till DAGs kom via den andra upplagan av boken Statistical Rethinking, vilken i sig är en fantastisk bok. Det var inte där jag först förstod allt, men det var där jag såg hur många av de problem jag redan stött på kunde beskrivas inom samma ramverk.\nSaker som:\n\nomitted variable bias\nselektions- och bortfallsjustering\nrepresentativitet i olika aspekter\nvariabelselektion\nprediktion\nexperimentell design vs. observationsstudier\n\nsåg först ut som separata idéer med olika notation och olika tekniker.\nMen med DAGs går många av dem att beskriva och rama in med samma språk. Det var också där jag började se styrkan i DAGs som analytiskt och pedagogiskt verktyg för att skapa klarhet i statistiska problem och vilka möjligheter eller begränsningar data eller analyser kan ha.\nVissa variabler kan vara nödvändiga att ta hänsyn till, andra kan förbättra precisionen utan att vara nödvändiga, vissa kan vara irrelevanta och andra direkt skadliga att kontrollera för. DAGs hjälper oss att synliggöra dessa skillnader."
   },
   {
     "objectID": "posts/DAG (del 1)/index.html#chain",
     "href": "posts/DAG (del 1)/index.html#chain",
-    "title": "DAGs – del 1",
+    "title": "DAGs som analytiskt ramverk",
     "section": "Chain",
     "text": "Chain\n\\[ X \\rightarrow Z \\rightarrow Y\\] Här går associationen mellan \\(X\\) och \\(Y\\) genom \\(Z\\).\nOm vi betingar på \\(Z\\) blockeras vägen.\nIntuitionen är ungefär:\n\nnär vi håller \\(Z\\) konstant finns ingen variation kvar längs just den vägen."
   },
   {
     "objectID": "posts/DAG (del 1)/index.html#fork",
     "href": "posts/DAG (del 1)/index.html#fork",
-    "title": "DAGs – del 1",
+    "title": "DAGs som analytiskt ramverk",
     "section": "Fork",
     "text": "Fork\n\\[ X \\leftarrow Z \\rightarrow Y \\]\nHär är \\(Z\\) en gemensam orsak till både \\(X\\) och \\(Y\\).\nDetta är den klassiska confounding-strukturen.\nOm vi inte tar hänsyn till \\(Z\\) kommer \\(X\\) och \\(Y\\) vara associerade även om det inte finns någon direkt effekt mellan dem.\nMen om vi betingar på \\(Z\\) blockeras vägen."
   },
   {
     "objectID": "posts/DAG (del 1)/index.html#collider",
     "href": "posts/DAG (del 1)/index.html#collider",
-    "title": "DAGs – del 1",
+    "title": "DAGs som analytiskt ramverk",
     "section": "Collider",
     "text": "Collider\n\\[X \\rightarrow Z \\leftarrow Y\\]\nCollider-strukturen fungerar tvärtom.\nHär är vägen blockerad från början.\nDet betyder att:\n\n\\(X\\) och \\(Y\\) kan vara oberoende\ntrots att båda påverkar \\(Z\\)\n\nMen om vi betingar på \\(Z\\) öppnas vägen istället. Då kan ett samband uppstå trots att ingen direkt kausalitet finns."
   },
@@ -520,22 +520,99 @@
   {
     "objectID": "posts/DAG (del 1)/index.html#chain-1",
     "href": "posts/DAG (del 1)/index.html#chain-1",
-    "title": "DAGs – del 1",
+    "title": "DAGs som analytiskt ramverk",
     "section": "Chain",
     "text": "Chain\nAnta: Någon gör ett experiment för att se hur ett bekämpningsmedel påverkar en växts längd. Vi antar vidare att den kausala strukturen ser ut så här: \\[Bekämpningsmedel \\rightarrow Svampmängden \\rightarrow Växtlängd\\]\nFråga: Vad händer om man betingar på svampmängden? Hur påverkar betingning på svampmängden våra slutsatser kring bekämpningdsmedlets effekt på växtlängden?"
   },
   {
     "objectID": "posts/DAG (del 1)/index.html#fork-1",
     "href": "posts/DAG (del 1)/index.html#fork-1",
-    "title": "DAGs – del 1",
+    "title": "DAGs som analytiskt ramverk",
     "section": "Fork",
     "text": "Fork\nAnta: Ett företag har tillgång till data rörande försäljning, temperatur och elförbrukning. Vi antar att den kausala mekanismen dem emellan ser ut så här: \\[Försäljning \\leftarrow  Temperatur \\rightarrow Elförbrukning\\]\nFråga: Finns det goda skäl och syften som kan besvaras med att kolla på sambanden mellan försälning och elförbrukning över tid?"
   },
   {
     "objectID": "posts/DAG (del 1)/index.html#collider-1",
     "href": "posts/DAG (del 1)/index.html#collider-1",
-    "title": "DAGs – del 1",
+    "title": "DAGs som analytiskt ramverk",
     "section": "Collider",
     "text": "Collider\nAnta: Någon är intresserad utav sambandet mellan föräldrars utbildning och elevers studiemotivation. De ska undersöka saken och väljer att handplocka några intressanta skolor och känner att de är för onödigt att göra ett sannolikhetsbaserat urval. Du misstänker att det verkliga sambandet kan se ut såhär: \\[ Föräldrars \\; utbildning \\rightarrow Val\\;av\\;skola \\leftarrow Elevens\\;studiemotivation \\]\nFråga: Vad skulle du ge för råd när det gäller design eller analys?"
+  },
+  {
+    "objectID": "posts/DAG (del 2)/index.html",
+    "href": "posts/DAG (del 2)/index.html",
+    "title": "Representativitet som ett selektionsproblem",
+    "section": "",
+    "text": "Representativitet diskuteras ofta som en egenskap hos ett urval:\n\nÄr urvalet representativt eller inte?\n\nMen med hjälp av DAGs så synliggörs när det eventuellt är ett problem med bristande representation, när det inte är det och vad man eventuellt ska justera för för att kunna svara på de statistiska frågor man har. Allt detta genom att se representation som en fråga om selektion.\n\n\nFör att beskriva detta introducerar vi en selektionsvariabel \\(S\\).\n\\[\nS=\\begin{cases}1 & \\text{om observationen observeras} \\\\ 0 & \\text{om observationen inte observeras} \\end{cases}\n\\] När vi analyserar data arbetar vi i praktiken med de observationer där \\(S=1\\).\nDet innebär att vi exempelvis kanske observerar:\n\\[P(Y \\mid S=1), \\; P(Y \\mid X,Z, S=1)\\;eller\\;P(Y,X \\mid S=1) \\]\nmen vill dra slutsatser om:\n\\[P(Y), \\; P(Y \\mid X,Z)\\;eller\\;P(Y,X) \\]\nFör att avgöra om vi kan anta att \\(S\\) är ignorerbart eller vad vi kan göra för att anta det så kan vi använda oss av DAGs.\n\n\n\nAtt en variabel påverkar sannolikheten att observeras innebär inte automatiskt att vi får ett representativitetsproblem eller att vi måste justera för något.\nAnta exempelvis:\n\\[Z \\rightarrow S \\;\\;\\;\\;\\; Y\\]\ndär \\(Z\\) varken påverkar eller påverkas av utfallet \\(Y\\) som vi är intresserade utav.\nDå finns ingen väg mellan \\(S\\) och \\(Y\\).\n\\[Y \\perp\\perp S\\]\nTrots att selektionen beror på \\(Z\\) förändras inte fördelningen av \\(Y\\).\nUrvalet kan vara skevt med avseende på \\(Z\\), men fortfarande representativt med avseende på \\(Y\\).\nDetta illustrerar en viktig princip:\n\nRepresentativitet är alltid representativitet med avseende på något.\n\nAtt ett urval inte speglar populationen perfekt i alla avseenden innebär inte automatiskt att det är problematiskt för den fråga vi vill besvara.\n\n\n\nProblemet uppstår när det finns en öppen väg mellan den variabel vi vill dra slutsatser om och selektionsmekanismen.\nExempelvis:\n\\[Y \\rightarrow Z \\rightarrow S\\]\neller\n\\[Y \\leftarrow Z \\rightarrow S\\]\nI båda fallen finns en öppen väg mellan variabel vi är intresserade utav \\(Y\\) och selektionen \\(S\\) som skapar ett obetingat beroende.\nDet innebär att de observationer som hamnar i datamaterialet systematiskt kan skilja sig från de observationer som inte gör det, med avseende på \\(Y\\).\nDet är här eventuella representativitetsproblemet uppstår.\n\n\n\nAtt det finns ett beroende mellan \\(Y\\) och \\(S\\) innebär inte automatiskt att inferens blir omöjlig.\nI vissa fall räcker det att korrekt ta hänsyn till kända urvalssannolikheter eller observerade selektionsmekanismer. I andra fall krävs otestbara antaganden om varför vissa observationer saknas.\nTvå enkla exempel illustrerar skillnaden.\n\n\nAnta:\n\\[Y \\leftarrow Kön \\rightarrow S\\]\nHär påverkar \\(Kön\\) både \\(Y\\) och sannolikheten att observeras (\\(S\\)).\nOm vi betingar vi på \\(Kön\\) blockeras vägen mellan \\(Y\\) och \\(S\\), vilket innebär att de blir obereonde givet kön.\nEtt sådant exempel skulle kunna motsvara ett stratifierat urval där inklusionssannolikheten varierar mellan kvinnor och män. Om designen är känd kan vi ta hänsyn till detta utan att behöva göra några ytterligare antaganden om de observationer som saknas.\n\n\n\nAnta:\n\\[Y\\rightarrow Z \\rightarrow S\\]\nHär påverkar \\(Y\\) sannolikheten att observeras, men endast genom genom \\(Z\\).\nOm \\(Z\\) observeras kan vi i princip beskriva den mekanism genom vilken selektionen uppstår och ta hänsyn till den i analysen.\nI praktiken bygger sådana resonemang ofta på otestbara antaganden. Men otestbara antaganden kan vara mer eller mindre rimliga och mer eller mindre väl underbyggda.\n\n\n\n\nI praktiken är selektionsmekanismer sällan lika enkla som i våra exempel.\nVi kan ha strukturer som:\n\n\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\neller betydligt mer komplicerade nätverk.\nMen logiken är densamma.\nDet spelar ofta mindre roll exakt hur många steg eller variabler som ligger mellan \\(Y\\) och \\(S\\).\nDet avgörande är om den relevanta informationen passerar genom något som faktiskt observeras och att justering på det faktiskt leder till ett oberoende.\n\n\n\nI exempel 1 och exempel 2 kunde vi teoretiskt skapa ett oberoende mellan \\(Y\\) och \\(S\\) genom att ta hänsyn till relevant information.\nMen det förutsätter att informationen faktiskt observeras.\nOm vi i stället antar:\n\\[Y \\rightarrow S\\]\nHär påverkar utfallet direkt sannolikheten att observeras.\nOm denna struktur är korrekt finns det ingen observerad variabel som blockerar vägen mellan \\(Y\\) och \\(S\\).\nProblemet är då inte att vi valt fel metod, utan att den information som skulle krävas för att beskriva selektionsmekanismen inte finns tillgänglig.\nUr ett DAG-perspektiv är det därför ofta mer givande att fråga vilken information som saknas än vilken metod som ska användas.\n\n\n\nDe klassiska begreppen MCAR, MAR och NMAR från bortfallslitteraturen kan förstås ur ett DAG-perspektiv som olika sätt att beskriva relationen mellan utfallet \\(Y\\), selektionsmekanismen \\(S\\) och den information som finns tillgänglig. Samtliga har berörts ovan.\nVid MCAR finns inget relevant beroende mellan Y och S.\nVid MAR kan ett sådant beroende beskrivas med hjälp av observerad information.\nVid NMAR återstår ett beroende även efter att all observerad information har beaktats.\nSett genom DAGs handlar dessa begrepp i stor utsträckning om vilka beroenden selektionsmekanismen skapar och om dessa kan beskrivas med hjälp av observerad information.\n\n\n\nEn stor del av representativitetsproblemet kan sammanfattas i en enda fråga:\n\nFinns den information som förklarar selektionen observerad, eller har den gått förlorad?\n\nDet spelar ofta mindre roll exakt hur selektionsmekanismen ser ut än om all relevant påverkan på selektionen går via något observerbart.\nNär den gör det finns ofta en väg till justering.\nNär den inte gör det kan vissa frågor vara omöjliga att besvara, oavsett hur avancerad analysmetoden är.\nDet är därför värdefullt att fundera över sådana frågor redan vid designen av en undersökning eller datainsamling. I vissa fall kan det peka på behovet av ytterligare hjälpvariabler eller annan informationsinsamling. I andra fall kan det visa att vissa slutsatser helt enkelt inte kommer att vara möjliga att dra.\n\n\n\nUr ett DAG-perspektiv handlar representativitet därför mindre om huruvida ett urval är “bra” eller “dåligt”.\nIstället handlar det om vilka mekanismer som avgör vad som blir observerat och vilka beroenden dessa mekanismer skapar.\nFrån ett DAG-perspektiv är representativitet därför främst en fråga om struktur: om selektionsmekanismen skapar beroenden mellan det vi vill veta något om och sannolikheten att observeras samt om dessa beroenden kan brytas med hjälp av observerad information."
+  },
+  {
+    "objectID": "posts/DAG (del 2)/index.html#en-selektionsnod",
+    "href": "posts/DAG (del 2)/index.html#en-selektionsnod",
+    "title": "Representativitet som ett selektionsproblem",
+    "section": "",
+    "text": "För att beskriva detta introducerar vi en selektionsvariabel \\(S\\).\n\\[\nS=\\begin{cases}1 & \\text{om observationen observeras} \\\\ 0 & \\text{om observationen inte observeras} \\end{cases}\n\\] När vi analyserar data arbetar vi i praktiken med de observationer där \\(S=1\\).\nDet innebär att vi exempelvis kanske observerar:\n\\[P(Y \\mid S=1), \\; P(Y \\mid X,Z, S=1)\\;eller\\;P(Y,X \\mid S=1) \\]\nmen vill dra slutsatser om:\n\\[P(Y), \\; P(Y \\mid X,Z)\\;eller\\;P(Y,X) \\]\nFör att avgöra om vi kan anta att \\(S\\) är ignorerbart eller vad vi kan göra för att anta det så kan vi använda oss av DAGs."
+  },
+  {
+    "objectID": "posts/DAG (del 2)/index.html#när-är-selektion-ett-problem",
+    "href": "posts/DAG (del 2)/index.html#när-är-selektion-ett-problem",
+    "title": "Representativitet som ett selektionsproblem",
+    "section": "",
+    "text": "Att en variabel påverkar sannolikheten att observeras innebär inte automatiskt att vi får ett representativitetsproblem eller att vi måste justera för något.\nAnta exempelvis:\n\\[Z \\rightarrow S \\;\\;\\;\\;\\; Y\\]\ndär \\(Z\\) varken påverkar eller påverkas av utfallet \\(Y\\) som vi är intresserade utav.\nDå finns ingen väg mellan \\(S\\) och \\(Y\\).\n\\[Y \\perp\\perp S\\]\nTrots att selektionen beror på \\(Z\\) förändras inte fördelningen av \\(Y\\).\nUrvalet kan vara skevt med avseende på \\(Z\\), men fortfarande representativt med avseende på \\(Y\\).\nDetta illustrerar en viktig princip:\n\nRepresentativitet är alltid representativitet med avseende på något.\n\nAtt ett urval inte speglar populationen perfekt i alla avseenden innebär inte automatiskt att det är problematiskt för den fråga vi vill besvara."
+  },
+  {
+    "objectID": "posts/DAG (del 2)/index.html#när-selektion-skapar-beroenden",
+    "href": "posts/DAG (del 2)/index.html#när-selektion-skapar-beroenden",
+    "title": "Representativitet som ett selektionsproblem",
+    "section": "",
+    "text": "Problemet uppstår när det finns en öppen väg mellan den variabel vi vill dra slutsatser om och selektionsmekanismen.\nExempelvis:\n\\[Y \\rightarrow Z \\rightarrow S\\]\neller\n\\[Y \\leftarrow Z \\rightarrow S\\]\nI båda fallen finns en öppen väg mellan variabel vi är intresserade utav \\(Y\\) och selektionen \\(S\\) som skapar ett obetingat beroende.\nDet innebär att de observationer som hamnar i datamaterialet systematiskt kan skilja sig från de observationer som inte gör det, med avseende på \\(Y\\).\nDet är här eventuella representativitetsproblemet uppstår."
+  },
+  {
+    "objectID": "posts/DAG (del 2)/index.html#när-justering-är-möjlig",
+    "href": "posts/DAG (del 2)/index.html#när-justering-är-möjlig",
+    "title": "Representativitet som ett selektionsproblem",
+    "section": "",
+    "text": "Att det finns ett beroende mellan \\(Y\\) och \\(S\\) innebär inte automatiskt att inferens blir omöjlig.\nI vissa fall räcker det att korrekt ta hänsyn till kända urvalssannolikheter eller observerade selektionsmekanismer. I andra fall krävs otestbara antaganden om varför vissa observationer saknas.\nTvå enkla exempel illustrerar skillnaden.\n\n\nAnta:\n\\[Y \\leftarrow Kön \\rightarrow S\\]\nHär påverkar \\(Kön\\) både \\(Y\\) och sannolikheten att observeras (\\(S\\)).\nOm vi betingar vi på \\(Kön\\) blockeras vägen mellan \\(Y\\) och \\(S\\), vilket innebär att de blir obereonde givet kön.\nEtt sådant exempel skulle kunna motsvara ett stratifierat urval där inklusionssannolikheten varierar mellan kvinnor och män. Om designen är känd kan vi ta hänsyn till detta utan att behöva göra några ytterligare antaganden om de observationer som saknas.\n\n\n\nAnta:\n\\[Y\\rightarrow Z \\rightarrow S\\]\nHär påverkar \\(Y\\) sannolikheten att observeras, men endast genom genom \\(Z\\).\nOm \\(Z\\) observeras kan vi i princip beskriva den mekanism genom vilken selektionen uppstår och ta hänsyn till den i analysen.\nI praktiken bygger sådana resonemang ofta på otestbara antaganden. Men otestbara antaganden kan vara mer eller mindre rimliga och mer eller mindre väl underbyggda."
+  },
+  {
+    "objectID": "posts/DAG (del 2)/index.html#komplexa-mekanismer-förändrar-inte-grundidén",
+    "href": "posts/DAG (del 2)/index.html#komplexa-mekanismer-förändrar-inte-grundidén",
+    "title": "Representativitet som ett selektionsproblem",
+    "section": "",
+    "text": "I praktiken är selektionsmekanismer sällan lika enkla som i våra exempel.\nVi kan ha strukturer som:\n\n\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\neller betydligt mer komplicerade nätverk.\nMen logiken är densamma.\nDet spelar ofta mindre roll exakt hur många steg eller variabler som ligger mellan \\(Y\\) och \\(S\\).\nDet avgörande är om den relevanta informationen passerar genom något som faktiskt observeras och att justering på det faktiskt leder till ett oberoende."
+  },
+  {
+    "objectID": "posts/DAG (del 2)/index.html#när-information-har-gått-förlorad",
+    "href": "posts/DAG (del 2)/index.html#när-information-har-gått-förlorad",
+    "title": "Representativitet som ett selektionsproblem",
+    "section": "",
+    "text": "I exempel 1 och exempel 2 kunde vi teoretiskt skapa ett oberoende mellan \\(Y\\) och \\(S\\) genom att ta hänsyn till relevant information.\nMen det förutsätter att informationen faktiskt observeras.\nOm vi i stället antar:\n\\[Y \\rightarrow S\\]\nHär påverkar utfallet direkt sannolikheten att observeras.\nOm denna struktur är korrekt finns det ingen observerad variabel som blockerar vägen mellan \\(Y\\) och \\(S\\).\nProblemet är då inte att vi valt fel metod, utan att den information som skulle krävas för att beskriva selektionsmekanismen inte finns tillgänglig.\nUr ett DAG-perspektiv är det därför ofta mer givande att fråga vilken information som saknas än vilken metod som ska användas."
+  },
+  {
+    "objectID": "posts/DAG (del 2)/index.html#mar-mcar-och-nmar",
+    "href": "posts/DAG (del 2)/index.html#mar-mcar-och-nmar",
+    "title": "DAGs – del 2",
+    "section": "",
+    "text": "De klassiska begreppen MCAR, MAR och NMAR kan ses som olika sätt att beskriva dessa strukturer.\nUr ett DAG-perspektiv handlar skillnaden i grunden om huruvida den information som driver selektionen är observerbar eller inte och hur den relaterar till \\(Y\\).\n\n\nMissing completly at random (MCAR) skulle kunna illustrerar enligt följande exempel: \\[Y\\;\\;S\\] selektionen är helt oberoende av \\(Y\\) och påverkar inte eventuell inferens mer än att vi får färre observationer jämfört med om vi hade hela populationen.\n\n\n\nMissing at random (MAR) kan ses i DAG genom följande exempel: \\[Y\\leftarrow Z \\rightarrow S\\] Eller på något annat sätt\n## Kärninsikten\nEn stor del av representativitetsproblemet kan sammanfattas i en enda fråga:\n\nFinns den information som förklarar selektionen observerad, eller har den gått förlorad?\n\nDet spelar ofta mindre roll exakt hur selektionsmekanismen ser ut än om all relevant påverkan på selektionen går via något observerbart.\nNär den gör det finns ofta en väg till justering.\nIbland kan justering bero på otestbara antaganden och ibland kan det vara så att vi inte kan besvara de frågor vi vill besvara. Därför är det viktigt så tidigt som möjligt att fundera på sådana frågor, för att eventuellt se om vi måste samla in mer information eller om ens en insamling eller analysarbete är värt tiden och pengarna."
+  },
+  {
+    "objectID": "posts/DAG (del 2)/index.html#kärninsikten",
+    "href": "posts/DAG (del 2)/index.html#kärninsikten",
+    "title": "Representativitet som ett selektionsproblem",
+    "section": "",
+    "text": "En stor del av representativitetsproblemet kan sammanfattas i en enda fråga:\n\nFinns den information som förklarar selektionen observerad, eller har den gått förlorad?\n\nDet spelar ofta mindre roll exakt hur selektionsmekanismen ser ut än om all relevant påverkan på selektionen går via något observerbart.\nNär den gör det finns ofta en väg till justering.\nNär den inte gör det kan vissa frågor vara omöjliga att besvara, oavsett hur avancerad analysmetoden är.\nDet är därför värdefullt att fundera över sådana frågor redan vid designen av en undersökning eller datainsamling. I vissa fall kan det peka på behovet av ytterligare hjälpvariabler eller annan informationsinsamling. I andra fall kan det visa att vissa slutsatser helt enkelt inte kommer att vara möjliga att dra."
+  },
+  {
+    "objectID": "posts/DAG (del 2)/index.html#avslutning",
+    "href": "posts/DAG (del 2)/index.html#avslutning",
+    "title": "Representativitet som ett selektionsproblem",
+    "section": "",
+    "text": "Ur ett DAG-perspektiv handlar representativitet därför mindre om huruvida ett urval är “bra” eller “dåligt”.\nIstället handlar det om vilka mekanismer som avgör vad som blir observerat och vilka beroenden dessa mekanismer skapar.\nFrån ett DAG-perspektiv är representativitet därför främst en fråga om struktur: om selektionsmekanismen skapar beroenden mellan det vi vill veta något om och sannolikheten att observeras samt om dessa beroenden kan brytas med hjälp av observerad information."
+  },
+  {
+    "objectID": "posts/DAG (del 2)/index.html#mcar-mar-och-nmar",
+    "href": "posts/DAG (del 2)/index.html#mcar-mar-och-nmar",
+    "title": "Representativitet som ett selektionsproblem",
+    "section": "",
+    "text": "De klassiska begreppen MCAR, MAR och NMAR från bortfallslitteraturen kan förstås ur ett DAG-perspektiv som olika sätt att beskriva relationen mellan utfallet \\(Y\\), selektionsmekanismen \\(S\\) och den information som finns tillgänglig. Samtliga har berörts ovan.\nVid MCAR finns inget relevant beroende mellan Y och S.\nVid MAR kan ett sådant beroende beskrivas med hjälp av observerad information.\nVid NMAR återstår ett beroende även efter att all observerad information har beaktats.\nSett genom DAGs handlar dessa begrepp i stor utsträckning om vilka beroenden selektionsmekanismen skapar och om dessa kan beskrivas med hjälp av observerad information."
   }
 ]

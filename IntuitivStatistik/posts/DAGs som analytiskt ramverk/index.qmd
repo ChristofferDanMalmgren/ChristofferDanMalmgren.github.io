@@ -1,10 +1,10 @@
 ---
-title: "DAGs – del 1"
+title: "DAGs som analytiskt ramverk"
 author: "Christoffer Malmgren"
 date: "2026-05-28"
 categories: [DAG, Analytisk klarhet]
 image: "image.jpg"
-abstract: "En introduktion till DAGs som verktyg för att strukturera antaganden om beroenden mellan variabler och analysera vilka villkor som krävs för giltig statistisk inferens."
+abstract: "DAGs (Directed Acyclic Graphs) används ofta inom kausal inferens, men deras värde sträcker sig långt bortom kausalitet. Här lyfter jag DAGs som ett analytiskt ramverk för att strukturera antaganden, förstå statistiska samband och resonera kring vilka slutsatser data faktiskt kan stödja."
 ---
 
 <!--# läs in paket -->

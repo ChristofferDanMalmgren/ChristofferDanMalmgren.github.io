@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Christoffer Malmgren">
-<meta name="dcterms.date" content="2026-05-28">
+<meta name="dcterms.date" content="2026-06-03">
 
-<title>DAGs – del 1 – Intuitiv Statistik</title>
+<title>Representativitet som ett selektionsproblem – Intuitiv Statistik</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -156,10 +156,11 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">DAGs – del 1</h1>
+<h1 class="title">Representativitet som ett selektionsproblem</h1>
   <div class="quarto-categories">
     <div class="quarto-category">DAG</div>
     <div class="quarto-category">Analytisk klarhet</div>
+    <div class="quarto-category">Representativitet</div>
   </div>
   </div>
 
@@ -177,7 +178,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 28, 2026</p>
+      <p class="date">June 3, 2026</p>
     </div>
   </div>
   
@@ -187,7 +188,7 @@ window.Quarto = {
 <div>
   <div class="abstract">
     <div class="block-title">Abstract</div>
-    En introduktion till DAGs som verktyg för att strukturera antaganden om beroenden mellan variabler och analysera vilka villkor som krävs för giltig statistisk inferens.
+    Representativitet beskrivs ofta som en egenskap hos ett urval. Med hjälp av DAGs kan frågan istället formuleras som ett selektionsproblem. I denna del introduceras selektionsnoden S och hur beroenden mellan utfall och selektionsmekanismer kan användas för att förstå när inferens är möjlig, när justering kan hjälpa och när information gått förlorad.
   </div>
 </div>
 
@@ -196,188 +197,135 @@ window.Quarto = {
 
 
 <!--# läs in paket -->
-<section id="dags-som-analytiskt-ramverk" class="level1">
-<h1>DAGs som analytiskt ramverk</h1>
-<p>DAGs, eller Directed Acyclic Graphs, är ett sätt att strukturera antaganden om hur variabler hänger ihop. De används ofta inom kausal inferens men enligt mig så är användningsområdet mycket bredare. Värdet i DAGs ligger inte i själva grafen, utan i hur de tvingar oss att vara explicita med vilka antaganden vi gör.</p>
-<p>En DAG kan hjälpa oss att förstå:</p>
-<ul>
-<li>vilka analyser som är möjliga</li>
-<li>vilka variabler som kan vara viktiga att samla in</li>
-<li>vilka slutsatser data faktiskt kan stödja</li>
-<li>och vad olika statistiska mått egentligen representerar.</li>
-</ul>
-<p>Det som gör DAGs intressanta är att de fungerar som ett gemensamt analytiskt språk för att beskriva och resonera kring till synes ganska olika statistiska problem.</p>
-<p>Min introduktion till DAGs kom via den andra upplagan av boken <em>Statistical Rethinking</em>, vilken i sig är en fantastisk bok. Det var inte där jag först förstod allt, men det var där jag såg hur många av de problem jag redan stött på kunde beskrivas inom samma ramverk.</p>
-<p>Saker som:</p>
-<ul>
-<li><p>omitted variable bias</p></li>
-<li><p>selektions- och bortfallsjustering</p></li>
-<li><p>representativitet i olika aspekter</p></li>
-<li><p>variabelselektion</p></li>
-<li><p>prediktion</p></li>
-<li><p>experimentell design vs.&nbsp;observationsstudier</p></li>
-</ul>
-<p>såg först ut som separata idéer med olika notation och olika tekniker.</p>
-<p>Men med DAGs går många av dem att beskriva och rama in med samma språk. Det var också där jag började se styrkan i DAGs som analytiskt och pedagogiskt verktyg för att skapa klarhet i statistiska problem och vilka möjligheter eller begränsningar data eller analyser kan ha.</p>
-<p>Vissa variabler kan vara nödvändiga att ta hänsyn till, andra kan förbättra precisionen utan att vara nödvändiga, vissa kan vara irrelevanta och andra direkt skadliga att kontrollera för. DAGs hjälper oss att synliggöra dessa skillnader.</p>
-</section>
-<section id="vad-är-en-dag" class="level1">
-<h1>Vad är en DAG?</h1>
-<p>DAG står för <em>Directed Acyclic Graph</em>.</p>
-<p>En DAG består av:</p>
-<ul>
-<li><p>variabler (noder)</p></li>
-<li><p>och riktade pilar mellan dem.</p></li>
-</ul>
-<p>Exempelvis:</p>
-<p><span class="math display">\[X \leftarrow Z \rightarrow Y \]</span></p>
-<p>betyder att <span class="math inline">\(Z\)</span> antas påverka <span class="math inline">\(X\)</span> och <span class="math inline">\(Y\)</span>.</p>
-<p>Grafen är:</p>
-<ul>
-<li><p><strong>directed</strong> eftersom pilarna har riktning</p></li>
-<li><p><strong>acyclic</strong> eftersom det inte finns feedbackloopar från en variabel tillbaka till samma variabel.</p></li>
-</ul>
-<p>Men det viktiga är egentligen inte själva definitionen.</p>
-<p>Det viktiga är att en DAG är ett sätt att uttrycka antaganden om hur information och associationer rör sig mellan variabler.</p>
-</section>
-<section id="dags-handlar-om-vägar" class="level1">
-<h1>DAGs handlar om vägar</h1>
-<p>När man först ser DAGs är det lätt att fokusera på enskilda pilar.</p>
-<p>Men det centrala är egentligen vägarna mellan variabler.</p>
-<p>Exempelvis:</p>
-<p><span class="math display">\[ X \rightarrow Z \rightarrow Y\]</span></p>
-<p>Här finns en väg mellan <span class="math inline">\(X\)</span> och <span class="math inline">\(Y\)</span> via <span class="math inline">\(Z\)</span>.</p>
-<p>DAG-resonemang handlar till stor del om:</p>
-<ul>
-<li><p>vilka vägar som är öppna</p></li>
-<li><p>vilka som är blockerade</p></li>
-<li><p>och hur det förändras när man tar hänsyn till olika variabler.</p></li>
-</ul>
-</section>
-<section id="tre-grundstrukturer" class="level1">
-<h1>Tre grundstrukturer</h1>
-<p>Nästan alla mer komplexa DAGs är kombinationer av tre enkla strukturer:</p>
-<ul>
-<li><p>chain</p></li>
-<li><p>fork</p></li>
-<li><p>collider</p></li>
-</ul>
-<p>Det är dessa som avgör hur associationer kan uppstå och försvinna.</p>
-<section id="chain" class="level2">
-<h2 class="anchored" data-anchor-id="chain">Chain</h2>
-<p><span class="math display">\[ X \rightarrow Z \rightarrow Y\]</span> Här går associationen mellan <span class="math inline">\(X\)</span> och <span class="math inline">\(Y\)</span> genom <span class="math inline">\(Z\)</span>.</p>
-<p>Om vi betingar på <span class="math inline">\(Z\)</span> blockeras vägen.</p>
-<p>Intuitionen är ungefär:</p>
+<section id="urval-bortfall-och-selektion" class="level1">
+<h1>Urval, bortfall och selektion</h1>
+<p>Representativitet diskuteras ofta som en egenskap hos ett urval:</p>
 <blockquote class="blockquote">
-<p>när vi håller <span class="math inline">\(Z\)</span> konstant finns ingen variation kvar längs just den vägen.</p>
+<p>Är urvalet representativt eller inte?</p>
 </blockquote>
-</section>
-<section id="fork" class="level2">
-<h2 class="anchored" data-anchor-id="fork">Fork</h2>
-<p><span class="math display">\[ X \leftarrow Z \rightarrow Y \]</span></p>
-<p>Här är <span class="math inline">\(Z\)</span> en gemensam orsak till både <span class="math inline">\(X\)</span> och <span class="math inline">\(Y\)</span>.</p>
-<p>Detta är den klassiska confounding-strukturen.</p>
-<p>Om vi inte tar hänsyn till <span class="math inline">\(Z\)</span> kommer <span class="math inline">\(X\)</span> och <span class="math inline">\(Y\)</span> vara associerade även om det inte finns någon direkt effekt mellan dem.</p>
-<p>Men om vi betingar på <span class="math inline">\(Z\)</span> blockeras vägen.</p>
-</section>
-<section id="collider" class="level2">
-<h2 class="anchored" data-anchor-id="collider">Collider</h2>
-<p><span class="math display">\[X \rightarrow Z \leftarrow Y\]</span></p>
-<p>Collider-strukturen fungerar tvärtom.</p>
-<p>Här är vägen blockerad från början.</p>
-<p>Det betyder att:</p>
-<ul>
-<li><p><span class="math inline">\(X\)</span> och <span class="math inline">\(Y\)</span> kan vara oberoende</p></li>
-<li><p>trots att båda påverkar <span class="math inline">\(Z\)</span></p></li>
-</ul>
-<p>Men om vi betingar på <span class="math inline">\(Z\)</span> öppnas vägen istället. Då kan ett samband uppstå trots att ingen direkt kausalitet finns.</p>
-</section>
-</section>
-<section id="betingat-oberoende-och-notation" class="level1">
-<h1>Betingat oberoende och notation</h1>
-<p>Ett centralt koncept inom DAGs är betingat oberoende (<em>conditional independence</em>). Det är också ett grundläggande begrepp inom statistik generellt.</p>
-<p>När en väg mellan två variabler blockeras säger vi att variablerna är oberoende givet vissa andra variabler. Det skrivs:</p>
+<p>Men med hjälp av DAGs så synliggörs när det eventuellt är ett problem med bristande representation, när det inte är det och vad man eventuellt ska justera för för att kunna svara på de statistiska frågor man har. Allt detta genom att se representation som en fråga om selektion.</p>
+<section id="en-selektionsnod" class="level2">
+<h2 class="anchored" data-anchor-id="en-selektionsnod">En selektionsnod</h2>
+<p>För att beskriva detta introducerar vi en selektionsvariabel <span class="math inline">\(S\)</span>.</p>
 <p><span class="math display">\[
-X \perp\!\!\!\perp Y \mid Z
-\]</span></p>
-<p>och betyder att <span class="math inline">\(X\)</span> är oberoende av <span class="math inline">\(Y\)</span> givet <span class="math inline">\(Z\)</span>.</p>
-<p>Detta kan uttryckas på flera sätt:</p>
-<p><span class="math display">\[
-P(Y \mid X,Z)=P(Y\mid Z)
-\]</span></p>
-<p><span class="math display">\[
-P(X \mid Y,Z)=P(X\mid Z)
-\]</span></p>
-<p><span class="math display">\[
-P(X,Y\mid Z)=P(X\mid Z)P(Y\mid Z)
-\]</span> Kunskap om den ena variabeln ger alltså ingen ytterligare information om den andra när <span class="math inline">\(Z\)</span> redan är känt.</p>
-<p>Om variablerna däremot inte är oberoende kan man skriva:</p>
-<p><span class="math display">\[
-X \not\!\perp\!\!\!\perp Y \mid Z
-\]</span></p>
-<p>En stor del av DAG-analys handlar om hur samband förändras när man villkorar på olika variabler:</p>
-<ul>
-<li>vissa samband blockeras</li>
-<li>andra öppnas</li>
-<li>och vissa påverkas inte alls.</li>
-</ul>
+S=\begin{cases}1 &amp; \text{om observationen observeras} \\ 0 &amp; \text{om observationen inte observeras} \end{cases}
+\]</span> När vi analyserar data arbetar vi i praktiken med de observationer där <span class="math inline">\(S=1\)</span>.</p>
+<p>Det innebär att vi exempelvis kanske observerar:</p>
+<p><span class="math display">\[P(Y \mid S=1), \; P(Y \mid X,Z, S=1)\;eller\;P(Y,X \mid S=1) \]</span></p>
+<p>men vill dra slutsatser om:</p>
+<p><span class="math display">\[P(Y), \; P(Y \mid X,Z)\;eller\;P(Y,X) \]</span></p>
+<p>För att avgöra om vi kan anta att <span class="math inline">\(S\)</span> är ignorerbart eller vad vi kan göra för att anta det så kan vi använda oss av DAGs.</p>
 </section>
-<section id="tre-skolboksexempel-på-dags-att-tänka-på" class="level1">
-<h1>Tre skolboksexempel på DAGs att tänka på</h1>
-<section id="chain-1" class="level2">
-<h2 class="anchored" data-anchor-id="chain-1">Chain</h2>
-<p><strong>Anta:</strong> Någon gör ett experiment för att se hur ett bekämpningsmedel påverkar en växts längd. Vi antar vidare att den kausala strukturen ser ut så här: <span class="math display">\[Bekämpningsmedel \rightarrow Svampmängden \rightarrow Växtlängd\]</span></p>
-<p><strong>Fråga:</strong> Vad händer om man betingar på svampmängden? Hur påverkar betingning på svampmängden våra slutsatser kring bekämpningdsmedlets effekt på växtlängden?</p>
+<section id="när-är-selektion-ett-problem" class="level2">
+<h2 class="anchored" data-anchor-id="när-är-selektion-ett-problem">När är selektion ett problem?</h2>
+<p>Att en variabel påverkar sannolikheten att observeras innebär inte automatiskt att vi får ett representativitetsproblem eller att vi måste justera för något.</p>
+<p>Anta exempelvis:</p>
+<p><span class="math display">\[Z \rightarrow S \;\;\;\;\; Y\]</span></p>
+<p>där <span class="math inline">\(Z\)</span> varken påverkar eller påverkas av utfallet <span class="math inline">\(Y\)</span> som vi är intresserade utav.</p>
+<p>Då finns ingen väg mellan <span class="math inline">\(S\)</span> och <span class="math inline">\(Y\)</span>.</p>
+<p><span class="math display">\[Y \perp\perp S\]</span></p>
+<p>Trots att selektionen beror på <span class="math inline">\(Z\)</span> förändras inte fördelningen av <span class="math inline">\(Y\)</span>.</p>
+<p>Urvalet kan vara skevt med avseende på <span class="math inline">\(Z\)</span>, men fortfarande representativt med avseende på <span class="math inline">\(Y\)</span>.</p>
+<p>Detta illustrerar en viktig princip:</p>
+<blockquote class="blockquote">
+<p>Representativitet är alltid representativitet med avseende på något.</p>
+</blockquote>
+<p>Att ett urval inte speglar populationen perfekt i alla avseenden innebär inte automatiskt att det är problematiskt för den fråga vi vill besvara.</p>
 </section>
-<section id="fork-1" class="level2">
-<h2 class="anchored" data-anchor-id="fork-1">Fork</h2>
-<p><strong>Anta:</strong> Ett företag har tillgång till data rörande försäljning, temperatur och elförbrukning. Vi antar att den kausala mekanismen dem emellan ser ut så här: <span class="math display">\[Försäljning \leftarrow  Temperatur \rightarrow Elförbrukning\]</span></p>
-<p><strong>Fråga:</strong> Finns det goda skäl och syften som kan besvaras med att kolla på sambanden mellan försälning och elförbrukning över tid?</p>
+<section id="när-selektion-skapar-beroenden" class="level2">
+<h2 class="anchored" data-anchor-id="när-selektion-skapar-beroenden">När selektion skapar beroenden</h2>
+<p>Problemet uppstår när det finns en öppen väg mellan den variabel vi vill dra slutsatser om och selektionsmekanismen.</p>
+<p>Exempelvis:</p>
+<p><span class="math display">\[Y \rightarrow Z \rightarrow S\]</span></p>
+<p>eller</p>
+<p><span class="math display">\[Y \leftarrow Z \rightarrow S\]</span></p>
+<p>I båda fallen finns en öppen väg mellan variabel vi är intresserade utav <span class="math inline">\(Y\)</span> och selektionen <span class="math inline">\(S\)</span> som skapar ett obetingat beroende.</p>
+<p>Det innebär att de observationer som hamnar i datamaterialet systematiskt kan skilja sig från de observationer som inte gör det, med avseende på <span class="math inline">\(Y\)</span>.</p>
+<p>Det är här eventuella representativitetsproblemet uppstår.</p>
 </section>
-<section id="collider-1" class="level2">
-<h2 class="anchored" data-anchor-id="collider-1">Collider</h2>
-<p><strong>Anta:</strong> Någon är intresserad utav sambandet mellan föräldrars utbildning och elevers studiemotivation. De ska undersöka saken och väljer att handplocka några intressanta skolor och känner att de är för onödigt att göra ett sannolikhetsbaserat urval. Du misstänker att det verkliga sambandet kan se ut såhär: <span class="math display">\[ Föräldrars \; utbildning \rightarrow Val\;av\;skola \leftarrow Elevens\;studiemotivation \]</span></p>
-<p><strong>Fråga:</strong> Vad skulle du ge för råd när det gäller design eller analys?</p>
+<section id="när-justering-är-möjlig" class="level2">
+<h2 class="anchored" data-anchor-id="när-justering-är-möjlig">När justering är möjlig</h2>
+<p>Att det finns ett beroende mellan <span class="math inline">\(Y\)</span> och <span class="math inline">\(S\)</span> innebär inte automatiskt att inferens blir omöjlig.</p>
+<p>I vissa fall räcker det att korrekt ta hänsyn till kända urvalssannolikheter eller observerade selektionsmekanismer. I andra fall krävs otestbara antaganden om varför vissa observationer saknas.</p>
+<p>Två enkla exempel illustrerar skillnaden.</p>
+<section id="ex1" class="level3">
+<h3 class="anchored" data-anchor-id="ex1">Exempel 1</h3>
+<p>Anta:</p>
+<p><span class="math display">\[Y \leftarrow Kön \rightarrow S\]</span></p>
+<p>Här påverkar <span class="math inline">\(Kön\)</span> både <span class="math inline">\(Y\)</span> och sannolikheten att observeras (<span class="math inline">\(S\)</span>).</p>
+<p>Om vi betingar vi på <span class="math inline">\(Kön\)</span> blockeras vägen mellan <span class="math inline">\(Y\)</span> och <span class="math inline">\(S\)</span>, vilket innebär att de blir obereonde givet kön.</p>
+<p>Ett sådant exempel skulle kunna motsvara ett stratifierat urval där inklusionssannolikheten varierar mellan kvinnor och män. Om designen är känd kan vi ta hänsyn till detta utan att behöva göra några ytterligare antaganden om de observationer som saknas.</p>
+</section>
+<section id="ex2" class="level3">
+<h3 class="anchored" data-anchor-id="ex2">Exempel 2</h3>
+<p>Anta:</p>
+<p><span class="math display">\[Y\rightarrow Z \rightarrow S\]</span></p>
+<p>Här påverkar <span class="math inline">\(Y\)</span> sannolikheten att observeras, men endast genom genom <span class="math inline">\(Z\)</span>.</p>
+<p>Om <span class="math inline">\(Z\)</span> observeras kan vi i princip beskriva den mekanism genom vilken selektionen uppstår och ta hänsyn till den i analysen.</p>
+<p>I praktiken bygger sådana resonemang ofta på otestbara antaganden. Men otestbara antaganden kan vara mer eller mindre rimliga och mer eller mindre väl underbyggda.</p>
 </section>
 </section>
-<section id="dags-visar-struktur-inte-sanning" class="level1">
-<h1>DAGs visar struktur, inte sanning</h1>
-<p>En DAG specificerar inte exakt <em>hur</em> variabler påverkar varandra, utan bara att vi antar att ett samband finns.</p>
-<p>Om vi exempelvis skriver:</p>
-<p><span class="math display">\[
-Y = f(X,Z)
-\]</span></p>
-<p>så säger DAGen något om vilka variabler som påverkar <span class="math inline">\(Y\)</span>, men inte vilken funktion <span class="math inline">\(f(X,Z)\)</span> faktiskt är.</p>
-<p>Samma DAG skulle därför kunna motsvara helt olika typer av samband:</p>
-<ul>
-<li>linjära eller icke-linjära effekter</li>
-<li>starka eller svaga samband</li>
-<li>interaktioner mellan variabler</li>
-<li>tröskeleffekter</li>
-<li>eller situationer där variationen i <span class="math inline">\(Y\)</span> förändras över olika nivåer av <span class="math inline">\(X\)</span></li>
-</ul>
-<p>Det här är viktigt eftersom en korrekt DAG inte automatiskt säger <em>hur</em> vi ska göra inferens.</p>
-<p>I många introduktioner till statistik översätts den kausala strukturen direkt till en regressionsmodell där relevanta variabler inkluderas som kontrollvariabler, och resultaten tolkas som om detta i sig garanterar en giltig justering.</p>
-<p>Det kan i vissa sammanhang vara fullt rimligt, men det är bara en av flera möjliga sätt att operationalisera den struktur som DAGen beskriver.</p>
-<p>Beroende på frågan kan andra strategier vara mer naturliga, till exempel viktning, poststratifierade analyser, designbaserade estimatorer eller mer flexibla modelleringsansatser.</p>
-<p>Gemensamt är att DAGen inte specificerar metoden, utan de beroenden som måste hanteras för att en viss typ av slutsats ska vara giltig.</p>
+<section id="komplexa-mekanismer-förändrar-inte-grundidén" class="level2">
+<h2 class="anchored" data-anchor-id="komplexa-mekanismer-förändrar-inte-grundidén">Komplexa mekanismer förändrar inte grundidén</h2>
+<p>I praktiken är selektionsmekanismer sällan lika enkla som i våra exempel.</p>
+<p>Vi kan ha strukturer som:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-scatterplot43" class="quarto-float quarto-figure quarto-figure-center anchored" width="672" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scatterplot43-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-scatterplot43-1.png" id="fig-scatterplot43" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-scatterplot43-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>eller betydligt mer komplicerade nätverk.</p>
+<p>Men logiken är densamma.</p>
+<p>Det spelar ofta mindre roll exakt hur många steg eller variabler som ligger mellan <span class="math inline">\(Y\)</span> och <span class="math inline">\(S\)</span>.</p>
+<p>Det avgörande är om den relevanta informationen passerar genom något som faktiskt observeras och att justering på det faktiskt leder till ett oberoende.</p>
 </section>
-<section id="varför-dags-är-användbara" class="level1">
-<h1>Varför DAGs är användbara</h1>
-<p>Det som gör DAGs kraftfulla är att de tvingar oss att:</p>
-<ul>
-<li><p>synliggöra våra antaganden</p></li>
-<li><p>tänka på hur data kan analyseras för att besvara specifika frågor</p></li>
-<li><p>tänka på hur informationsinhämtning bör designas</p></li>
-<li><p>och skilja mellan:</p>
-<ul>
-<li><p>observerade samband</p></li>
-<li><p>potentiellt kausala effekter</p></li>
-</ul></li>
-</ul>
-<p>För mig var det framför allt där DAGs blev användbara: inte som en färdig metod, utan som ett sätt att resonera som skapar analytisk klarhet kring statistiska problem.</p>
+<section id="när-information-har-gått-förlorad" class="level2">
+<h2 class="anchored" data-anchor-id="när-information-har-gått-förlorad">När information har gått förlorad</h2>
+<p>I <a href="#ex1">exempel 1</a> och <a href="#ex2">exempel 2</a> kunde vi teoretiskt skapa ett oberoende mellan <span class="math inline">\(Y\)</span> och <span class="math inline">\(S\)</span> genom att ta hänsyn till relevant information.</p>
+<p>Men det förutsätter att informationen faktiskt observeras.</p>
+<p>Om vi i stället antar:</p>
+<p><span class="math display">\[Y \rightarrow S\]</span></p>
+<p>Här påverkar utfallet direkt sannolikheten att observeras.</p>
+<p>Om denna struktur är korrekt finns det ingen observerad variabel som blockerar vägen mellan <span class="math inline">\(Y\)</span> och <span class="math inline">\(S\)</span>.</p>
+<p>Problemet är då inte att vi valt fel metod, utan att den information som skulle krävas för att beskriva selektionsmekanismen inte finns tillgänglig.</p>
+<p>Ur ett DAG-perspektiv är det därför ofta mer givande att fråga vilken information som saknas än vilken metod som ska användas.</p>
+</section>
+<section id="mcar-mar-och-nmar" class="level2">
+<h2 class="anchored" data-anchor-id="mcar-mar-och-nmar">MCAR, MAR och NMAR</h2>
+<p>De klassiska begreppen MCAR, MAR och NMAR från bortfallslitteraturen kan förstås ur ett DAG-perspektiv som olika sätt att beskriva relationen mellan utfallet <span class="math inline">\(Y\)</span>, selektionsmekanismen <span class="math inline">\(S\)</span> och den information som finns tillgänglig. Samtliga har berörts ovan.</p>
+<p>Vid <strong>MCAR</strong> finns inget relevant beroende mellan Y och S.</p>
+<p>Vid <strong>MAR</strong> kan ett sådant beroende beskrivas med hjälp av observerad information.</p>
+<p>Vid <strong>NMAR</strong> återstår ett beroende även efter att all observerad information har beaktats.</p>
+<p>Sett genom DAGs handlar dessa begrepp i stor utsträckning om vilka beroenden selektionsmekanismen skapar och om dessa kan beskrivas med hjälp av observerad information.</p>
+</section>
+<section id="kärninsikten" class="level2">
+<h2 class="anchored" data-anchor-id="kärninsikten">Kärninsikten</h2>
+<p>En stor del av representativitetsproblemet kan sammanfattas i en enda fråga:</p>
+<blockquote class="blockquote">
+<p>Finns den information som förklarar selektionen observerad, eller har den gått förlorad?</p>
+</blockquote>
+<p>Det spelar ofta mindre roll exakt hur selektionsmekanismen ser ut än om all relevant påverkan på selektionen går via något observerbart.</p>
+<p>När den gör det finns ofta en väg till justering.</p>
+<p>När den inte gör det kan vissa frågor vara omöjliga att besvara, oavsett hur avancerad analysmetoden är.</p>
+<p>Det är därför värdefullt att fundera över sådana frågor redan vid designen av en undersökning eller datainsamling. I vissa fall kan det peka på behovet av ytterligare hjälpvariabler eller annan informationsinsamling. I andra fall kan det visa att vissa slutsatser helt enkelt inte kommer att vara möjliga att dra.</p>
+</section>
+<section id="avslutning" class="level2">
+<h2 class="anchored" data-anchor-id="avslutning">Avslutning</h2>
+<p>Ur ett DAG-perspektiv handlar representativitet därför mindre om huruvida ett urval är “bra” eller “dåligt”.</p>
+<p>Istället handlar det om vilka mekanismer som avgör vad som blir observerat och vilka beroenden dessa mekanismer skapar.</p>
+<p>Från ett DAG-perspektiv är representativitet därför främst en fråga om struktur: om selektionsmekanismen skapar beroenden mellan det vi vill veta något om och sannolikheten att observeras samt om dessa beroenden kan brytas med hjälp av observerad information.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
