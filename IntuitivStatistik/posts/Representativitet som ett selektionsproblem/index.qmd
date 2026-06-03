@@ -55,7 +55,7 @@ där $Z$ varken påverkar eller påverkas av utfallet $Y$ som vi är intresserad
 
 Då finns ingen väg mellan $S$ och $Y$.
 
-$$Y \perp\perp S$$
+$$Y \perp\!\!\!\perp S$$
 
 Trots att selektionen beror på $Z$ förändras inte fördelningen av $Y$.
 
