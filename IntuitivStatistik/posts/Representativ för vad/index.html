@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Christoffer Malmgren">
+<meta name="dcterms.date" content="2026-06-05">
 
-<title>Intuitiv Statistik</title>
+<title>Efter justeringen – hur kommer vi tillbaka till populationen? – Intuitiv Statistik</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +25,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,35 +69,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -129,17 +100,17 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Intuitiv Statistik</span>
     </a>
   </div>
@@ -150,7 +121,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">Om bloggen</span></a>
   </li>  
   <li class="nav-item compact">
@@ -176,250 +147,178 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Intuitiv Statistik</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta column-page-left">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(6)</span></div><div class="category" data-category="QW5hbHl0aXNrJTIwa2xhcmhldA==">Analytisk klarhet <span class="quarto-category-count">(3)</span></div><div class="category" data-category="QXJiZXRzcnV0aW5lcg==">Arbetsrutiner <span class="quarto-category-count">(3)</span></div><div class="category" data-category="REFH">DAG <span class="quarto-category-count">(3)</span></div><div class="category" data-category="R2l0">Git <span class="quarto-category-count">(2)</span></div><div class="category" data-category="TWV0YWRhdGE=">Metadata <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TW9kZWxsYmFzZXJhZCUyMGluZmVyZW5z">Modellbaserad inferens <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UmVwcmVzZW50YXRpdml0ZXQ=">Representativitet <span class="quarto-category-count">(2)</span></div><div class="category" data-category="U3RhdGlzdGlrcHJvZHVrdGlvbg==">Statistikproduktion <span class="quarto-category-count">(3)</span></div><div class="category" data-category="U3VydmV5c3RhdGlzdGlr">Surveystatistik <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Efter justeringen – hur kommer vi tillbaka till populationen?</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">DAG</div>
+    <div class="quarto-category">Analytisk klarhet</div>
+    <div class="quarto-category">Representativitet</div>
+    <div class="quarto-category">Surveystatistik</div>
+    <div class="quarto-category">Modellbaserad inferens</div>
+  </div>
+  </div>
 
 
 
+<div class="quarto-title-meta">
 
-
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="REFHJTJDQW5hbHl0aXNrJTIwa2xhcmhldCUyQ1JlcHJlc2VudGF0aXZpdGV0JTJDU3VydmV5c3RhdGlzdGlrJTJDTW9kZWxsYmFzZXJhZCUyMGluZmVyZW5z" data-listing-date-sort="1780610400000" data-listing-file-modified-sort="1780663352854" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="800">
-<div class="thumbnail"><a href="./posts/Representativ för vad/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/Representativ för vad/image.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Representativ för vad/index.html" class="no-external">Efter justeringen – hur kommer vi tillbaka till populationen?</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('REFH'); return false;">DAG</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QW5hbHl0aXNrJTIwa2xhcmhldA=='); return false;">Analytisk klarhet</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UmVwcmVzZW50YXRpdml0ZXQ='); return false;">Representativitet</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('U3VydmV5c3RhdGlzdGlr'); return false;">Surveystatistik</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('TW9kZWxsYmFzZXJhZCUyMGluZmVyZW5z'); return false;">Modellbaserad inferens</div>
-
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Christoffer Malmgren </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 5, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    Att justera för selektion kan göra observationer jämförbara, men det innebär inte automatiskt att vi återfår den population vi vill beskriva. I detta inlägg diskuteras hur vi går från att skapa oberoende till att dra inferens om den större populationen
+  </div>
 </div>
-<div class="delink listing-description"><a href="./posts/Representativ för vad/index.html" class="no-external">
-<p>Att justera för selektion kan göra observationer jämförbara, men det innebär inte automatiskt att vi återfår den population vi vill beskriva. I detta inlägg diskuteras hur vi går från att skapa oberoende till att dra inferens om den större populationen</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/Representativ för vad/index.html" class="no-external">
-<div class="listing-date">
-Jun 5, 2026
-</div>
-<div class="listing-author">
-Christoffer Malmgren
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="REFHJTJDQW5hbHl0aXNrJTIwa2xhcmhldCUyQ1JlcHJlc2VudGF0aXZpdGV0" data-listing-date-sort="1780437600000" data-listing-file-modified-sort="1780516755661" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1162">
-<div class="thumbnail"><a href="./posts/Representativitet som ett selektionsproblem/index.html" class="no-external">
 
-<img loading="lazy" src="./posts/Representativitet som ett selektionsproblem/image.jpg" class="thumbnail-image">
 
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Representativitet som ett selektionsproblem/index.html" class="no-external">Representativitet som ett selektionsproblem</a>
-</h3>
-<div class="listing-categories">
+</header>
 
-<div class="listing-category" onclick="window.quartoListingCategory('REFH'); return false;">DAG</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('QW5hbHl0aXNrJTIwa2xhcmhldA=='); return false;">Analytisk klarhet</div>
+<!--# läs in paket -->
+<section id="att-justera-för-selektion-är-inte-samma-sak-som-att-komma-tillbaka-till-populationen" class="level1">
+<h1>Att justera för selektion är inte samma sak som att komma tillbaka till populationen</h1>
+<p>I ett tidigare inlägg diskuterade jag hur DAGs kan användas för att resonera kring representativitet och selektion.</p>
+<p>En central idé var att selektion inte automatiskt skapar problem. Problemen uppstår när selektionsmekanismen är kopplad till den storhet vi vill dra slutsatser om.</p>
+<p>Men även om vi lyckas hantera den typen av beroenden återstår en viktig fråga:</p>
+<blockquote class="blockquote">
+<p>Hur kommer vi tillbaka till populationen?</p>
+</blockquote>
+<p>Det är det naturliga nästa steg.</p>
+<section id="ett-klassiskt-selektionsproblem" class="level2">
+<h2 class="anchored" data-anchor-id="ett-klassiskt-selektionsproblem">Ett klassiskt selektionsproblem</h2>
+<p>Anta att vi vill beskriva utfallet <span class="math inline">\(Y\)</span> i en population.</p>
+<p>Vi misstänker att selektionen ser ut enligt:</p>
+<p><span class="math display">\[Y \leftarrow Z \rightarrow S\]</span></p>
+<p>där:</p>
+<ul>
+<li><p><span class="math inline">\(Y\)</span> är utfallet vi är intresserade av</p></li>
+<li><p><span class="math inline">\(Z\)</span> är en observerad variabel</p></li>
+<li><p><span class="math inline">\(S\)</span> anger om observationen finns med i datamaterialet</p></li>
+</ul>
+<p>Villkorar vi på <span class="math inline">\(Z\)</span> skapar vi det oberoende vi är ute efter:</p>
+<p><span class="math display">\[Y \perp\!\!\!\perp S \mid Z\]</span></p>
+<p>När <span class="math inline">\(Z\)</span> är diskret kan detta tolkas som att de observerade individerna är representativa inom nivåer av <span class="math inline">\(Z\)</span> med avseende på <span class="math inline">\(Y\)</span>.</p>
+<p>Detta är ofta precis den grundprincip som ligger bakom bortfallsjusteringar, poststratifiering och många andra justeringsmetoder.</p>
+</section>
+<section id="problemet-är-bara-delvis-löst" class="level2">
+<h2 class="anchored" data-anchor-id="problemet-är-bara-delvis-löst">Problemet är bara delvis löst</h2>
+<p>Anta att målet är att beskriva följande i populationen:</p>
+<p><span class="math display">\[P(Y)\]</span></p>
+<p>Om vi villkorar på <span class="math inline">\(Z\)</span> och lyckas uppnå</p>
+<p><span class="math display">\[P(Y\mid Z,S=1)=P(Y\mid Z)\]</span></p>
+<p>har vi gjort selektionen ignorerbar givet <span class="math inline">\(Z\)</span>.</p>
+<p>Det innebär att vi kan beskriva hur <span class="math inline">\(Y\)</span> varierar mellan olika nivåer av <span class="math inline">\(Z\)</span> utan att selektionen snedvrider resultaten.</p>
+<p>Men det är fortfarande inte samma sak som att beskriva populationen som helhet.</p>
+<p>Enligt lagen om total sannolikhet gäller:</p>
+<p><span class="math display">\[P(Y) = \sum_z P(Y\mid Z=z)P(Z=z)\]</span></p>
+<p>För kontinuerliga variabler ersätts summan av en integral, men principen är densamma.</p>
+<p>För att återfå <span class="math inline">\(P(Y)\)</span> behöver vi därför två saker:</p>
+<ol type="1">
+<li><p>Hur <span class="math inline">\(Y\)</span> ser ut inom nivåer av <span class="math inline">\(Z\)</span>.</p></li>
+<li><p>Hur <span class="math inline">\(Z\)</span> är fördelad i den population vi vill beskriva.</p></li>
+</ol>
+<p>Den första delen kan vi uppskatta från våra observerade data.</p>
+<p>Den andra kräver information om populationen.</p>
+<p>Om vi istället väger samman resultaten med den observerade fördelningen</p>
+<p><span class="math display">\[P(Z\mid S=1)\]</span></p>
+<p>får vi</p>
+<p><span class="math display">\[\sum_z P(Y\mid Z=z)P(Z=z\mid S=1) = P(Y\mid S=1)\]</span></p>
+<p>Vi har då inte återfått populationsfördelningen utan endast återskapat den observerade urvalsfördelningen.</p>
+<p>Skillnaden ligger alltså inte i hur vi beskriver <span class="math inline">\(Y\)</span> inom nivåer av <span class="math inline">\(Z\)</span>, utan i vilken fördelning av <span class="math inline">\(Z\)</span> vi väger samman resultaten med.</p>
+<p>Detta är precis anledningen till att vikter, kalibrering och poststratifiering ofta behövs även när selektionsmekanismen är väl förstådd.</p>
+<section id="ett-enkelt-exempel" class="level3">
+<h3 class="anchored" data-anchor-id="ett-enkelt-exempel">Ett enkelt exempel</h3>
+<p>Anta att yngre personer svarar mer sällan på en undersökning.</p>
+<p>Om vi för enkelhetens skull antar att de svarande inom varje åldersgrupp är representativa med avseende på <span class="math inline">\(Y\)</span>, kan vi identifiera</p>
+<p><span class="math display">\[P(Y\mid Ålder)\]</span></p>
+<p>Men om målet är att skatta ett populationsmedelvärde, en total eller en andel kan vi inte nöja oss med detta om urvalets åldersfördelningen skiljer sig från populationens.</p>
+<p>För att återställa representativiteten behöver vi också veta hur ålder är fördelad i populationen.</p>
+<p>Det är precis detta som vikter, kalibrering och poststratifiering försöker åstadkomma.</p>
+</section>
+</section>
+<section id="representativ-för-vad" class="level2">
+<h2 class="anchored" data-anchor-id="representativ-för-vad">Representativ för vad?</h2>
+<p>Diskussionen hittills har utgått från att målet varit att beskriva</p>
+<p><span class="math display">\[
+P(Y).
+\]</span></p>
+<p>Men det är långt ifrån den enda statistiska fråga man kan vara intresserad av.</p>
+<p>I många analyser är målet istället att beskriva hur utfallet varierar mellan grupper eller bakgrundsvariabler, exempelvis</p>
+<p><span class="math display">\[
+P(Y\mid X).
+\]</span></p>
+<p>Det leder till en viktig fråga:</p>
+<blockquote class="blockquote">
+<p>Vilken information krävs för att identifiera just det estimand vi är intresserade av?</p>
+</blockquote>
+<p>Om målet är <span class="math inline">\(P(Y)\)</span> behöver vi kunna marginalisera över populationens fördelning av de variabler som krävs för att göra selektionen ignorerbar.</p>
+<p>Vilken fördelning vi behöver marginalisera över beror därför på vad vi vill skatta.</p>
+<p>Men om målet istället är</p>
+<p><span class="math display">\[P(Y\mid X)\]</span></p>
+<p>kan situationen se annorlunda ut.</p>
+<p>Vi kanske fortfarande behöver justera för <span class="math inline">\(Z\)</span> för att hantera selektionen, men vårt slutliga mål är inte längre att beskriva variationen mellan nivåer av <span class="math inline">\(Z\)</span>.</p>
+<p>I stället behöver vi identifiera</p>
+<p><span class="math display">\[P(Y\mid X,Z)\]</span></p>
+<p>och därefter marginalisera över <span class="math inline">\(Z\)</span> inom nivåer av <span class="math inline">\(X\)</span>: <span class="math display">\[
+P(Y \mid X)=\sum_z P(Y\mid X,Z=z)P(Z=z\mid X).
+\]</span></p>
+<p>De variabler som krävs för att hantera selektion är alltså inte nödvändigtvis samma variabler som ingår i det slutliga estimandet.</p>
+<p>I praktiken innebär det att vi ibland behöver justera för fler variabler än de vi slutligen vill rapportera resultat för.</p>
+<p>Samma datamaterial kan därför vara tillräckligt för att identifiera vissa storheter men otillräckligt för andra.</p>
+<p>Vi kan exempelvis ha tillräcklig information för att identifiera</p>
+<p><span class="math display">\[
+P(Y\mid X)
+\]</span></p>
+<p>men sakna den populationsinformation som krävs för att återställa</p>
+<p><span class="math display">\[
+P(Y).
+\]</span></p>
+<p>Omvänt kan vi ibland kunna skatta ett populationsmedelvärde eller en total, men sakna tillräcklig information för att beskriva hur utfallet varierar med en viss bakgrundsvariabel.</p>
+<p>Representativitet är därför inte en generell egenskap hos ett urval.</p>
+<p>Representativitet måste alltid bedömas i relation till den fråga vi vill besvara.</p>
+</section>
+<section id="kärninsikten" class="level2">
+<h2 class="anchored" data-anchor-id="kärninsikten">Kärninsikten</h2>
+<p>En stor del av representativitetsproblemet kan sammanfattas i två separata steg:</p>
+<ol type="1">
+<li><p>Göra selektionen ignorerbar.</p></li>
+<li><p>Återställa det estimand vi vill skatta.</p></li>
+</ol>
+<p>Det första handlar om att skapa jämförbarhet mellan observerade och oobserverade enheter.</p>
+<p>Det andra handlar om att väga samman information på ett sätt som motsvarar den population vi vill beskriva eller mer generellt väga samman information på ett sätt som motsvarar det vi vill skatta.</p>
+<p>Att förstå selektionsmekanismen är därför ofta nödvändigt, men sällan tillräckligt.</p>
+<p>Vi behöver också veta hur de variabler som driver selektionen är fördelade i den population som vårt estimand avser.</p>
+<p>Det är först då vi kan ta steget från justering till populationsinferens.</p>
 
-<div class="listing-category" onclick="window.quartoListingCategory('UmVwcmVzZW50YXRpdml0ZXQ='); return false;">Representativitet</div>
 
-</div>
-<div class="delink listing-description"><a href="./posts/Representativitet som ett selektionsproblem/index.html" class="no-external">
-<p>Representativitet beskrivs ofta som en egenskap hos ett urval. Med hjälp av DAGs kan frågan istället formuleras som ett selektionsproblem. I denna del introduceras selektionsnoden S och hur beroenden mellan utfall och selektionsmekanismer kan användas för att förstå när inferens är möjlig, när justering kan hjälpa och när information gått förlorad.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/Representativitet som ett selektionsproblem/index.html" class="no-external">
-<div class="listing-date">
-Jun 3, 2026
-</div>
-<div class="listing-author">
-Christoffer Malmgren
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="REFHJTJDQW5hbHl0aXNrJTIwa2xhcmhldA==" data-listing-date-sort="1779919200000" data-listing-file-modified-sort="1780515850468" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1197">
-<div class="thumbnail"><a href="./posts/DAGs som analytiskt ramverk/index.html" class="no-external">
+</section>
+</section>
 
-<img loading="lazy" src="./posts/DAGs som analytiskt ramverk/image.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/DAGs som analytiskt ramverk/index.html" class="no-external">DAGs som analytiskt ramverk</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('REFH'); return false;">DAG</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QW5hbHl0aXNrJTIwa2xhcmhldA=='); return false;">Analytisk klarhet</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/DAGs som analytiskt ramverk/index.html" class="no-external">
-<p>DAGs (Directed Acyclic Graphs) används ofta inom kausal inferens, men deras värde sträcker sig långt bortom kausalitet. Här lyfter jag DAGs som ett analytiskt ramverk för att strukturera antaganden, förstå statistiska samband och resonera kring vilka slutsatser data faktiskt kan stödja.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/DAGs som analytiskt ramverk/index.html" class="no-external">
-<div class="listing-date">
-May 28, 2026
-</div>
-<div class="listing-author">
-Christoffer Malmgren
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="TWV0YWRhdGElMkNTdGF0aXN0aWtwcm9kdWt0aW9uJTJDQXJiZXRzcnV0aW5lcg==" data-listing-date-sort="1771801200000" data-listing-file-modified-sort="1771917786885" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1059">
-<div class="thumbnail"><a href="./posts/Metadata/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/Metadata/image.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Metadata/index.html" class="no-external">Metadata: före eller efter?</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('TWV0YWRhdGE='); return false;">Metadata</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('U3RhdGlzdGlrcHJvZHVrdGlvbg=='); return false;">Statistikproduktion</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QXJiZXRzcnV0aW5lcg=='); return false;">Arbetsrutiner</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/Metadata/index.html" class="no-external">
-<p>Mina tankar kring metadatadokumentering och metadatastyrning</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/Metadata/index.html" class="no-external">
-<div class="listing-date">
-Feb 23, 2026
-</div>
-<div class="listing-author">
-Christoffer Malmgren
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="R2l0JTJDU3RhdGlzdGlrcHJvZHVrdGlvbiUyQ0FyYmV0c3J1dGluZXI=" data-listing-date-sort="1770591600000" data-listing-file-modified-sort="1770618834107" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="613">
-<div class="thumbnail"><a href="./posts/Git (del 1)/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/Git (del 1)/image.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Git (del 1)/index.html" class="no-external">Git (del 1)</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('R2l0'); return false;">Git</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('U3RhdGlzdGlrcHJvZHVrdGlvbg=='); return false;">Statistikproduktion</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QXJiZXRzcnV0aW5lcg=='); return false;">Arbetsrutiner</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/Git (del 1)/index.html" class="no-external">
-<p>Den första delen om Git där jag förklarar nyttan av Git i statistikproduktion</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/Git (del 1)/index.html" class="no-external">
-<div class="listing-date">
-Feb 9, 2026
-</div>
-<div class="listing-author">
-Christoffer Malmgren
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="R2l0JTJDU3RhdGlzdGlrcHJvZHVrdGlvbiUyQ0FyYmV0c3J1dGluZXI=" data-listing-date-sort="1770591600000" data-listing-file-modified-sort="1770618857145" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1105">
-<div class="thumbnail"><a href="./posts/Git (del 2)/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/Git (del 2)/image.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Git (del 2)/index.html" class="no-external">Git (del 2)</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('R2l0'); return false;">Git</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('U3RhdGlzdGlrcHJvZHVrdGlvbg=='); return false;">Statistikproduktion</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QXJiZXRzcnV0aW5lcg=='); return false;">Arbetsrutiner</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/Git (del 2)/index.html" class="no-external">
-<p>Den andra delen om Git där jag förklarar grundläggande men tillräcklig syntax för att börja med Git.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/Git (del 2)/index.html" class="no-external">
-<div class="listing-date">
-Feb 9, 2026
-</div>
-<div class="listing-author">
-Christoffer Malmgren
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

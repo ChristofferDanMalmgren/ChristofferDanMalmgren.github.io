@@ -1,0 +1,197 @@
+---
+title: "Efter justeringen – hur kommer vi tillbaka till populationen?"
+author: "Christoffer Malmgren"
+date: "2026-06-05"
+categories: [DAG, Analytisk klarhet, Representativitet, Surveystatistik, Modellbaserad inferens]
+image: "image.jpg"
+abstract: "Att justera för selektion kan göra observationer jämförbara, men det innebär inte automatiskt att vi återfår den population vi vill beskriva. I detta inlägg diskuteras hur vi går från att skapa oberoende till att dra inferens om den större populationen"
+---
+
+<!--# läs in paket -->
+
+```{r}
+#| echo: false
+#| output: false
+library(ggdag)
+library(ggplot2)
+library(tidyverse)
+```
+
+# Att justera för selektion är inte samma sak som att komma tillbaka till populationen
+
+I ett tidigare inlägg diskuterade jag hur DAGs kan användas för att resonera kring representativitet och selektion.
+
+En central idé var att selektion inte automatiskt skapar problem. Problemen uppstår när selektionsmekanismen är kopplad till den storhet vi vill dra slutsatser om.
+
+Men även om vi lyckas hantera den typen av beroenden återstår en viktig fråga:
+
+> Hur kommer vi tillbaka till populationen?
+
+Det är det naturliga nästa steg.
+
+## Ett klassiskt selektionsproblem
+
+Anta att vi vill beskriva utfallet $Y$ i en population.
+
+Vi misstänker att selektionen ser ut enligt:
+
+$$Y \leftarrow Z \rightarrow S$$
+
+där:
+
+-   $Y$ är utfallet vi är intresserade av
+
+-   $Z$ är en observerad variabel
+
+-   $S$ anger om observationen finns med i datamaterialet
+
+Villkorar vi på $Z$ skapar vi det oberoende vi är ute efter:
+
+$$Y \perp\!\!\!\perp S \mid Z$$
+
+När $Z$ är diskret kan detta tolkas som att de observerade individerna är representativa inom nivåer av $Z$ med avseende på $Y$.
+
+Detta är ofta precis den grundprincip som ligger bakom bortfallsjusteringar, poststratifiering och många andra justeringsmetoder.
+
+## Problemet är bara delvis löst
+
+Anta att målet är att beskriva följande i populationen:
+
+$$P(Y)$$
+
+Om vi villkorar på $Z$ och lyckas uppnå
+
+$$P(Y\mid Z,S=1)=P(Y\mid Z)$$
+
+har vi gjort selektionen ignorerbar givet $Z$.
+
+Det innebär att vi kan beskriva hur $Y$ varierar mellan olika nivåer av $Z$ utan att selektionen snedvrider resultaten.
+
+Men det är fortfarande inte samma sak som att beskriva populationen som helhet.
+
+Enligt lagen om total sannolikhet gäller:
+
+$$P(Y) = \sum_z P(Y\mid Z=z)P(Z=z)$$
+
+För kontinuerliga variabler ersätts summan av en integral, men principen är densamma.
+
+För att återfå $P(Y)$ behöver vi därför två saker:
+
+1.   Hur $Y$ ser ut inom nivåer av $Z$.
+
+2.   Hur $Z$ är fördelad i den population vi vill beskriva.
+
+Den första delen kan vi uppskatta från våra observerade data.
+
+Den andra kräver information om populationen.
+
+Om vi istället väger samman resultaten med den observerade fördelningen
+
+$$P(Z\mid S=1)$$
+
+får vi
+
+$$\sum_z P(Y\mid Z=z)P(Z=z\mid S=1) = P(Y\mid S=1)$$
+
+Vi har då inte återfått populationsfördelningen utan endast återskapat den observerade urvalsfördelningen.
+
+Skillnaden ligger alltså inte i hur vi beskriver $Y$ inom nivåer av $Z$, utan i vilken fördelning av $Z$ vi väger samman resultaten med.
+
+Detta är precis anledningen till att vikter, kalibrering och poststratifiering ofta behövs även när selektionsmekanismen är väl förstådd.
+
+### Ett enkelt exempel
+
+Anta att yngre personer svarar mer sällan på en undersökning.
+
+Om vi för enkelhetens skull antar att de svarande inom varje åldersgrupp är representativa med avseende på $Y$, kan vi identifiera
+
+$$P(Y\mid Ålder)$$
+
+Men om målet är att skatta ett populationsmedelvärde, en total eller en andel kan vi inte nöja oss med detta om urvalets åldersfördelningen skiljer sig från populationens.
+
+För att återställa representativiteten behöver vi också veta hur ålder är fördelad i populationen.
+
+Det är precis detta som vikter, kalibrering och poststratifiering försöker åstadkomma.
+
+## Representativ för vad?
+
+Diskussionen hittills har utgått från att målet varit att beskriva
+
+$$
+P(Y).
+$$
+
+Men det är långt ifrån den enda statistiska fråga man kan vara intresserad av.
+
+I många analyser är målet istället att beskriva hur utfallet varierar mellan grupper eller bakgrundsvariabler, exempelvis
+
+$$
+P(Y\mid X).
+$$
+
+Det leder till en viktig fråga:
+
+> Vilken information krävs för att identifiera just det estimand vi är intresserade av?
+
+Om målet är $P(Y)$ behöver vi kunna marginalisera över populationens fördelning av de variabler som krävs för att göra selektionen ignorerbar.
+
+Vilken fördelning vi behöver marginalisera över beror därför på vad vi vill skatta.
+
+Men om målet istället är
+
+$$P(Y\mid X)$$
+
+kan situationen se annorlunda ut.
+
+Vi kanske fortfarande behöver justera för $Z$ för att hantera selektionen, men vårt slutliga mål är inte längre att beskriva variationen mellan nivåer av $Z$.
+
+I stället behöver vi identifiera
+
+$$P(Y\mid X,Z)$$
+
+och därefter marginalisera över $Z$ inom nivåer av $X$:
+$$
+P(Y \mid X)=\sum_z P(Y\mid X,Z=z)P(Z=z\mid X).
+$$
+
+De variabler som krävs för att hantera selektion är alltså inte nödvändigtvis samma variabler som ingår i det slutliga estimandet.
+
+I praktiken innebär det att vi ibland behöver justera för fler variabler än de vi slutligen vill rapportera resultat för.
+
+Samma datamaterial kan därför vara tillräckligt för att identifiera vissa storheter men otillräckligt för andra.
+
+Vi kan exempelvis ha tillräcklig information för att identifiera
+
+$$
+P(Y\mid X)
+$$
+
+men sakna den populationsinformation som krävs för att återställa
+
+$$
+P(Y).
+$$
+
+Omvänt kan vi ibland kunna skatta ett populationsmedelvärde eller en total, men sakna tillräcklig information för att beskriva hur utfallet varierar med en viss bakgrundsvariabel.
+
+Representativitet är därför inte en generell egenskap hos ett urval.
+
+Representativitet måste alltid bedömas i relation till den fråga vi vill besvara.
+
+## Kärninsikten
+
+En stor del av representativitetsproblemet kan sammanfattas i två separata steg:
+
+1.  Göra selektionen ignorerbar.
+
+2.  Återställa det estimand vi vill skatta.
+
+Det första handlar om att skapa jämförbarhet mellan observerade och oobserverade enheter.
+
+Det andra handlar om att väga samman information på ett sätt som motsvarar den population vi vill beskriva eller mer generellt väga samman information på ett sätt som motsvarar det vi vill skatta.
+
+Att förstå selektionsmekanismen är därför ofta nödvändigt, men sällan tillräckligt.
+
+Vi behöver också veta hur de variabler som driver selektionen är fördelade i den population som vårt estimand avser.
+
+Det är först då vi kan ta steget från justering till populationsinferens.
