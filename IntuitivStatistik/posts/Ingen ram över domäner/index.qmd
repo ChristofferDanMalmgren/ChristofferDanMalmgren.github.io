@@ -1,0 +1,266 @@
+---
+title: "Ingen ram över domäner: ett problem?"
+author: "Christoffer Malmgren"
+date: "2026-06-15"
+categories: [Analytisk klarhet, Representativitet, Bortfall, Hjälpinformation, DAG]
+image: "image.jpg"
+abstract: "Domänanalyser är vanliga i surveyundersökningar, men ofta saknas information om domänens storlek eller sammansättning i populationen. Betyder det att representativa skattningar är omöjliga? I detta inlägg diskuteras hur kraven för att skatta gruppstorlekar skiljer sig från kraven för att skatta domänmedelvärden, och varför samma hjälpinformation kan vara tillräcklig för det ena men inte det andra."
+---
+
+<!--# läs in paket -->
+
+```{r}
+#| echo: false
+#| output: false
+library(ggdag)
+library(ggplot2)
+library(tidyverse)
+```
+
+# När domänen inte finns identifierad i ramen – vad krävs egentligen för representativitet?
+
+I tidigare inlägg har jag argumenterat för att representativitet alltid måste relateras till det statistiska mål vi vill beskriva.
+
+Det gäller även när vi vill uttala oss om en delmängd av populationen.
+
+I surveyundersökningar kallas sådana delmängder ofta för **domäner**.
+
+Exempel kan vara:
+
+-   personer med en viss sjukdom,
+-   arbetslösa,
+-   personer med utländsk bakgrund,
+-   personer med låg tillit till samhället.
+
+Ofta har undersökningen inte planerats specifikt för dessa grupper.
+
+Urvalet har dragits från hela populationen.
+
+Kalibreringen har gjorts mot totaler för hela populationen.
+
+Och vi kanske inte ens känner domänens storlek i populationen.
+
+Ändå vill vi gärna uttala oss om gruppen.
+
+Hur är det möjligt?
+
+## En naturlig oro
+
+Anta att vi vill beskriva ett utfall (Y) inom gruppen (G=1).
+
+Exempelvis
+
+$$
+E(Y\mid G=1).
+$$
+
+En naturlig oro är att personer i gruppen svarar mer sällan än övriga populationen.
+
+Om det stämmer riskerar gruppen att vara underrepresenterad bland respondenterna.
+
+Problemet är att vi sällan känner grupptillhörigheten för bortfallet.
+
+Vi vet vilka svarande som tillhör gruppen.
+
+Men vi vet vanligtvis inte vilka bortfallspersoner som skulle ha gjort det.
+
+Det är därför frestande att tänka:
+
+> Om vi inte känner gruppens storlek eller sammansättning i populationen, hur kan vi då veta att skattningen är representativ?
+
+## Är det verkligen gruppen som driver bortfallet?
+
+Låt oss fundera ett steg till.
+
+Anta att gruppen i genomsnitt:
+
+-   är yngre,
+-   har lägre utbildning,
+-   har lägre inkomster,
+-   oftare består av män.
+
+Låt dessa variabler sammanfattas av (X).
+
+Då skulle situationen kunna beskrivas av exempelvis
+
+$$
+G \rightarrow X \rightarrow R
+$$
+
+eller
+
+$$
+G \leftarrow X \rightarrow R
+$$
+
+där (R) anger om individen svarar.
+
+I båda fallen är det inte grupptillhörigheten i sig som påverkar svarssannolikheten.
+
+Skillnaden uppstår därför att gruppen har en annan sammansättning med avseende på (X), och att (X) i sin tur påverkar sannolikheten att svara.
+
+Det som ser ut som ett gruppspecifikt bortfall kan alltså i själva verket vara ett bortfall som drivs av demografiska faktorer eller annan hjälpinformation.
+
+Om detta är en rimlig beskrivning är det (X) vi bör justera för snarare än gruppen själv.
+
+## Två olika mål
+
+Nu kommer den viktiga poängen.
+
+Vilka antaganden som krävs beror på vad vi försöker skatta.
+
+### Gruppens storlek
+
+Anta först att vi vill veta hur stor gruppen är i populationen:
+
+$$
+P(G=1).
+$$
+
+Då är grupptillhörigheten själv utfallet.
+
+För att kunna identifiera gruppens storlek behöver vi säkerställa att grupperna är representativa efter justering.
+
+Ett naturligt villkor är
+
+$$
+G \perp R \mid X.
+$$
+
+När vi jämför personer med samma värden på (X) ska svarssannolikheten inte bero på grupptillhörighet.
+
+Om detta inte gäller riskerar gruppstorleken att bli snedskattad.
+
+### Domänmedelvärdet
+
+Anta istället att vi vill beskriva
+
+$$
+E(Y\mid G=1).
+$$
+
+Nu är det inte gruppstorleken som är målet.
+
+Vi vill beskriva utfallet inom gruppen.
+
+Ett naturligt antagande är då
+
+$$
+Y \perp R \mid X,G.
+$$
+
+Det innebär att när vi jämför personer med samma värden på (X) inom samma grupp så innehåller svarsmekanismen ingen ytterligare information om (Y).
+
+Om detta gäller kan vi skriva
+
+$$ E(Y\mid G=1) =
+
+\sum_x E(Y\mid X=x,G=1) P(X=x\mid G=1). $$
+
+Problemet är att detta kräver kunskap om fördelningen
+
+$$
+P(X\mid G=1)
+$$
+
+i populationen.
+
+I många praktiska situationer känner vi inte till den.
+
+Vi känner kanske inte ens gruppens storlek.
+
+### Ett starkare antagande
+
+Anta nu istället att vi kan göra det starkare antagandet
+
+$$
+Y \perp R \mid X.
+$$
+
+Det innebär att när vi väl känner till (X) spelar grupptillhörigheten ingen ytterligare roll för relationen mellan bortfall och utfall.
+
+Då följer automatiskt att
+
+$$
+Y \perp R \mid X,G.
+$$
+
+I detta fall räcker det att återställa populationens fördelning av (X).
+
+Vi behöver inte känna till domänens storlek.
+
+Vi behöver inte heller känna till domänens egen fördelning av (X).
+
+Det räcker att de variabler som driver både bortfall och utfall finns representerade i (X).
+
+Detta är egentligen den mest intressanta poängen.
+
+Många tänker spontant:
+
+> Om gruppen har en annan åldersfördelning än populationen måste vi känna gruppens åldersfördelning.
+
+Men det följer inte nödvändigtvis.
+
+Skillnaden mellan grupperna kan vara hur stor som helst.
+
+Kalibreringen försöker inte göra grupperna lika.
+
+Kalibreringen försöker göra bortfallet ignorerbart.
+
+## Men gruppen har ju en annan fördelning av X?
+
+Här dyker ofta nästa invändning upp.
+
+Om gruppen har en annan åldersfördelning, utbildningsfördelning eller inkomstfördelning än populationen i stort – varför skulle kalibrering mot populationens totaler hjälpa?
+
+Svaret är att vi inte försöker göra gruppen identisk med populationen.
+
+Tvärtom.
+
+Gruppen kan mycket väl skilja sig kraftigt från populationen.
+
+Efter kalibrering kan grupperna fortfarande ha helt olika sammansättning.
+
+Det är inte ett problem.
+
+Poängen med hjälpinformationen är istället att hantera de mekanismer som skapar bortfall.
+
+Om bortfallet i huvudsak drivs av (X) kan information om populationens fördelning av (X) hjälpa oss att återställa representativiteten även för analyser inom domänen.
+
+## Designen spelar också roll
+
+Ytterligare en komplikation är att urvalsdesignen själv kan förändra fördelningarna.
+
+Vi kanske har:
+
+-   oproportionell stratifiering,
+-   översampling av vissa grupper,
+-   olika inklusionssannolikheter mellan regioner.
+
+Urvalet behöver då inte likna ett obundet slumpmässigt urval.
+
+Vikter används därför inte bara för att hantera bortfall.
+
+De används också för att återställa de fördelningar som designen förändrat.
+
+När vi analyserar en domän arbetar vi därför ofta med ett urval vars sammansättning redan korrigerats för både design och bortfall.
+
+## Kärninsikten
+
+När vi analyserar en domän utan kända domäntotaler är den första frågan inte:
+
+> Är gruppen representativ?
+
+Den första frågan är:
+
+> Vilken parameter försöker vi skatta?
+
+För att skatta gruppstorlekar krävs antaganden om hur grupptillhörigheten relaterar till bortfallet.
+
+För att skatta domänmedelvärden krävs istället antaganden om hur utfallet relaterar till bortfallet.
+
+Det är därför samma hjälpinformation kan vara fullt tillräcklig för ett domänmedelvärde men otillräcklig för att skatta gruppens storlek.
+
+Och det är ännu ett exempel på en mer generell princip:
+
+> Representativitet är inte en egenskap hos datamaterialet i sig. Representativitet måste alltid bedömas i relation till det estimand vi vill identifiera.

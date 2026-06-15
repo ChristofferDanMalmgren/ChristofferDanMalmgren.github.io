@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Christoffer Malmgren">
+<meta name="dcterms.date" content="2026-06-15">
 
-<title>Intuitiv Statistik</title>
+<title>Ingen ram över domäner: ett problem? – Intuitiv Statistik</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +25,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,35 +69,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -129,17 +100,17 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Intuitiv Statistik</span>
     </a>
   </div>
@@ -150,7 +121,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">Om bloggen</span></a>
   </li>  
   <li class="nav-item compact">
@@ -176,288 +147,236 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Intuitiv Statistik</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta column-page-left">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(7)</span></div><div class="category" data-category="QW5hbHl0aXNrJTIwa2xhcmhldA==">Analytisk klarhet <span class="quarto-category-count">(4)</span></div><div class="category" data-category="QXJiZXRzcnV0aW5lcg==">Arbetsrutiner <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Qm9ydGZhbGw=">Bortfall <span class="quarto-category-count">(1)</span></div><div class="category" data-category="REFH">DAG <span class="quarto-category-count">(4)</span></div><div class="category" data-category="R2l0">Git <span class="quarto-category-count">(2)</span></div><div class="category" data-category="SGolQzMlQTRscGluZm9ybWF0aW9u">Hjälpinformation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TWV0YWRhdGE=">Metadata <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TW9kZWxsYmFzZXJhZCUyMGluZmVyZW5z">Modellbaserad inferens <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UmVwcmVzZW50YXRpdml0ZXQ=">Representativitet <span class="quarto-category-count">(3)</span></div><div class="category" data-category="U3RhdGlzdGlrcHJvZHVrdGlvbg==">Statistikproduktion <span class="quarto-category-count">(3)</span></div><div class="category" data-category="U3VydmV5c3RhdGlzdGlr">Surveystatistik <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Ingen ram över domäner: ett problem?</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Analytisk klarhet</div>
+    <div class="quarto-category">Representativitet</div>
+    <div class="quarto-category">Bortfall</div>
+    <div class="quarto-category">Hjälpinformation</div>
+    <div class="quarto-category">DAG</div>
+  </div>
+  </div>
 
 
 
+<div class="quarto-title-meta">
 
-
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="QW5hbHl0aXNrJTIwa2xhcmhldCUyQ1JlcHJlc2VudGF0aXZpdGV0JTJDQm9ydGZhbGwlMkNIaiVDMyVBNGxwaW5mb3JtYXRpb24lMkNEQUc=" data-listing-date-sort="1781474400000" data-listing-file-modified-sort="1781507418435" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="884">
-<div class="thumbnail"><a href="./posts/Ingen ram över domäner/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/Ingen ram över domäner/image.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Ingen ram över domäner/index.html" class="no-external">Ingen ram över domäner: ett problem?</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('QW5hbHl0aXNrJTIwa2xhcmhldA=='); return false;">Analytisk klarhet</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UmVwcmVzZW50YXRpdml0ZXQ='); return false;">Representativitet</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Qm9ydGZhbGw='); return false;">Bortfall</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('SGolQzMlQTRscGluZm9ybWF0aW9u'); return false;">Hjälpinformation</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('REFH'); return false;">DAG</div>
-
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Christoffer Malmgren </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 15, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    Domänanalyser är vanliga i surveyundersökningar, men ofta saknas information om domänens storlek eller sammansättning i populationen. Betyder det att representativa skattningar är omöjliga? I detta inlägg diskuteras hur kraven för att skatta gruppstorlekar skiljer sig från kraven för att skatta domänmedelvärden, och varför samma hjälpinformation kan vara tillräcklig för det ena men inte det andra.
+  </div>
 </div>
-<div class="delink listing-description"><a href="./posts/Ingen ram över domäner/index.html" class="no-external">
-<p>Domänanalyser är vanliga i surveyundersökningar, men ofta saknas information om domänens storlek eller sammansättning i populationen. Betyder det att representativa skattningar är omöjliga? I detta inlägg diskuteras hur kraven för att skatta gruppstorlekar skiljer sig från kraven för att skatta domänmedelvärden, och varför samma hjälpinformation kan vara tillräcklig för det ena men inte det andra.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/Ingen ram över domäner/index.html" class="no-external">
-<div class="listing-date">
-Jun 15, 2026
-</div>
-<div class="listing-author">
-Christoffer Malmgren
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="REFHJTJDQW5hbHl0aXNrJTIwa2xhcmhldCUyQ1JlcHJlc2VudGF0aXZpdGV0JTJDU3VydmV5c3RhdGlzdGlrJTJDTW9kZWxsYmFzZXJhZCUyMGluZmVyZW5z" data-listing-date-sort="1780610400000" data-listing-file-modified-sort="1780663352854" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="800">
-<div class="thumbnail"><a href="./posts/Representativ för vad/index.html" class="no-external">
 
-<img loading="lazy" src="./posts/Representativ för vad/image.jpg" class="thumbnail-image">
 
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Representativ för vad/index.html" class="no-external">Efter justeringen – hur kommer vi tillbaka till populationen?</a>
-</h3>
-<div class="listing-categories">
+</header>
 
-<div class="listing-category" onclick="window.quartoListingCategory('REFH'); return false;">DAG</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('QW5hbHl0aXNrJTIwa2xhcmhldA=='); return false;">Analytisk klarhet</div>
+<!--# läs in paket -->
+<section id="när-domänen-inte-finns-identifierad-i-ramen-vad-krävs-egentligen-för-representativitet" class="level1">
+<h1>När domänen inte finns identifierad i ramen – vad krävs egentligen för representativitet?</h1>
+<p>I tidigare inlägg har jag argumenterat för att representativitet alltid måste relateras till det statistiska mål vi vill beskriva.</p>
+<p>Det gäller även när vi vill uttala oss om en delmängd av populationen.</p>
+<p>I surveyundersökningar kallas sådana delmängder ofta för <strong>domäner</strong>.</p>
+<p>Exempel kan vara:</p>
+<ul>
+<li>personer med en viss sjukdom,</li>
+<li>arbetslösa,</li>
+<li>personer med utländsk bakgrund,</li>
+<li>personer med låg tillit till samhället.</li>
+</ul>
+<p>Ofta har undersökningen inte planerats specifikt för dessa grupper.</p>
+<p>Urvalet har dragits från hela populationen.</p>
+<p>Kalibreringen har gjorts mot totaler för hela populationen.</p>
+<p>Och vi kanske inte ens känner domänens storlek i populationen.</p>
+<p>Ändå vill vi gärna uttala oss om gruppen.</p>
+<p>Hur är det möjligt?</p>
+<section id="en-naturlig-oro" class="level2">
+<h2 class="anchored" data-anchor-id="en-naturlig-oro">En naturlig oro</h2>
+<p>Anta att vi vill beskriva ett utfall (Y) inom gruppen (G=1).</p>
+<p>Exempelvis</p>
+<p><span class="math display">\[
+E(Y\mid G=1).
+\]</span></p>
+<p>En naturlig oro är att personer i gruppen svarar mer sällan än övriga populationen.</p>
+<p>Om det stämmer riskerar gruppen att vara underrepresenterad bland respondenterna.</p>
+<p>Problemet är att vi sällan känner grupptillhörigheten för bortfallet.</p>
+<p>Vi vet vilka svarande som tillhör gruppen.</p>
+<p>Men vi vet vanligtvis inte vilka bortfallspersoner som skulle ha gjort det.</p>
+<p>Det är därför frestande att tänka:</p>
+<blockquote class="blockquote">
+<p>Om vi inte känner gruppens storlek eller sammansättning i populationen, hur kan vi då veta att skattningen är representativ?</p>
+</blockquote>
+</section>
+<section id="är-det-verkligen-gruppen-som-driver-bortfallet" class="level2">
+<h2 class="anchored" data-anchor-id="är-det-verkligen-gruppen-som-driver-bortfallet">Är det verkligen gruppen som driver bortfallet?</h2>
+<p>Låt oss fundera ett steg till.</p>
+<p>Anta att gruppen i genomsnitt:</p>
+<ul>
+<li>är yngre,</li>
+<li>har lägre utbildning,</li>
+<li>har lägre inkomster,</li>
+<li>oftare består av män.</li>
+</ul>
+<p>Låt dessa variabler sammanfattas av (X).</p>
+<p>Då skulle situationen kunna beskrivas av exempelvis</p>
+<p><span class="math display">\[
+G \rightarrow X \rightarrow R
+\]</span></p>
+<p>eller</p>
+<p><span class="math display">\[
+G \leftarrow X \rightarrow R
+\]</span></p>
+<p>där (R) anger om individen svarar.</p>
+<p>I båda fallen är det inte grupptillhörigheten i sig som påverkar svarssannolikheten.</p>
+<p>Skillnaden uppstår därför att gruppen har en annan sammansättning med avseende på (X), och att (X) i sin tur påverkar sannolikheten att svara.</p>
+<p>Det som ser ut som ett gruppspecifikt bortfall kan alltså i själva verket vara ett bortfall som drivs av demografiska faktorer eller annan hjälpinformation.</p>
+<p>Om detta är en rimlig beskrivning är det (X) vi bör justera för snarare än gruppen själv.</p>
+</section>
+<section id="två-olika-mål" class="level2">
+<h2 class="anchored" data-anchor-id="två-olika-mål">Två olika mål</h2>
+<p>Nu kommer den viktiga poängen.</p>
+<p>Vilka antaganden som krävs beror på vad vi försöker skatta.</p>
+<section id="gruppens-storlek" class="level3">
+<h3 class="anchored" data-anchor-id="gruppens-storlek">Gruppens storlek</h3>
+<p>Anta först att vi vill veta hur stor gruppen är i populationen:</p>
+<p><span class="math display">\[
+P(G=1).
+\]</span></p>
+<p>Då är grupptillhörigheten själv utfallet.</p>
+<p>För att kunna identifiera gruppens storlek behöver vi säkerställa att grupperna är representativa efter justering.</p>
+<p>Ett naturligt villkor är</p>
+<p><span class="math display">\[
+G \perp R \mid X.
+\]</span></p>
+<p>När vi jämför personer med samma värden på (X) ska svarssannolikheten inte bero på grupptillhörighet.</p>
+<p>Om detta inte gäller riskerar gruppstorleken att bli snedskattad.</p>
+</section>
+<section id="domänmedelvärdet" class="level3">
+<h3 class="anchored" data-anchor-id="domänmedelvärdet">Domänmedelvärdet</h3>
+<p>Anta istället att vi vill beskriva</p>
+<p><span class="math display">\[
+E(Y\mid G=1).
+\]</span></p>
+<p>Nu är det inte gruppstorleken som är målet.</p>
+<p>Vi vill beskriva utfallet inom gruppen.</p>
+<p>Ett naturligt antagande är då</p>
+<p><span class="math display">\[
+Y \perp R \mid X,G.
+\]</span></p>
+<p>Det innebär att när vi jämför personer med samma värden på (X) inom samma grupp så innehåller svarsmekanismen ingen ytterligare information om (Y).</p>
+<p>Om detta gäller kan vi skriva</p>
+<p>$$ E(YG=1) =</p>
+<p>_x E(YX=x,G=1) P(X=xG=1). $$</p>
+<p>Problemet är att detta kräver kunskap om fördelningen</p>
+<p><span class="math display">\[
+P(X\mid G=1)
+\]</span></p>
+<p>i populationen.</p>
+<p>I många praktiska situationer känner vi inte till den.</p>
+<p>Vi känner kanske inte ens gruppens storlek.</p>
+</section>
+<section id="ett-starkare-antagande" class="level3">
+<h3 class="anchored" data-anchor-id="ett-starkare-antagande">Ett starkare antagande</h3>
+<p>Anta nu istället att vi kan göra det starkare antagandet</p>
+<p><span class="math display">\[
+Y \perp R \mid X.
+\]</span></p>
+<p>Det innebär att när vi väl känner till (X) spelar grupptillhörigheten ingen ytterligare roll för relationen mellan bortfall och utfall.</p>
+<p>Då följer automatiskt att</p>
+<p><span class="math display">\[
+Y \perp R \mid X,G.
+\]</span></p>
+<p>I detta fall räcker det att återställa populationens fördelning av (X).</p>
+<p>Vi behöver inte känna till domänens storlek.</p>
+<p>Vi behöver inte heller känna till domänens egen fördelning av (X).</p>
+<p>Det räcker att de variabler som driver både bortfall och utfall finns representerade i (X).</p>
+<p>Detta är egentligen den mest intressanta poängen.</p>
+<p>Många tänker spontant:</p>
+<blockquote class="blockquote">
+<p>Om gruppen har en annan åldersfördelning än populationen måste vi känna gruppens åldersfördelning.</p>
+</blockquote>
+<p>Men det följer inte nödvändigtvis.</p>
+<p>Skillnaden mellan grupperna kan vara hur stor som helst.</p>
+<p>Kalibreringen försöker inte göra grupperna lika.</p>
+<p>Kalibreringen försöker göra bortfallet ignorerbart.</p>
+</section>
+</section>
+<section id="men-gruppen-har-ju-en-annan-fördelning-av-x" class="level2">
+<h2 class="anchored" data-anchor-id="men-gruppen-har-ju-en-annan-fördelning-av-x">Men gruppen har ju en annan fördelning av X?</h2>
+<p>Här dyker ofta nästa invändning upp.</p>
+<p>Om gruppen har en annan åldersfördelning, utbildningsfördelning eller inkomstfördelning än populationen i stort – varför skulle kalibrering mot populationens totaler hjälpa?</p>
+<p>Svaret är att vi inte försöker göra gruppen identisk med populationen.</p>
+<p>Tvärtom.</p>
+<p>Gruppen kan mycket väl skilja sig kraftigt från populationen.</p>
+<p>Efter kalibrering kan grupperna fortfarande ha helt olika sammansättning.</p>
+<p>Det är inte ett problem.</p>
+<p>Poängen med hjälpinformationen är istället att hantera de mekanismer som skapar bortfall.</p>
+<p>Om bortfallet i huvudsak drivs av (X) kan information om populationens fördelning av (X) hjälpa oss att återställa representativiteten även för analyser inom domänen.</p>
+</section>
+<section id="designen-spelar-också-roll" class="level2">
+<h2 class="anchored" data-anchor-id="designen-spelar-också-roll">Designen spelar också roll</h2>
+<p>Ytterligare en komplikation är att urvalsdesignen själv kan förändra fördelningarna.</p>
+<p>Vi kanske har:</p>
+<ul>
+<li>oproportionell stratifiering,</li>
+<li>översampling av vissa grupper,</li>
+<li>olika inklusionssannolikheter mellan regioner.</li>
+</ul>
+<p>Urvalet behöver då inte likna ett obundet slumpmässigt urval.</p>
+<p>Vikter används därför inte bara för att hantera bortfall.</p>
+<p>De används också för att återställa de fördelningar som designen förändrat.</p>
+<p>När vi analyserar en domän arbetar vi därför ofta med ett urval vars sammansättning redan korrigerats för både design och bortfall.</p>
+</section>
+<section id="kärninsikten" class="level2">
+<h2 class="anchored" data-anchor-id="kärninsikten">Kärninsikten</h2>
+<p>När vi analyserar en domän utan kända domäntotaler är den första frågan inte:</p>
+<blockquote class="blockquote">
+<p>Är gruppen representativ?</p>
+</blockquote>
+<p>Den första frågan är:</p>
+<blockquote class="blockquote">
+<p>Vilken parameter försöker vi skatta?</p>
+</blockquote>
+<p>För att skatta gruppstorlekar krävs antaganden om hur grupptillhörigheten relaterar till bortfallet.</p>
+<p>För att skatta domänmedelvärden krävs istället antaganden om hur utfallet relaterar till bortfallet.</p>
+<p>Det är därför samma hjälpinformation kan vara fullt tillräcklig för ett domänmedelvärde men otillräcklig för att skatta gruppens storlek.</p>
+<p>Och det är ännu ett exempel på en mer generell princip:</p>
+<blockquote class="blockquote">
+<p>Representativitet är inte en egenskap hos datamaterialet i sig. Representativitet måste alltid bedömas i relation till det estimand vi vill identifiera.</p>
+</blockquote>
 
-<div class="listing-category" onclick="window.quartoListingCategory('UmVwcmVzZW50YXRpdml0ZXQ='); return false;">Representativitet</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('U3VydmV5c3RhdGlzdGlr'); return false;">Surveystatistik</div>
+</section>
+</section>
 
-<div class="listing-category" onclick="window.quartoListingCategory('TW9kZWxsYmFzZXJhZCUyMGluZmVyZW5z'); return false;">Modellbaserad inferens</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/Representativ för vad/index.html" class="no-external">
-<p>Att justera för selektion kan göra observationer jämförbara, men det innebär inte automatiskt att vi återfår den population vi vill beskriva. I detta inlägg diskuteras hur vi går från att skapa oberoende till att dra inferens om den större populationen</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/Representativ för vad/index.html" class="no-external">
-<div class="listing-date">
-Jun 5, 2026
-</div>
-<div class="listing-author">
-Christoffer Malmgren
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="REFHJTJDQW5hbHl0aXNrJTIwa2xhcmhldCUyQ1JlcHJlc2VudGF0aXZpdGV0" data-listing-date-sort="1780437600000" data-listing-file-modified-sort="1780516755661" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1162">
-<div class="thumbnail"><a href="./posts/Representativitet som ett selektionsproblem/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/Representativitet som ett selektionsproblem/image.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Representativitet som ett selektionsproblem/index.html" class="no-external">Representativitet som ett selektionsproblem</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('REFH'); return false;">DAG</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QW5hbHl0aXNrJTIwa2xhcmhldA=='); return false;">Analytisk klarhet</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UmVwcmVzZW50YXRpdml0ZXQ='); return false;">Representativitet</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/Representativitet som ett selektionsproblem/index.html" class="no-external">
-<p>Representativitet beskrivs ofta som en egenskap hos ett urval. Med hjälp av DAGs kan frågan istället formuleras som ett selektionsproblem. I denna del introduceras selektionsnoden S och hur beroenden mellan utfall och selektionsmekanismer kan användas för att förstå när inferens är möjlig, när justering kan hjälpa och när information gått förlorad.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/Representativitet som ett selektionsproblem/index.html" class="no-external">
-<div class="listing-date">
-Jun 3, 2026
-</div>
-<div class="listing-author">
-Christoffer Malmgren
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="REFHJTJDQW5hbHl0aXNrJTIwa2xhcmhldA==" data-listing-date-sort="1779919200000" data-listing-file-modified-sort="1780515850468" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1197">
-<div class="thumbnail"><a href="./posts/DAGs som analytiskt ramverk/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/DAGs som analytiskt ramverk/image.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/DAGs som analytiskt ramverk/index.html" class="no-external">DAGs som analytiskt ramverk</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('REFH'); return false;">DAG</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QW5hbHl0aXNrJTIwa2xhcmhldA=='); return false;">Analytisk klarhet</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/DAGs som analytiskt ramverk/index.html" class="no-external">
-<p>DAGs (Directed Acyclic Graphs) används ofta inom kausal inferens, men deras värde sträcker sig långt bortom kausalitet. Här lyfter jag DAGs som ett analytiskt ramverk för att strukturera antaganden, förstå statistiska samband och resonera kring vilka slutsatser data faktiskt kan stödja.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/DAGs som analytiskt ramverk/index.html" class="no-external">
-<div class="listing-date">
-May 28, 2026
-</div>
-<div class="listing-author">
-Christoffer Malmgren
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="TWV0YWRhdGElMkNTdGF0aXN0aWtwcm9kdWt0aW9uJTJDQXJiZXRzcnV0aW5lcg==" data-listing-date-sort="1771801200000" data-listing-file-modified-sort="1771917786885" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1059">
-<div class="thumbnail"><a href="./posts/Metadata/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/Metadata/image.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Metadata/index.html" class="no-external">Metadata: före eller efter?</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('TWV0YWRhdGE='); return false;">Metadata</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('U3RhdGlzdGlrcHJvZHVrdGlvbg=='); return false;">Statistikproduktion</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QXJiZXRzcnV0aW5lcg=='); return false;">Arbetsrutiner</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/Metadata/index.html" class="no-external">
-<p>Mina tankar kring metadatadokumentering och metadatastyrning</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/Metadata/index.html" class="no-external">
-<div class="listing-date">
-Feb 23, 2026
-</div>
-<div class="listing-author">
-Christoffer Malmgren
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="R2l0JTJDU3RhdGlzdGlrcHJvZHVrdGlvbiUyQ0FyYmV0c3J1dGluZXI=" data-listing-date-sort="1770591600000" data-listing-file-modified-sort="1770618834107" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="613">
-<div class="thumbnail"><a href="./posts/Git (del 1)/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/Git (del 1)/image.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Git (del 1)/index.html" class="no-external">Git (del 1)</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('R2l0'); return false;">Git</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('U3RhdGlzdGlrcHJvZHVrdGlvbg=='); return false;">Statistikproduktion</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QXJiZXRzcnV0aW5lcg=='); return false;">Arbetsrutiner</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/Git (del 1)/index.html" class="no-external">
-<p>Den första delen om Git där jag förklarar nyttan av Git i statistikproduktion</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/Git (del 1)/index.html" class="no-external">
-<div class="listing-date">
-Feb 9, 2026
-</div>
-<div class="listing-author">
-Christoffer Malmgren
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="R2l0JTJDU3RhdGlzdGlrcHJvZHVrdGlvbiUyQ0FyYmV0c3J1dGluZXI=" data-listing-date-sort="1770591600000" data-listing-file-modified-sort="1770618857145" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1105">
-<div class="thumbnail"><a href="./posts/Git (del 2)/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/Git (del 2)/image.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Git (del 2)/index.html" class="no-external">Git (del 2)</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('R2l0'); return false;">Git</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('U3RhdGlzdGlrcHJvZHVrdGlvbg=='); return false;">Statistikproduktion</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QXJiZXRzcnV0aW5lcg=='); return false;">Arbetsrutiner</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/Git (del 2)/index.html" class="no-external">
-<p>Den andra delen om Git där jag förklarar grundläggande men tillräcklig syntax för att börja med Git.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/Git (del 2)/index.html" class="no-external">
-<div class="listing-date">
-Feb 9, 2026
-</div>
-<div class="listing-author">
-Christoffer Malmgren
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
