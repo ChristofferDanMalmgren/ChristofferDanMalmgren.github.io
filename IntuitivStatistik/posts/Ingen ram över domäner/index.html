@@ -199,178 +199,161 @@ window.Quarto = {
 
 
 <!--# läs in paket -->
-<section id="när-domänen-inte-finns-identifierad-i-ramen-vad-krävs-egentligen-för-representativitet" class="level1">
-<h1>När domänen inte finns identifierad i ramen – vad krävs egentligen för representativitet?</h1>
-<p>I tidigare inlägg har jag argumenterat för att representativitet alltid måste relateras till det statistiska mål vi vill beskriva.</p>
-<p>Det gäller även när vi vill uttala oss om en delmängd av populationen.</p>
-<p>I surveyundersökningar kallas sådana delmängder ofta för <strong>domäner</strong>.</p>
-<p>Exempel kan vara:</p>
+<section id="när-domänen-inte-finns-identifierad-i-ramen-är-det-verkligen-ett-problem" class="level1">
+<h1>När domänen inte finns identifierad i ramen – är det verkligen ett problem?</h1>
+<p>I surveyundersökningar vill vi ofta beskriva grupper som inte identifierades när urvalet drogs.</p>
+<p>Det kan exempelvis handla om:</p>
 <ul>
 <li>personer med en viss sjukdom,</li>
 <li>arbetslösa,</li>
-<li>personer med utländsk bakgrund,</li>
+<li>personer med facklig anslutning,</li>
 <li>personer med låg tillit till samhället.</li>
 </ul>
-<p>Ofta har undersökningen inte planerats specifikt för dessa grupper.</p>
-<p>Urvalet har dragits från hela populationen.</p>
-<p>Kalibreringen har gjorts mot totaler för hela populationen.</p>
-<p>Och vi kanske inte ens känner domänens storlek i populationen.</p>
-<p>Ändå vill vi gärna uttala oss om gruppen.</p>
-<p>Hur är det möjligt?</p>
-<section id="en-naturlig-oro" class="level2">
-<h2 class="anchored" data-anchor-id="en-naturlig-oro">En naturlig oro</h2>
-<p>Anta att vi vill beskriva ett utfall (Y) inom gruppen (G=1).</p>
-<p>Exempelvis</p>
-<p><span class="math display">\[
-E(Y\mid G=1).
-\]</span></p>
-<p>En naturlig oro är att personer i gruppen svarar mer sällan än övriga populationen.</p>
-<p>Om det stämmer riskerar gruppen att vara underrepresenterad bland respondenterna.</p>
-<p>Problemet är att vi sällan känner grupptillhörigheten för bortfallet.</p>
-<p>Vi vet vilka svarande som tillhör gruppen.</p>
-<p>Men vi vet vanligtvis inte vilka bortfallspersoner som skulle ha gjort det.</p>
-<p>Det är därför frestande att tänka:</p>
+<p>Sådana grupper brukar kallas <strong>domäner</strong>.</p>
+<p>Ofta har undersökningen inte utformats specifikt för att beskriva just dessa grupper. Urvalet har dragits från hela populationen och bortfallsjusteringar eller kalibreringar har gjorts mot kända totaler på populationsnivå.</p>
+<p>Ibland kan vi inte ens identifiera domänen i ramen. Vi vet då varken hur stor gruppen är eller hur den fördelar sig med avseende på olika bakgrundsvariabler.</p>
+<p>Ändå vill vi gärna beskriva storheter som</p>
+<p><span class="math display">\[ E(Y\mid G=1) \]</span></p>
+<p>där <span class="math inline">\(G=1\)</span> anger att individen tillhör domänen.</p>
+<p>En spontant tanke kanske är:</p>
 <blockquote class="blockquote">
-<p>Om vi inte känner gruppens storlek eller sammansättning i populationen, hur kan vi då veta att skattningen är representativ?</p>
+<p>Om vi inte vet hur stor gruppen är i populationen, hur kan vi då dra slutsatser om den?</p>
 </blockquote>
+<p>Det låter rimligt.</p>
+<p>Men frågan visar sig vara mer subtil än så.</p>
+<section id="är-det-verkligen-domänen-som-driver-bortfallet" class="level2">
+<h2 class="anchored" data-anchor-id="är-det-verkligen-domänen-som-driver-bortfallet">Är det verkligen domänen som driver bortfallet?</h2>
+<p>Anta att personer i domänen svarar mer sällan än övriga populationen. En rimlig tanke är då att grupptillhörigheten påverkar svarssannolikheten.</p>
+<p>Men det behöver inte vara sant.</p>
+<p>Anta istället att personer i domänen i genomsnitt är yngre, har lägre utbildning och lägre inkomster. Låt dessa variabler sammanfattas av <span class="math inline">\(X\)</span>. Då kanske det är <span class="math inline">\(X\)</span> som driver bortfallet genom: <span class="math display">\[G \rightarrow X \rightarrow R\]</span> eller <span class="math display">\[G \leftarrow X \rightarrow R\]</span> Domäntillhörigheten blir då associerad med bortfallet därför att grupperna har olika fördelningar av <span class="math inline">\(X\)</span>, inte därför att grupptillhörigheten i sig påverkar svarssannolikheten.</p>
+<p>Det som ser ut som ett domänspecifikt bortfall kan alltså i själva verket vara ett bortfall som drivs av variabler som redan finns tillgängliga som hjälpinformation. I realiteten kan så klart svarssannolikheterna påverkas av en kombination mellan dessa faktorer och grupptillhörighet.</p>
+<p>Men observationen är viktig eftersom den öppnar upp möjligheten att problemet kanske inte handlar om domänen i sig utan om att andra variabler kanske faktiskt driver selektionen, om inte annars delvis.</p>
 </section>
-<section id="är-det-verkligen-gruppen-som-driver-bortfallet" class="level2">
-<h2 class="anchored" data-anchor-id="är-det-verkligen-gruppen-som-driver-bortfallet">Är det verkligen gruppen som driver bortfallet?</h2>
-<p>Låt oss fundera ett steg till.</p>
-<p>Anta att gruppen i genomsnitt:</p>
-<ul>
-<li>är yngre,</li>
-<li>har lägre utbildning,</li>
-<li>har lägre inkomster,</li>
-<li>oftare består av män.</li>
-</ul>
-<p>Låt dessa variabler sammanfattas av (X).</p>
-<p>Då skulle situationen kunna beskrivas av exempelvis</p>
+<section id="vad-krävs-för-att-identifiera-ett-domänmedelvärde" class="level2">
+<h2 class="anchored" data-anchor-id="vad-krävs-för-att-identifiera-ett-domänmedelvärde">Vad krävs för att identifiera ett domänmedelvärde?</h2>
+<p>Låt oss fokusera på</p>
+<p><span class="math display">\[P(Y∣G=1)\]</span></p>
+<p>Om vi kan identifiera denna fördelning kan vi också identifiera exempelvis</p>
+<p><span class="math display">\[E(Y∣G=1)\]</span></p>
+<p>Vid första anblick kan man skriva</p>
+<p><span class="math display">\[P(Y∣G=1)=\sum_x P(Y∣X=x,G=1)P(X=x∣G=1)\]</span></p>
+<p>Det uttrycket visar att domänmedelvärdet beror både på hur utfallet varierar inom domänen och hur domänen är sammansatt med avseende på <span class="math inline">\(X\)</span>.</p>
+<p>Men uttrycket leder också till ett problem.</p>
+<p>Vi känner normalt inte till <span class="math display">\[P(X∣G=1)\]</span></p>
+<p>Det är ju just domänens sammansättning som saknas när domänen inte finns identifierad i ramen. Det kan därför verka som att problemet inte går att lösa. Men det finns ett annat sätt att angripa frågan.</p>
+<section id="ett-alternativt-sätt-att-skriva-problemet" class="level3">
+<h3 class="anchored" data-anchor-id="ett-alternativt-sätt-att-skriva-problemet">Ett alternativt sätt att skriva problemet</h3>
+<p>Med Bayes regel gäller</p>
+<p><span class="math display">\[P(Y∣G=1)=\frac{P(Y,G=1)}{P(G=1)}\]</span></p>
+<p>Problemet reduceras alltså till att identifiera två storheter:</p>
+<p><span class="math display">\[P(Y,G=1)\]</span></p>
+<p>och</p>
+<p><span class="math display">\[P(G=1)\]</span></p>
+<p>Nu kan vi använda lagen om total sannolikhet:</p>
+<p><span class="math display">\[P(Y,G=1)=\sum_xP(Y,G=1∣X=x)P(X=x)\]</span></p>
+<p>samt</p>
+<p><span class="math display">\[P(G=1)=\sum_x P(G=1∣X=x)P(X=x)\]</span></p>
+<p>Här händer något intressant. Domänens okända fördelning</p>
+<p><span class="math display">\[P(X∣G)\]</span></p>
+<p>har försvunnit.</p>
+<p>Istället behöver vi bara känna till populationens fördelning av hjälpinformationen</p>
+<p><span class="math display">\[P(X)\]</span></p>
+<p>vilket ofta är precis den information som finns tillgänglig via register eller används vid kalibrering.</p>
+</section>
+</section>
+<section id="vad-behöver-vi-kunna-lära-oss-från-respondenterna" class="level2">
+<h2 class="anchored" data-anchor-id="vad-behöver-vi-kunna-lära-oss-från-respondenterna">Vad behöver vi kunna lära oss från respondenterna?</h2>
+<p>Om vi antar</p>
+<p><span class="math display">\[(Y,G)⊥R∣X\]</span></p>
+<p>Detta innebär att när vi väl känner till <span class="math inline">\(X\)</span> ger svarsindikatorn <span class="math inline">\(R\)</span> ingen ytterligare information om vare sig utfallet <span class="math inline">\(Y\)</span> eller domäntillhörigheten <span class="math inline">\(G\)</span>.</p>
+<p>Under detta antagande gäller</p>
+<p><span class="math display">\[P(Y,G∣X,R=1)=P(Y,G∣X)\]</span></p>
+<p>samt</p>
+<p><span class="math display">\[P(G∣X,R=1)=P(G∣X)\]</span></p>
+<p>Båda storheterna kan alltså skattas från respondenterna.</p>
+<p>Om vi dessutom känner</p>
+<p><span class="math display">\[P(X)\]</span></p>
+<p>från register eller kalibreringsinformation kan vi nu skatta vår storhet</p>
+<p><span class="math display">\[P(Y∣G=1)=\frac{\sum_xP(Y,G=1∣X=x)P(X=x)}{\sum_x P(G=1∣X=x)P(X=x)}\]</span></p>
+<p>Vi har alltså lyckats uttrycka målstorheten med hjälp av:</p>
+<p>information från respondenterna, populationens fördelning av <span class="math inline">\(X\)</span>.</p>
+<p>Vi behöver däremot inte känna till</p>
 <p><span class="math display">\[
-G \rightarrow X \rightarrow R
+P(X\mid G).
+\]</span> ## Nu börjar det se ut som surveyinferens</p>
+<p>Uttrycket ovan är egentligen bara en kvot.</p>
+<p>Täljaren beskriver hur många personer i populationen som både tillhör domänen och har egenskapen <span class="math inline">\(Y\)</span>.</p>
+<p>Nämnaren beskriver hur många personer som tillhör domänen.</p>
+<p>Samma logik återkommer i den klassiska domänskattaren:</p>
+<p><span class="math display">\[
+\hat{\bar{Y}}_G=\frac{\sum_iW_iY_iG_i}{\sum_iw_iG_i}
 \]</span></p>
+<p>Skillnaden är bara att vi här har härlett den från sannolikheter.</p>
+<p>Det gör också tydligt varför hjälpinformation om populationens fördelning av <span class="math inline">\(X\)</span> kan vara tillräcklig även när domänens egen fördelning är okänd. Om ovan nämnda antagande håller.</p>
+</section>
+<section id="vad-gör-egentligen-kalibreringen" class="level2">
+<h2 class="anchored" data-anchor-id="vad-gör-egentligen-kalibreringen">Vad gör egentligen kalibreringen?</h2>
+<p>Kalibrering beskrivs ofta som en metod för att justera vikter.</p>
+<p>Men ur ett sannolikhetsperspektiv gör den något mer fundamentalt.</p>
+<p>Den ger oss information om <span class="math display">\[P(X)\]</span> Om åldersfördelningen, utbildningsfördelningen eller regionfördelningen är känd i populationen kan denna information användas för att säkerställa att analyserna bygger på rätt fördelning av de variabler som driver selektionen.</p>
+<p>Kalibreringen försöker alltså inte göra domänen lik populationen.</p>
+<p>Den försöker inte heller återskapa domänens sammansättning.</p>
+<p>Det den gör är att tillföra information om den del av problemet som vi faktiskt känner till.</p>
+</section>
+<section id="ett-illustrativt-exempel" class="level2">
+<h2 class="anchored" data-anchor-id="ett-illustrativt-exempel">Ett illustrativt exempel</h2>
+<p>Anta att:</p>
+<ul>
+<li><span class="math inline">\(G=1\)</span> = personer med låg tillit till samhället.</li>
+<li><span class="math inline">\(Y\)</span> = förtroende för myndigheter.</li>
+<li><span class="math inline">\(X\)</span> = ålder, utbildning och inkomst.</li>
+<li><span class="math inline">\(R\)</span> = svar på undersökningen.</li>
+</ul>
+<p>Vi observerar att personer med låg tillit svarar mer sällan.</p>
+<p>Den spontana tolkningen är då: &gt; Domäntillhörigheten verkar påverka bortfallet.</p>
+<p>Men kanske är det egentligen så att personer med låg tillit i genomsnitt är yngre och har lägre utbildning, samtidigt som yngre personer och personer med lägre utbildning svarar mer sällan.</p>
+<p>Då skulle mekanismen kunna se ut som:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 <p>eller</p>
-<p><span class="math display">\[
-G \leftarrow X \rightarrow R
-\]</span></p>
-<p>där (R) anger om individen svarar.</p>
-<p>I båda fallen är det inte grupptillhörigheten i sig som påverkar svarssannolikheten.</p>
-<p>Skillnaden uppstår därför att gruppen har en annan sammansättning med avseende på (X), och att (X) i sin tur påverkar sannolikheten att svara.</p>
-<p>Det som ser ut som ett gruppspecifikt bortfall kan alltså i själva verket vara ett bortfall som drivs av demografiska faktorer eller annan hjälpinformation.</p>
-<p>Om detta är en rimlig beskrivning är det (X) vi bör justera för snarare än gruppen själv.</p>
-</section>
-<section id="två-olika-mål" class="level2">
-<h2 class="anchored" data-anchor-id="två-olika-mål">Två olika mål</h2>
-<p>Nu kommer den viktiga poängen.</p>
-<p>Vilka antaganden som krävs beror på vad vi försöker skatta.</p>
-<section id="gruppens-storlek" class="level3">
-<h3 class="anchored" data-anchor-id="gruppens-storlek">Gruppens storlek</h3>
-<p>Anta först att vi vill veta hur stor gruppen är i populationen:</p>
-<p><span class="math display">\[
-P(G=1).
-\]</span></p>
-<p>Då är grupptillhörigheten själv utfallet.</p>
-<p>För att kunna identifiera gruppens storlek behöver vi säkerställa att grupperna är representativa efter justering.</p>
-<p>Ett naturligt villkor är</p>
-<p><span class="math display">\[
-G \perp R \mid X.
-\]</span></p>
-<p>När vi jämför personer med samma värden på (X) ska svarssannolikheten inte bero på grupptillhörighet.</p>
-<p>Om detta inte gäller riskerar gruppstorleken att bli snedskattad.</p>
-</section>
-<section id="domänmedelvärdet" class="level3">
-<h3 class="anchored" data-anchor-id="domänmedelvärdet">Domänmedelvärdet</h3>
-<p>Anta istället att vi vill beskriva</p>
-<p><span class="math display">\[
-E(Y\mid G=1).
-\]</span></p>
-<p>Nu är det inte gruppstorleken som är målet.</p>
-<p>Vi vill beskriva utfallet inom gruppen.</p>
-<p>Ett naturligt antagande är då</p>
-<p><span class="math display">\[
-Y \perp R \mid X,G.
-\]</span></p>
-<p>Det innebär att när vi jämför personer med samma värden på (X) inom samma grupp så innehåller svarsmekanismen ingen ytterligare information om (Y).</p>
-<p>Om detta gäller kan vi skriva</p>
-<p>$$ E(YG=1) =</p>
-<p>_x E(YX=x,G=1) P(X=xG=1). $$</p>
-<p>Problemet är att detta kräver kunskap om fördelningen</p>
-<p><span class="math display">\[
-P(X\mid G=1)
-\]</span></p>
-<p>i populationen.</p>
-<p>I många praktiska situationer känner vi inte till den.</p>
-<p>Vi känner kanske inte ens gruppens storlek.</p>
-</section>
-<section id="ett-starkare-antagande" class="level3">
-<h3 class="anchored" data-anchor-id="ett-starkare-antagande">Ett starkare antagande</h3>
-<p>Anta nu istället att vi kan göra det starkare antagandet</p>
-<p><span class="math display">\[
-Y \perp R \mid X.
-\]</span></p>
-<p>Det innebär att när vi väl känner till (X) spelar grupptillhörigheten ingen ytterligare roll för relationen mellan bortfall och utfall.</p>
-<p>Då följer automatiskt att</p>
-<p><span class="math display">\[
-Y \perp R \mid X,G.
-\]</span></p>
-<p>I detta fall räcker det att återställa populationens fördelning av (X).</p>
-<p>Vi behöver inte känna till domänens storlek.</p>
-<p>Vi behöver inte heller känna till domänens egen fördelning av (X).</p>
-<p>Det räcker att de variabler som driver både bortfall och utfall finns representerade i (X).</p>
-<p>Detta är egentligen den mest intressanta poängen.</p>
-<p>Många tänker spontant:</p>
-<blockquote class="blockquote">
-<p>Om gruppen har en annan åldersfördelning än populationen måste vi känna gruppens åldersfördelning.</p>
-</blockquote>
-<p>Men det följer inte nödvändigtvis.</p>
-<p>Skillnaden mellan grupperna kan vara hur stor som helst.</p>
-<p>Kalibreringen försöker inte göra grupperna lika.</p>
-<p>Kalibreringen försöker göra bortfallet ignorerbart.</p>
-</section>
-</section>
-<section id="men-gruppen-har-ju-en-annan-fördelning-av-x" class="level2">
-<h2 class="anchored" data-anchor-id="men-gruppen-har-ju-en-annan-fördelning-av-x">Men gruppen har ju en annan fördelning av X?</h2>
-<p>Här dyker ofta nästa invändning upp.</p>
-<p>Om gruppen har en annan åldersfördelning, utbildningsfördelning eller inkomstfördelning än populationen i stort – varför skulle kalibrering mot populationens totaler hjälpa?</p>
-<p>Svaret är att vi inte försöker göra gruppen identisk med populationen.</p>
-<p>Tvärtom.</p>
-<p>Gruppen kan mycket väl skilja sig kraftigt från populationen.</p>
-<p>Efter kalibrering kan grupperna fortfarande ha helt olika sammansättning.</p>
-<p>Det är inte ett problem.</p>
-<p>Poängen med hjälpinformationen är istället att hantera de mekanismer som skapar bortfall.</p>
-<p>Om bortfallet i huvudsak drivs av (X) kan information om populationens fördelning av (X) hjälpa oss att återställa representativiteten även för analyser inom domänen.</p>
-</section>
-<section id="designen-spelar-också-roll" class="level2">
-<h2 class="anchored" data-anchor-id="designen-spelar-också-roll">Designen spelar också roll</h2>
-<p>Ytterligare en komplikation är att urvalsdesignen själv kan förändra fördelningarna.</p>
-<p>Vi kanske har:</p>
-<ul>
-<li>oproportionell stratifiering,</li>
-<li>översampling av vissa grupper,</li>
-<li>olika inklusionssannolikheter mellan regioner.</li>
-</ul>
-<p>Urvalet behöver då inte likna ett obundet slumpmässigt urval.</p>
-<p>Vikter används därför inte bara för att hantera bortfall.</p>
-<p>De används också för att återställa de fördelningar som designen förändrat.</p>
-<p>När vi analyserar en domän arbetar vi därför ofta med ett urval vars sammansättning redan korrigerats för både design och bortfall.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Här är det inte <span class="math inline">\(G\)</span> som driver bortfallet. Det är <span class="math inline">\(X\)</span>.</p>
+<p>När vi jämför personer med samma ålder, utbildning och inkomst finns ingen ytterligare skillnad i svarssannolikhet mellan domänen och resten av populationen.</p>
+<p>Det är precis innebörden av</p>
+<p><span class="math display">\[(Y,G)⊥R∣X\]</span> Antagandet innebär att bortfallet blir ignorerbart när vi väl har kontrollerat för de variabler som faktiskt skapar selektionen.</p>
 </section>
 <section id="kärninsikten" class="level2">
 <h2 class="anchored" data-anchor-id="kärninsikten">Kärninsikten</h2>
-<p>När vi analyserar en domän utan kända domäntotaler är den första frågan inte:</p>
+<p>När vi analyserar en domän utan kända domäntotaler är den centrala frågan inte:</p>
 <blockquote class="blockquote">
 <p>Är gruppen representativ?</p>
 </blockquote>
-<p>Den första frågan är:</p>
+<p>Den centrala frågan är:</p>
 <blockquote class="blockquote">
-<p>Vilken parameter försöker vi skatta?</p>
+<p>Vilken information behöver identifieras för att kunna skatta den storhet vi är intresserade av?</p>
 </blockquote>
-<p>För att skatta gruppstorlekar krävs antaganden om hur grupptillhörigheten relaterar till bortfallet.</p>
-<p>För att skatta domänmedelvärden krävs istället antaganden om hur utfallet relaterar till bortfallet.</p>
-<p>Det är därför samma hjälpinformation kan vara fullt tillräcklig för ett domänmedelvärde men otillräcklig för att skatta gruppens storlek.</p>
-<p>Och det är ännu ett exempel på en mer generell princip:</p>
-<blockquote class="blockquote">
-<p>Representativitet är inte en egenskap hos datamaterialet i sig. Representativitet måste alltid bedömas i relation till det estimand vi vill identifiera.</p>
-</blockquote>
+<p>För domänmedelvärden visar analysen ovan att problemet i grunden handlar om två saker:</p>
+<ul>
+<li>hur utfallet varierar givet <span class="math inline">\(X\)</span> och domäntillhörighet,</li>
+<li>hur domänen fördelar sig över <span class="math inline">\(X\)</span>.</li>
+</ul>
+<p>Om vi kan anta att både utfall och domäntillhörighet är oberoende av svarsmekanismen givet <span class="math inline">\(X\)</span>, och samtidigt känner populationens fördelning av <span class="math inline">\(X\)</span>, blir båda dessa komponenter identifierbara.</p>
+<p>Det är därför domänanalyser ibland är möjliga även när vi inte känner vare sig domänens storlek eller dess sammansättning i populationen.</p>
 
 
 </section>
