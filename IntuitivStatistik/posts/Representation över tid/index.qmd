@@ -1,0 +1,256 @@
+---
+title: "Populationer över tid – när representativitet också handlar om när"
+author: "Christoffer Malmgren"
+date: "2026-06-20"
+categories: [Representativitet, Analytisk klarhet, Surveyinferens]
+image: "image.jpg"
+abstract: "När vi diskuterar representativitet fokuserar vi ofta på vilka individer som ingår i populationen. Minst lika viktigt är att fundera över när populationen definieras. Genom exempel från täckning, bortfall och periodmått diskuteras hur populationsbegreppet förändras över tid och varför Lexisdiagram kan vara ett värdefullt komplement till de mer traditionella Venn-diagrammen."
+---
+
+<!--# läs in paket -->
+
+```{r}
+#| echo: false
+#| output: false
+library(ggdag)
+library(ggplot2)
+library(tidyverse)
+```
+
+# Populationer över tid – när representativitet också handlar om när
+
+I diskussioner om urvalsdesign, bortfall och representativitet pratar man gärna om frågor som:
+
+-   Hur många finns i ramen?
+
+-   Hur stort urval har vi dragit?
+
+-   Hur många svarade?
+
+-   Hur stor är över- och undertäckningen?
+
+Det är naturliga frågor.
+
+Men det finns en annan fråga som ofta hamnar i bakgrunden:
+
+> Hur är målpopulationen definierad i tid?
+
+Det kan låta som en självklarhet, men jag tycker att just den frågan klargör en hel del.
+
+Många av de klassiska gränsdragningsproblemen mellan övertäckning, undertäckning och bortfall uppstår egentligen därför att vi inte varit tillräckligt tydliga med vilken tidpunkt populationen avser.
+
+## Populationer är alltid knutna till en tidpunkt
+
+Anta att vi vill beskriva alla folkbokförda personer i Sverige: den definitionen är inte fullständig.
+
+Vi måste också ange *när*.
+
+Exempelvis:
+
+> Alla folkbokförda personer i Sverige den 31 december 2025.
+
+Nu har vi en tydligt definierad målpopulation.
+
+Den kan relateras till:
+
+-   en ram,
+
+-   ett urval,
+
+-   bortfall,
+
+-   över- och undertäckning.
+
+Det är ungefär så de flesta introduktioner till surveyinferens ser ut.
+
+Men verkligheten är sällan riktigt så enkel.
+
+## Ett litet tankeexperiment
+
+Anta att vi drar ett urval från samtliga folkbokförda personer i Sverige vid tidpunkt X.
+
+En månad senare görs en registerslagning för att hämta uppdaterade kontaktuppgifter.
+
+Då upptäcker vi att några av de utvalda personerna har avlidit.
+
+Hur ska dessa personer klassificeras?
+
+-   Som bortfall?
+
+-   Som övertäckning?
+
+Svaret beror på vilken population vi egentligen vill beskriva.
+
+Om målpopulationen avser den population som ramen beskrev när urvalet drogs tillhörde dessa personer faktiskt målpopulationen. Då är det naturligt att betrakta dem som bortfall.
+
+Om målpopulationen istället avser populationen vid datainsamlingen tillhör de inte längre målpopulationen. Då blir de istället övertäckning.
+
+Samma individ kan alltså klassificeras olika beroende på vilken tidpunkt som definierar målpopulationen.
+
+Detta är ingen teknikalitet. Det är en konsekvens av att populationsbegreppet alltid är knutet till tid.
+
+## Vad händer när vi flyttar målpopulationen?
+
+Om vi definierar målpopulationen vid datainsamlingen istället för vid urvalsdragningen kommer vissa individer som tidigare betraktades som bortfall att omklassificeras till övertäckning.
+
+Bortfallsandelen minskar vilket kan låta som en förbättring.
+
+Men det finns ett pris.
+
+Nu har vi istället skapat ett täckningsproblem.
+
+Under tiden mellan urvalsdragning och datainsamling kan personer ha:
+
+-   immigrerat,
+
+-   emigrerat,
+
+-   avlidit,
+
+-   fötts,
+
+-   åldrats in i populationen,
+
+-   åldrats ut ur populationen.
+
+Anta exempelvis att målpopulationen definieras som personer mellan 18 och 84 år.
+
+Personer som fyllt 18 år efter urvalsdragningen kan tillhöra målpopulationen vid datainsamlingen utan att någonsin haft möjlighet att bli utvalda. Detta är så klart något man kan försöka ta hänsyn till vid designen, men det förutsätter att man tänker på det!
+
+Att bortfall blir övertäckning innebär alltså inte att problemet försvinner.
+
+Problemet byter bara form.
+
+Det illustrerar en viktig princip:
+
+> Många klassificeringar inom surveystatistik är inte objektiva egenskaper hos observationerna. De är konsekvenser av hur vi definierar målpopulationen.
+
+## Varför spelar detta någon roll?
+
+I Sverige är konsekvenserna ofta små.
+
+Våra register uppdateras relativt frekvent, ramarna är ofta aktuella och tiden mellan urval och datainsamling är vanligtvis kort.
+
+I många undersökningar kan man därför på goda grunder anta att de täckningsproblem som uppstår till följd av tid är marginella.
+
+Men det är egentligen inte storleken på felet som är den viktiga poängen.
+
+Poängen är att förstå var felet kommer ifrån.
+
+När vi gör statistiska analyser behöver vi veta vilket inferensproblem vi faktiskt försöker lösa. Annars riskerar vi att diskutera bortfall när problemet egentligen handlar om täckning eller diskutera representativitet utan att först ha definierat vilken population som ska representeras.
+
+## Många statistiska mål avser inte ens en tidpunkt
+
+Hittills har vi tänkt på populationer vid en specifik tidpunkt men många statistiska frågor handlar egentligen om en period.
+
+Exempelvis:
+
+-   arbetslösheten under året,
+
+-   sjukfrånvaron under året,
+
+-   vårdkonsumtionen under året,
+
+-   inkomster under året.
+
+Dessa storheter avser inte en enda population. De avser många populationer.
+
+Under året förändras befolkningen kontinuerligt. Människor föds, avlider, immigrerar och emigrerar. Andra åldras in i eller ut ur målpopulationer.
+
+Istället för en population får vi därför en följd av populationer över tid:
+
+$$
+P_t, \;\;\; t\in [0,T]
+$$
+
+där varje tidpunkt har sin egen population.
+
+Skillnaden kan verka subtil men olika lösningar på problemet bygger oftast på implicita antaganden.
+
+## Lexisdiagram som tankeverktyg
+
+Om Venn-diagram hjälper oss att resonera kring vilka individer som ingår i en population hjälper Lexisdiagram oss att resonera kring när individer ingår i populationen.
+
+Lexisdiagram används ofta inom demografi och epidemiologi för att studera relationen mellan ålder, period och kohort.
+
+I det här sammanhanget tycker jag att de fyller en annan viktig funktion.
+
+De gör det möjligt att visualisera hur individer träder in i och lämnar populationer över tid.
+
+Något som sällan syns i de statiska figurer som ofta används när vi diskuterar täckning och representativitet.
+
+## Vad gör vi egentligen när vi skattar ett årsvärde?
+
+Anta att vi vill beskriva nöjdhet med kollektivtrafiken under ett år.
+
+En möjlig idealisering är att tänka sig att nöjdheten vid varje tidpunkt kan beskrivas av en funktion
+
+$$\theta(t)$$
+
+Om målet är att beskriva nöjdheten under hela året skulle ett naturligt mått kunna vara tidsmedelvärdet
+
+$$\bar{\theta} = \frac{1}{T} \int_0^T \theta(t)\,dt$$
+
+I praktiken observerar vi naturligtvis inte det vi vill mäta kontinuerligt när vi arbetar med surveys.
+
+Istället genomför vi ett antal mätningar vid diskreta tidpunkter och använder dessa för att approximera integralen ovan.
+
+Ett årsmedelvärde kan därför ses som ett försök att sammanfatta en följd av tvärsnittspopulationer snarare än en enda population.
+
+Detta perspektiv gör också osäkerhetsfrågan tydligare.
+
+Om vi vid en viss tidpunkt faktiskt observerade hela populationen skulle det inte finnas något urvalsfel för just den tidpunkten.
+
+Om vi däremot bara observerar ett urval vid en annan tidpunkt uppstår osäkerhet där.
+
+När ett årsmått byggs upp genom att kombinera flera tidpunkter är det därför naturligt att tänka på osäkerheten som sammansatt av osäkerheten från de tvärsnitt som används för att approximera perioden.
+
+På samma sätt som årsestimatet kan ses som en sammanvägning av många populationer över tid kan osäkerheten ses som en sammanvägning av osäkerheten från de tidpunkter där skattningar faktiskt behövs.
+
+Ur det perspektivet blir det också mindre naturligt att tänka sig en enda "årspopulation" som allt ska kalibreras mot.
+
+Istället består perioden av många populationer:
+
+$$P_t,\;\;\; t\in[0,T]$$
+
+och inferensen handlar om hur information från dessa populationer kombineras för att beskriva den storhet vi är intresserade av.
+
+## Representativitet över tid
+
+När vi diskuterar representativitet brukar vi fråga:
+
+> Är urvalet representativt för populationen?
+
+För periodmått behöver vi ofta ställa ytterligare en fråga:
+
+> Representerar observationerna rätt tid?
+
+Ett urval kan vara perfekt representativt för populationen i mars och ändå ge en missvisande bild av året som helhet.
+
+Om fenomenet varierar över året kan det därför vara mer värdefullt att sprida observationerna över tiden än att enbart fokusera på representativitet vid en enskild tidpunkt.
+
+Representativitet blir då inte bara en fråga om individer. Det blir också en fråga om tid.
+
+## Kärninsikten
+
+Venn-diagram hjälper oss att tänka på populationen i termer av över- och undertäckning i relation till en ram vid en viss tidpunkt.
+
+Lexisdiagram hjälper oss att tänka på när individer befinner sig i populationen.
+
+Båda perspektiven behövs.
+
+När statistiska mål avser en period snarare än en tidpunkt förändras inte bara datainsamlingen.
+
+Själva populationsbegreppet förändras också.
+
+I ett tvärsnitt frågar vi ofta:
+
+> Vilka individer representerar urvalet?
+
+För periodmått behöver vi dessutom fråga:
+
+> Vilken tid representerar urvalet?
+
+Representativitet handlar inte bara om vilka individer som observerats. Det handlar också om när de observerats.
+
+Först när både individ- och tidsdimensionen är tydligt definierade vet vi egentligen vilken målpopulation våra slutsatser avser.
